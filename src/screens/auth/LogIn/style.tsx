@@ -4,10 +4,8 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: 'center',
     paddingHorizontal: SIZE.padding,
-    // backgroundColor: colors.background
-    // backgroundColor: 'yellow'
+
   },
   title: {
     color: colors.primary,
@@ -52,7 +50,6 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: colors.placehoderTxt,
     marginRight: scaleWidth(10),
-
   },
   hr: {
     borderBottomWidth: 1,
@@ -76,6 +73,9 @@ const styles = StyleSheet.create({
     // justifyContent: "center",
     width: width,
     height: 635 * width / 488,
+  },
+  forgotTxt: {
+    marginTop: scaleWidth(10)
   },
 
 });

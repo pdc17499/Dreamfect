@@ -62,7 +62,7 @@ export const AppInput = (props: IAppInput) => {
 
   const viewStyle: any = [
     styles.inputWrap,
-    { borderColor: isFocused ? colors.violet : colors.inputBg },
+    { borderColor: error ? colors.rose : isFocused ? colors.violet : colors.inputBg },
     style,
   ];
 
@@ -82,8 +82,9 @@ export const AppInput = (props: IAppInput) => {
   return (
     <View style={containerStyle}>
       {label && (
-        isFocused ? <AppText style={[styles.labelFocus, customStyleLabel]}>{label}</AppText>
-          : <AppText style={[styles.label, customStyleLabel]}>{label}</AppText>
+        error ? <AppText style={[styles.labelError, customStyleLabel]}>{label}</AppText>
+          : isFocused ? <AppText style={[styles.labelFocus, customStyleLabel]}>{label}</AppText>
+            : <AppText style={[styles.label, customStyleLabel]}>{label}</AppText>
       )}
       <View style={viewStyle}>
         <TextInput
@@ -104,6 +105,7 @@ export const AppInput = (props: IAppInput) => {
           onEndEditing={onEndEditingInput}
           returnKeyType={'done'}
           blurOnSubmit={!multiline}
+          textAlignVertical={multiline ? 'top' : 'center'}
         />
         {showEye && (
           <TouchableOpacity onPress={onShowPassWord} style={styles.iconRight}>
@@ -141,6 +143,13 @@ const stylesBase = StyleSheet.create({
     marginBottom: 10,
     fontSize: scaleSize(14),
   },
+  labelError: {
+    color: colors.rose,
+    ...fontFamily.Proxima400,
+    marginTop: SIZE.base_space,
+    marginBottom: 10,
+    fontSize: scaleSize(14),
+  },
   iconLeft: {
     marginRight: SIZE.base_space,
   },
@@ -153,6 +162,7 @@ const stylesBase = StyleSheet.create({
     color: colors.primary,
     fontSize: SIZE.base_size,
     ...fontFamily.Proxima400,
+    paddingTop: scaleWidth(10)
   },
   error: {
     marginTop: 5,

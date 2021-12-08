@@ -3,14 +3,22 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import {
   WELCOME,
-  SIGNIN,
   SIGNUP,
+  VERIFICATION,
+  SIGNUP_SUCCESS,
+  SIGNUP_INFO,
+  USER_ACCOUNT,
+  LOGIN,
 } from '../routeName';
 
 import {
   Welcome,
-  SignIn,
-  SignUp
+  SignUp,
+  Verification,
+  SignUpSuccess,
+  SignUpInfo,
+  UserAccount,
+  LogIn
 } from '../../screens';
 
 const Stack = createStackNavigator();
@@ -23,7 +31,12 @@ const UnAuthenStack = () => {
     <Stack.Navigator screenOptions={screenOptions} initialRouteName={WELCOME}>
       <Stack.Screen name={WELCOME} component={Welcome} />
       <Stack.Screen name={SIGNUP} component={SignUp} />
-      <Stack.Screen name={SIGNIN} component={SignIn} />
+      <Stack.Screen name={VERIFICATION} component={Verification} />
+      <Stack.Screen name={SIGNUP_SUCCESS} component={SignUpSuccess} />
+      <Stack.Screen name={SIGNUP_INFO} component={SignUpInfo} />
+      <Stack.Screen name={USER_ACCOUNT} component={UserAccount} />
+      <Stack.Screen name={LOGIN} component={LogIn} />
+
 
     </Stack.Navigator>
   );

@@ -4,10 +4,8 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: 'center',
     paddingHorizontal: SIZE.padding,
-    // backgroundColor: colors.background
-    // backgroundColor: 'yellow'
+
   },
   title: {
     color: colors.primary,
@@ -17,8 +15,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     width: scaleWidth(250),
     lineHeight: scaleWidth(40),
-    marginTop: scaleHeight(136),
-    marginBottom: 5
+    marginTop: scaleHeight(68),
+    marginBottom: SIZE.medium_space
   },
   miniTxt: {
     ...fontFamily.Proxima400,
@@ -43,7 +41,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: scaleWidth(36),
     justifyContent: 'center',
-    marginBottom: SIZE.medium_space
+    marginBottom: scaleWidth(25)
   },
   checkBox: {
     height: scaleWidth(20),
@@ -77,6 +75,9 @@ const styles = StyleSheet.create({
     width: width,
     height: 635 * width / 488,
   },
+  button: {
+    marginHorizontal: SIZE.padding, marginBottom: SIZE.medium_space
+  }
 
 });
 

@@ -1,9 +1,12 @@
-import { AppButton, AppInput, AppText } from '@component';
+import { background_signup, background_welcome, IconSlide, ManWithLap } from '@assets';
+import { AppButton, AppInput, AppText, Footer } from '@component';
 import { useNavigation } from '@react-navigation/native';
 import { SIGNUP } from '@routeName';
-import { colors, fontFamily, scaleWidth, SIZE } from '@util';
+import { colors, fontFamily, scaleHeight, scaleWidth, SIZE } from '@util';
 import React, { useEffect } from 'react';
-import { View, Image, TouchableOpacity, SafeAreaView } from 'react-native';
+import { View, Image, TouchableOpacity, SafeAreaView, ImageBackground } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+
 import { useDispatch } from 'react-redux';
 import { styles } from './style';
 
@@ -20,20 +23,27 @@ const Welcome = (props: WelcomeProp) => {
   }
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <View style={styles.container}>
-        <AppText numberOfLines={2} style={styles.title}>{'Creat a dream and follow it'}</AppText>
-        <AppText style={styles.miniTxt}>{'Lorem ipsum dolor sit amet, consectetur adipiscing. Lorem ipsum dolor sit amet.'}</AppText>
-        <AppButton
-          title={'Sign Up'}
-          onPress={moveToSignUp}
-        />
-        <View style={styles.bottom} >
-          <AppText style={styles.bottomTxt2}>{'Already have an account?'}</AppText>
-          <AppText style={styles.bottomTxt}>{'Sign in'}</AppText>
-        </View>
-      </View>
-    </SafeAreaView>
+    <>
+      <ImageBackground source={background_welcome} resizeMode='cover' style={styles.image} >
+        <KeyboardAwareScrollView style={styles.container} showsVerticalScrollIndicator={false} >
+          <View style={styles.manWithLap}>
+            <ManWithLap />
+          </View>
+          <AppText numberOfLines={2} style={styles.title}>{'Creat a dream and follow it'}</AppText>
+          <AppText style={styles.miniTxt}>{'Lorem ipsum dolor sit amet, consectetur adipiscing. Lorem ipsum dolor sit amet.'}</AppText>
+          <IconSlide style={{ alignSelf: 'center', marginTop: scaleWidth(36), marginBottom: scaleWidth(38) }} />
+          <AppButton
+            title={'Sign Up'}
+            onPress={moveToSignUp}
+          />
+          <View style={styles.bottom} >
+            <AppText style={styles.bottomTxt2}>{'Already have an account?'}</AppText>
+            <AppText style={styles.bottomTxt}>{'Sign in'}</AppText>
+          </View>
+        </KeyboardAwareScrollView>
+        <Footer />
+      </ImageBackground>
+    </>
   );
 };
 export { Welcome };

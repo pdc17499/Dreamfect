@@ -12,6 +12,7 @@ const colors = {
     chatBg: '#FEF9E0',
     chatBg2: '#E0F3FE',
     placehoderTxt: '#9C9C9C',
+    hr: '#E0DFE4',
     red: 'red',
 };
 

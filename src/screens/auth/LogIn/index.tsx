@@ -10,13 +10,13 @@ import * as yup from 'yup';
 import { background_signup, IconCheck } from '@assets';
 import { VERIFICATION } from '@routeName';
 
-interface SignUpProp { }
+interface LogInProp { }
 
 interface screenNavigationProp {
   navigate: any;
 }
 
-const SignUp = (props: SignUpProp) => {
+const LogIn = (props: LogInProp) => {
   const navigation = useNavigation<screenNavigationProp>();
   const [isChecked, setIsChecked] = useState(false)
   const changeRemember = () => {
@@ -42,7 +42,7 @@ const SignUp = (props: SignUpProp) => {
   });
 
   const onSubmit = () => {
-    navigation.navigate(VERIFICATION)
+    // navigation.navigate(VERIFICATION)
   };
 
   return (
@@ -57,8 +57,8 @@ const SignUp = (props: SignUpProp) => {
             onSubmit={onSubmit}>
             {props => (
               <View style={{ flex: 1 }}>
-                <AppText numberOfLines={2} style={styles.title}>{'Sign Up'}</AppText>
-                <AppText style={styles.miniTxt}>{'Join now and start follow your dream'}</AppText>
+                <AppText numberOfLines={2} style={styles.title}>{'Log in'}</AppText>
+                <AppText style={styles.miniTxt}>{'Log in and start follow your dream'}</AppText>
                 <AppInput
                   label={'Email'}
                   placeholder={'Enter your email'}
@@ -75,14 +75,11 @@ const SignUp = (props: SignUpProp) => {
                   onValueChange={props.handleChange('password')}
                   error={props.errors.password}
                 />
-                {/* <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: scaleWidth(15), marginBottom: scaleWidth(48) }}>
-                  <Pressable style={styles.checkBox} onPress={changeRemember}>
-                    {isChecked ? <IconCheck style={styles.check} /> : null}
-                  </Pressable>
-                  <AppText>{'Remember me'}</AppText>
-                </View> */}
+
+                <AppText style={styles.forgotTxt}>{'Forgot password?'}</AppText>
+
                 <AppButton
-                  title={'Sign up with email'}
+                  title={'Log in with email'}
                   onPress={props.handleSubmit}
                   customStyleButton={{ marginTop: SIZE.medium_space }}
                 />
@@ -110,8 +107,8 @@ const SignUp = (props: SignUpProp) => {
                   />
                 </View>
                 <View style={styles.bottom} >
-                  <AppText style={styles.bottomTxt2}>{"Already have an account?"}</AppText>
-                  <AppText style={styles.bottomTxt}>{'Sign in'}</AppText>
+                  <AppText style={styles.bottomTxt2}>{"If your don’t have an account?"}</AppText>
+                  <AppText style={styles.bottomTxt}>{'Sign up'}</AppText>
                 </View>
               </View>
             )}
@@ -120,7 +117,7 @@ const SignUp = (props: SignUpProp) => {
         <Footer />
       </ImageBackground>
     </>
-  );
+  )
 };
 
-export { SignUp };
+export { LogIn };

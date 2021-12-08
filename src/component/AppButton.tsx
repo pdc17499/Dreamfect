@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { TouchableOpacity, StyleSheet, View, Image } from 'react-native';
 import { AppText } from './AppText';
-import { colors, fontFamily, scaleSize, SIZE } from '@util';
+import { colors, fontFamily, scaleSize, scaleWidth, SIZE } from '@util';
 import { debounce } from 'lodash';
 import { ButtonProps } from '@interfaces';
 
@@ -33,31 +33,58 @@ const AppButton = React.memo((props: ButtonProps) => {
     [onPress],
   );
 
-  const bgLinear = {
+  const bgRose = {
     backgroundColor: 'transparent',
-    borderWidth: isActive ? 1.5 : 1,
-    borderColor: colors.violet,
+    borderWidth: 1,
+    borderColor: colors.rose,
+    with: scaleWidth(300),
   };
 
-  const titleLinear = {
-    color: colors.primary,
+  const titleRose = {
+    color: colors.rose,
+    ...fontFamily.Proxima600,
+
+  };
+
+  const bgOrange = {
+    backgroundColor: 'transparent',
+    borderWidth: 1,
+    borderColor: colors.orange,
+
+  };
+
+  const titleOrange = {
+    color: colors.orange,
+    ...fontFamily.Proxima600,
+
+  };
+  const bgGreen = {
+    backgroundColor: 'transparent',
+    borderWidth: isActive ? 1.5 : 1,
+    borderColor: colors.green,
+
+  };
+
+  const titleGreen = {
+    color: colors.green,
     ...fontFamily.Proxima600,
   };
 
+
   const buttonStyle = [
     styles.container,
-    typeButton === 'linear' ? bgLinear : {},
+    typeButton === 'rose' ? bgRose : {},
     { minHeight: size === 'small' ? SIZE.btn_height_small : SIZE.btn_height },
-    typeButton === 'link' ? styles.bgLink : {},
-    typeButton === 'underline' ? styles.bgUnderline : {},
+    typeButton === 'orange' ? bgOrange : {},
+    typeButton === 'green' ? bgGreen : {},
     customStyleButton,
   ];
 
   const titleStyle = [
     styles.txtButton,
-    typeButton === 'linear' && titleLinear,
-    typeButton === 'link' ? styles.titleLink : {},
-    typeButton === 'underline' ? styles.titleUnderline : {},
+    typeButton === 'rose' && titleRose,
+    typeButton === 'orange' ? titleOrange : {},
+    typeButton === 'green' ? titleGreen : {},
     size === 'small' && { ...fontFamily.Proxima600 },
     customStyleTitle,
   ];

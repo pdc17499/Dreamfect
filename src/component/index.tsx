@@ -3,6 +3,10 @@ export * from './AppInput';
 export * from './Loading';
 export * from './GlobalUI';
 export * from './AppButton';
+export * from './Footer';
+export * from './Header';
+
+
 
 
 

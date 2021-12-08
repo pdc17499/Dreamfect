@@ -23,7 +23,7 @@ export interface ButtonProps {
   disabled?: boolean;
   image?: any;
   size?: 'base' | 'small';
-  typeButton?: 'linear' | 'full' | 'underline' | 'link';
+  typeButton?: 'rose' | 'full' | 'green' | 'orange';
   isActive?: boolean;
   iconLeft?: any;
   iconRight?:
@@ -64,4 +64,18 @@ export interface IAppInput {
   maxLength?: number;
   callBackOnFocus?: (focus: boolean) => void;
   onEndEditing?: (name?: string) => void;
+}
+
+export interface HeaderProps {
+  customTitleStyle?: any;
+  title?: string;
+  customContainer?: ViewStyle;
+  back?: any;
+  btnCountine?: boolean;
+  onPressRight?: () => void;
+  btnRight?: any;
+  iconRight?: 'email' | 'hide';
+  iconLeft?: 'delete' | 'back';
+  onPressBack?: () => void;
+  iconFillColor?: string;
 }

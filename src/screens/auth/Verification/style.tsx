@@ -14,29 +14,27 @@ const styles = StyleSheet.create({
     flex: 1,
     // justifyContent: 'center',
     paddingHorizontal: SIZE.padding,
-
     // backgroundColor: colors.background
   },
   title: {
     color: colors.primary,
     fontSize: SIZE.big_size,
-    ...fontFamily.Prompt700,
+    ...fontFamily.Proxima600,
     alignSelf: 'center',
     textAlign: 'center',
-    width: scaleWidth(250),
+    // width: scaleWidth(250),
     lineHeight: scaleWidth(40),
-    marginTop: scaleHeight(50),
+    marginTop: scaleHeight(200),
     marginBottom: 10
   },
   miniTxt: {
     ...fontFamily.Proxima400,
     color: colors.secondPrimary,
-    fontSize: SIZE.base_size,
+    fontSize: SIZE.small_size,
     alignSelf: 'center',
     textAlign: 'center',
-    width: scaleWidth(300),
-    lineHeight: scaleWidth(24),
-    // marginBottom: scaleWidth(100)
+    lineHeight: scaleWidth(21),
+    marginBottom: scaleWidth(88)
   },
   block: {
     width: '27%'
@@ -55,7 +53,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: scaleWidth(52),
     justifyContent: 'center',
-    marginBottom: SIZE.base_space
   },
   image: {
     flex: 1,
@@ -64,8 +61,9 @@ const styles = StyleSheet.create({
     // height: 563 * width / 488,
   },
   manWithLap: {
-    marginTop: scaleHeight(160),
-    marginLeft: scaleWidth(25),
+    marginTop: scaleHeight(84),
+    // backgroundColor: 'yellow'
+    // marginLeft: scaleWidth(25),
   }
 });
 
