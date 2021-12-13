@@ -1,10 +1,10 @@
 import { background_signup, background_welcome, IconSlide, ManWithLap } from '@assets';
 import { AppButton, AppInput, AppText, Footer } from '@component';
 import { useNavigation } from '@react-navigation/native';
-import { SIGNUP } from '@routeName';
+import { LOGIN, SIGNUP } from '@routeName';
 import { colors, fontFamily, scaleHeight, scaleWidth, SIZE } from '@util';
 import React, { useEffect } from 'react';
-import { View, Image, TouchableOpacity, SafeAreaView, ImageBackground } from 'react-native';
+import { View, Image, TouchableOpacity, SafeAreaView, ImageBackground, Pressable } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 import { useDispatch } from 'react-redux';
@@ -20,6 +20,10 @@ const Welcome = (props: WelcomeProp) => {
   const navigation = useNavigation<screenNavigationProp>();
   const moveToSignUp = () => {
     navigation.navigate(SIGNUP)
+  }
+
+  const moveToLogin = () => {
+    navigation.navigate(LOGIN)
   }
 
   return (
@@ -38,7 +42,10 @@ const Welcome = (props: WelcomeProp) => {
           />
           <View style={styles.bottom} >
             <AppText style={styles.bottomTxt2}>{'Already have an account?'}</AppText>
-            <AppText style={styles.bottomTxt}>{'Sign in'}</AppText>
+            <Pressable onPress={moveToLogin}>
+
+              <AppText style={styles.bottomTxt}>{'Sign in'}</AppText>
+            </Pressable>
           </View>
         </KeyboardAwareScrollView>
         <Footer />

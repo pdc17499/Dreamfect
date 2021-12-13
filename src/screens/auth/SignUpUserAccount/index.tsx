@@ -11,13 +11,13 @@ import { background_signup, IconCheck, IconProfile } from '@assets';
 import ImagePicker, { ImageOrVideo } from 'react-native-image-crop-picker';
 import { LOGIN, VERIFICATION } from '@routeName';
 
-interface UserAccountProp { }
+interface SignUpUserAccountProp { }
 
 interface screenNavigationProp {
   navigate: any;
 }
 
-const UserAccount = (props: UserAccountProp) => {
+const SignUpUserAccount = (props: SignUpUserAccountProp) => {
   const navigation = useNavigation<screenNavigationProp>();
   const formRef = useRef<any>();
   const [avatar, setAvatar] = useState()
@@ -109,4 +109,4 @@ const UserAccount = (props: UserAccountProp) => {
   );
 };
 
-export { UserAccount };
+export { SignUpUserAccount };

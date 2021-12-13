@@ -7,18 +7,36 @@ import {
   VERIFICATION,
   SIGNUP_SUCCESS,
   SIGNUP_INFO,
-  USER_ACCOUNT,
+  SIGNUP_USER_ACCOUNT,
   LOGIN,
+  FORGOT_PASSWORD,
+  CREATE_PASSWORD,
+  SUCCESS_SCREEN,
+  PROFILE_SETTING,
+  EDIT_PROFILE,
+  PROFILE,
+  CHANGE_PASSWORD
 } from '../routeName';
 
 import {
+  //UnAuthen
   Welcome,
   SignUp,
   Verification,
   SignUpSuccess,
   SignUpInfo,
-  UserAccount,
-  LogIn
+  SignUpUserAccount,
+  LogIn,
+  ForgotPassword,
+  CreatePassword,
+  SuccessScreen,
+
+  // Authen
+  ProfileSetting,
+  EditProfile,
+  Profile,
+  ChangePassword
+
 } from '../../screens';
 
 const Stack = createStackNavigator();
@@ -34,8 +52,18 @@ const UnAuthenStack = () => {
       <Stack.Screen name={VERIFICATION} component={Verification} />
       <Stack.Screen name={SIGNUP_SUCCESS} component={SignUpSuccess} />
       <Stack.Screen name={SIGNUP_INFO} component={SignUpInfo} />
-      <Stack.Screen name={USER_ACCOUNT} component={UserAccount} />
+      <Stack.Screen name={SIGNUP_USER_ACCOUNT} component={SignUpUserAccount} />
       <Stack.Screen name={LOGIN} component={LogIn} />
+      <Stack.Screen name={CREATE_PASSWORD} component={CreatePassword} />
+      <Stack.Screen name={FORGOT_PASSWORD} component={ForgotPassword} />
+      <Stack.Screen name={SUCCESS_SCREEN} component={SuccessScreen} />
+
+
+      <Stack.Screen name={PROFILE_SETTING} component={ProfileSetting} />
+      <Stack.Screen name={EDIT_PROFILE} component={EditProfile} />
+      <Stack.Screen name={PROFILE} component={Profile} />
+      <Stack.Screen name={CHANGE_PASSWORD} component={ChangePassword} />
+
 
 
     </Stack.Navigator>

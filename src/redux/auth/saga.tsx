@@ -1,5 +1,5 @@
-import {put, takeLatest} from 'redux-saga/effects';
-import {saveDataUser, resetDataSignup, verifyPhonenumber} from './action';
+import { put, takeLatest } from 'redux-saga/effects';
+import { saveDataUser, resetDataSignup, verifyPhonenumber } from './action';
 import {
   GlobalService,
   forgotPasswordApi,
@@ -20,9 +20,8 @@ import {
   signUpAgentApi,
 } from '@services';
 // import {VERTIFIEMAIL, VERIFYCODE} from '@routeName';
-import {showMessage} from 'react-native-flash-message';
+import { showMessage } from 'react-native-flash-message';
 import {
-  PROFILE,
   SIGNIN,
   SIGNUP,
   TABBAR,
@@ -30,7 +29,7 @@ import {
   VERIFY_ACCOUNT,
   VERIFY_CODE,
 } from '@routeName';
-import {NavigationUtils} from '@navigation';
+import { NavigationUtils } from '@navigation';
 import {
   LOGIN,
   LOGOUT,
@@ -42,11 +41,11 @@ import {
   VERIFY_CODE_PHONE_NUMBER,
   VERIFY_PHONE_NUMBER,
   GET_PROFILE_USER,
-  resetDataRoom,
+
   UPDATE_PHONE_NUMBER,
 } from '@redux';
-import {select} from 'redux-saga/effects';
-import {UserInfo} from '@interfaces';
+import { select } from 'redux-saga/effects';
+
 export interface ResponseGenerator {
   result?: any;
   data?: any;
@@ -70,13 +69,13 @@ export function* signUpSaga(action: any) {
     GlobalService.showLoading();
     console.log('payy', action?.payload);
 
-    const {body, isTenant, isAgent} = action?.payload;
+    const { body, isTenant, isAgent } = action?.payload;
     const result: ResponseGenerator = yield isTenant
       ? signUpTenantApi(body)
       : isAgent
-      ? signUpAgentApi(body)
-      : signUpApi(body);
-    console.log({result});
+        ? signUpAgentApi(body)
+        : signUpApi(body);
+    console.log({ result });
     if (result) {
       NavigationUtils.reset(VERIFY_ACCOUNT);
       const token = result?.data?.tokens?.access?.token;
@@ -94,7 +93,7 @@ export function* logoutSaga() {
     GlobalService.showLoading();
     const result: ResponseGenerator = yield logOutApi();
     yield put(resetDataSignup());
-    yield put(resetDataRoom());
+
     yield removeToken();
   } catch (error) {
   } finally {
@@ -105,10 +104,10 @@ export function* logoutSaga() {
 export function* forgotPasswordSaga(action: any) {
   try {
     GlobalService.showLoading();
-    const {email} = action.payload;
-    const result: ResponseGenerator = yield forgotPasswordApi({email: email});
+    const { email } = action.payload;
+    const result: ResponseGenerator = yield forgotPasswordApi({ email: email });
     if (result) {
-      NavigationUtils.navigate(VERIFY_CODE, {isForgetPassword: true, email});
+      NavigationUtils.navigate(VERIFY_CODE, { isForgetPassword: true, email });
     }
   } catch (error) {
     GlobalService.hideLoading();
@@ -120,7 +119,7 @@ export function* forgotPasswordSaga(action: any) {
 export function* verifyCodeForgotPasswordSaga(action: any) {
   try {
     GlobalService.showLoading();
-    const {email, code} = action.payload;
+    const { email, code } = action.payload;
     const result: ResponseGenerator = yield verifyCodeForgotPasswordApi({
       email: email,
       code: code,
@@ -158,13 +157,13 @@ export function* resetNewPasswordSaga(action: any) {
 export function* updatePhonenumberSaga(action: any) {
   try {
     GlobalService.showLoading();
-    const {contact, email} = action.payload;
+    const { contact, email } = action.payload;
     const result: ResponseGenerator = yield updatePhonenumberApi({
       contact,
       email,
     });
     if (result) {
-      yield put(verifyPhonenumber({contact, email, isAccSettingScreen: false}));
+      yield put(verifyPhonenumber({ contact, email, isAccSettingScreen: false }));
     }
   } catch (error) {
     GlobalService.hideLoading();
@@ -176,7 +175,7 @@ export function* updatePhonenumberSaga(action: any) {
 export function* verifyPhonenumberSaga(action: any) {
   try {
     GlobalService.showLoading();
-    const {contact, email, isAccSettingScreen} = action.payload;
+    const { contact, email, isAccSettingScreen } = action.payload;
     const result: ResponseGenerator = yield verifyPhonenumberApi({
       contact,
       email,
@@ -198,17 +197,17 @@ export function* verifyPhonenumberSaga(action: any) {
 export function* verifyCodePhonenumberSaga(action: any) {
   try {
     GlobalService.showLoading();
-    const {contact, code, isAccSettingScreen} = action.payload;
+    const { contact, code, isAccSettingScreen } = action.payload;
     const result: ResponseGenerator = yield verifyCodePhonenumberApi({
       code,
       contact,
     });
-    console.log({result});
+    console.log({ result });
     if (isAccSettingScreen) {
-      const user: UserInfo = yield select((state: any) => state.auth?.user);
-      const nUser = {...user};
+      // const user: UserInfo = yield select((state: any) => state.auth?.user);
+      const nUser = { ...user };
       nUser.isContactVerified = true;
-      yield put(saveDataUser({user: nUser}));
+      yield put(saveDataUser({ user: nUser }));
       NavigationUtils.goBack();
     } else {
       NavigationUtils.reset(TABBAR);
@@ -223,15 +222,15 @@ export function* verifyCodePhonenumberSaga(action: any) {
 export function* upDateUserInfoSaga(action: any) {
   try {
     GlobalService.showLoading();
-    const {body, id, isNotBack} = action.payload;
+    const { body, id, isNotBack } = action.payload;
     const result: ResponseGenerator = yield updateUserInfoApi(body, id);
-    console.log({result});
+    console.log({ result });
     if (result) {
       showMessage({
         type: 'success',
         message: 'Update User Information Successfully!',
       });
-      yield put(saveDataUser({user: result}));
+      yield put(saveDataUser({ user: result }));
       if (!isNotBack) {
         NavigationUtils.goBack();
       }
@@ -247,7 +246,7 @@ export function* changePasswordSaga(action: any) {
   try {
     GlobalService.showLoading();
     const result: ResponseGenerator = yield changePasswordApi(action.payload);
-    console.log({result});
+    console.log({ result });
     if (result) {
       NavigationUtils.goBack();
     }
@@ -262,7 +261,7 @@ export function* getProfileUserSaga() {
   try {
     GlobalService.showLoading();
     const result: ResponseGenerator = yield getProfileUserApi();
-    console.log({result});
+    console.log({ result });
     if (result) {
       yield put(saveDataUser(result));
     }

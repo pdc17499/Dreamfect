@@ -17,7 +17,7 @@ const AppButton = React.memo((props: ButtonProps) => {
     iconRight,
     size,
     typeButton,
-    isActive,
+    isNotFocus,
     image,
     imageStyle,
     containerStyle,
@@ -60,7 +60,7 @@ const AppButton = React.memo((props: ButtonProps) => {
   };
   const bgGreen = {
     backgroundColor: 'transparent',
-    borderWidth: isActive ? 1.5 : 1,
+    borderWidth: 1,
     borderColor: colors.green,
 
   };
@@ -70,9 +70,21 @@ const AppButton = React.memo((props: ButtonProps) => {
     ...fontFamily.Proxima600,
   };
 
+  const bgNotFocus = {
+    backgroundColor: colors.secondButton,
+    borderWidth: 1,
+    borderColor: colors.secondButton,
+  }
+
+  const titleNotFocus = {
+    color: colors.violet,
+    ...fontFamily.Proxima600,
+  }
+
 
   const buttonStyle = [
     styles.container,
+    isNotFocus ? bgNotFocus : {},
     typeButton === 'rose' ? bgRose : {},
     { minHeight: size === 'small' ? SIZE.btn_height_small : SIZE.btn_height },
     typeButton === 'orange' ? bgOrange : {},
@@ -82,13 +94,13 @@ const AppButton = React.memo((props: ButtonProps) => {
 
   const titleStyle = [
     styles.txtButton,
+    isNotFocus ? titleNotFocus : {},
     typeButton === 'rose' && titleRose,
     typeButton === 'orange' ? titleOrange : {},
     typeButton === 'green' ? titleGreen : {},
     size === 'small' && { ...fontFamily.Proxima600 },
     customStyleTitle,
   ];
-
 
   return (
     <View style={containerStyle}>
@@ -136,35 +148,8 @@ const styles = StyleSheet.create({
     marginLeft: SIZE.base_space / 2,
     marginRight: -SIZE.base_space / 2,
   },
-  bgLink: {
-    backgroundColor: 'transparent',
-    minHeight: 'auto',
-    alignItems: 'flex-end',
-    alignSelf: 'center',
-    borderRadius: 0,
-    marginTop: SIZE.medium_space - 4,
-  },
-  titleLink: {
-    color: colors.orange,
-    ...fontFamily.Proxima600,
-    lineHeight: SIZE.base_size * 1.6,
-    textDecorationLine: 'underline',
 
-  },
-  bgUnderline: {
-    backgroundColor: 'transparent',
-    minHeight: 'auto',
-    alignItems: 'flex-end',
-    alignSelf: 'center',
-    borderRadius: 0,
-    marginTop: SIZE.medium_space - 4,
-  },
-  titleUnderline: {
-    color: colors.green,
-    ...fontFamily.Proxima600,
-    lineHeight: SIZE.base_size * 1.6,
-    textDecorationLine: 'underline',
-  },
+
 });
 
 export { AppButton };

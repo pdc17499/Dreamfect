@@ -24,7 +24,7 @@ export interface ButtonProps {
   image?: any;
   size?: 'base' | 'small';
   typeButton?: 'rose' | 'full' | 'green' | 'orange';
-  isActive?: boolean;
+  isNotFocus?: boolean;
   iconLeft?: any;
   iconRight?:
     | 'right'
@@ -74,8 +74,8 @@ export interface HeaderProps {
   btnCountine?: boolean;
   onPressRight?: () => void;
   btnRight?: any;
-  iconRight?: 'email' | 'hide';
-  iconLeft?: 'delete' | 'back';
+  iconRight?: 'email' | 'edit' | 'setting' | 'logout';
+  iconLeft?: 'delete' | 'back' | 'logo';
   onPressBack?: () => void;
   iconFillColor?: string;
 }

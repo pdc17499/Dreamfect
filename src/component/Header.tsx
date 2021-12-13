@@ -11,7 +11,7 @@ import {
   SIZE,
   STYLE,
 } from '@util';
-import { IconBack, IconDelete, IconEmail } from '@assets';
+import { IconBack, IconDelete, IconEdit, IconEmail, IconLogo, IconLogOut, IconSetting } from '@assets';
 import { useNavigation } from '@react-navigation/native';
 import { ifIphoneX } from 'react-native-iphone-x-helper';
 import { HeaderProps } from '@interfaces';
@@ -46,7 +46,10 @@ const Header = React.memo((props: HeaderProps) => {
       case 'delete':
         return <IconDelete />;
       case 'back':
-        return <IconBack />;
+        return <IconBack iconFillColor='#1A133D' />;
+      case 'logo':
+        return <IconLogo />;
+
     }
     return null;
   };
@@ -55,6 +58,12 @@ const Header = React.memo((props: HeaderProps) => {
     switch (iconRight) {
       case 'email':
         return <IconEmail />;
+      case 'edit':
+        return <IconEdit />;
+      case 'logout':
+        return <IconLogOut />;
+      case 'setting':
+        return <IconSetting />;
     }
     return null;
   };
@@ -70,9 +79,9 @@ const Header = React.memo((props: HeaderProps) => {
         </Pressable>
       )}
       <AppText style={[styles.txtTitle, customTitleStyle]}>{title}</AppText>
-      {iconRight !== 'hide' && (
+      {iconRight && (
         <Pressable
-          style={styles.buttonRight}
+          // style={styles.buttonRight}
           onPress={onPressRight}
           hitSlop={STYLE.hitSlop}>
           {renderIconRight()}
@@ -86,10 +95,11 @@ const Header = React.memo((props: HeaderProps) => {
 const styles = StyleSheet.create({
 
   txtTitle: {
+
     fontSize: SIZE.small_size,
     color: colors.primary,
     flex: 1,
-    paddingHorizontal: SIZE.small_size,
+    // paddingHorizontal: SIZE.small_size,
     textAlign: 'center',
     ...fontFamily.Proxima600,
   },
@@ -97,7 +107,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     width: DEVICE.width,
     marginTop: scaleWidth(56),
-    paddingLeft: SIZE.padding,
+    paddingHorizontal: SIZE.padding,
+    alignItems: 'center'
   },
   // buttonLeft: {
   //   left: SIZE.padding + 3,

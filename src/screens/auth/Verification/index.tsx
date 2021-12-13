@@ -1,23 +1,32 @@
-import { background_welcome, BoardLoading, ManSitting, IconDelete } from '@assets';
+import { background_welcome, BoardLoading, ManSitting } from '@assets';
 import { AppButton, AppText, Footer, Header } from '@component';
 import { useNavigation } from '@react-navigation/native';
-import { SIGNUP, SIGNUP_SUCCESS } from '@routeName';
-import { scaleHeight, scaleWidth } from '@util';
+import { SIGNUP_SUCCESS, SUCCESS_SCREEN } from '@routeName';
+import { scaleWidth } from '@util';
 import React from 'react';
-import { View, SafeAreaView, ImageBackground, Platform, NativeModules, Linking, Pressable } from 'react-native';
+import { View, SafeAreaView, ImageBackground, Linking } from 'react-native';
 import { styles } from './style';
-
-interface VerificationProp { }
+import { openInbox } from "react-native-email-link";
 
 interface screenNavigationProp {
   navigate: any;
 }
 
-const Verification = (props: VerificationProp) => {
+const Verification = (props: any) => {
   const navigation = useNavigation<screenNavigationProp>();
+  const { params } = props?.route?.params
+  console.log('prps', params);
+
 
   const openMailApp = () => {
-    navigation.navigate(SIGNUP_SUCCESS)
+    openInbox({
+      // message: "Whatcha wanna do?",
+      cancelLabel: "Cancel",
+    });
+
+    (params === 'SignUp')
+      ? navigation.navigate(SIGNUP_SUCCESS)
+      : navigation.navigate(SUCCESS_SCREEN)
   }
 
 

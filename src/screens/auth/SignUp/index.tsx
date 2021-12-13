@@ -1,49 +1,23 @@
 import { AppButton, AppInput, AppText, Footer } from '@component';
-import { useNavigation } from '@react-navigation/native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { scaleWidth, SIZE } from '@util';
-import React, { useState } from 'react';
+import React from 'react';
 import { ImageBackground, Pressable, View } from 'react-native';
 import { styles } from './style';
 import { Formik } from 'formik';
-import * as yup from 'yup';
-import { background_signup, IconCheck } from '@assets';
-import { VERIFICATION } from '@routeName';
+import { background_signup } from '@assets';
+import { useModel } from './signup.hook';
 
 interface SignUpProp { }
 
-interface screenNavigationProp {
-  navigate: any;
-}
-
 const SignUp = (props: SignUpProp) => {
-  const navigation = useNavigation<screenNavigationProp>();
-  const [isChecked, setIsChecked] = useState(false)
-  const changeRemember = () => {
-    setIsChecked(!isChecked)
-  }
+  const {
+    changeRemember,
+    moveToSignIn,
+    formInitialValues,
+    validationSign,
+    onSubmit } = useModel(props)
 
-  const formInitialValues = {
-    email: '',
-    password: '',
-    error: '',
-  };
-
-  const validationSign = yup.object().shape({
-    // email: yup
-    //   .string()
-    //   .required('This field is required')
-    //   .email('Email is not valid'),
-    // password: yup
-    //   .string()
-    //   .required('This field is required')
-    //   .min(8, 'Password must be at least 8 characters')
-    //   .max(30, 'Password may not be greater than 30 characters'),
-  });
-
-  const onSubmit = () => {
-    navigation.navigate(VERIFICATION)
-  };
 
   return (
     <>
@@ -111,7 +85,9 @@ const SignUp = (props: SignUpProp) => {
                 </View>
                 <View style={styles.bottom} >
                   <AppText style={styles.bottomTxt2}>{"Already have an account?"}</AppText>
-                  <AppText style={styles.bottomTxt}>{'Sign in'}</AppText>
+                  <Pressable onPress={moveToSignIn}>
+                    <AppText style={styles.bottomTxt}>{'Sign in'}</AppText>
+                  </Pressable>
                 </View>
               </View>
             )}

@@ -33,14 +33,14 @@ export const SIZE = {
 
   // space
   medium_space: scaleWidth(48),
-  big_space: scaleWidth(64),
+  big_space: scaleWidth(70),
   base_space: scaleWidth(16),
   padding: scaleWidth(20),
 
   //Font size
   small_size: scaleSize(14),
   base_size: scaleSize(16),
-  medium_size: scaleSize(24),
+  medium_size: scaleSize(20),
   semi_size: scaleSize(28),
   big_size: scaleSize(30),
 };
