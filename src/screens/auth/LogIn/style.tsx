@@ -75,7 +75,9 @@ const styles = StyleSheet.create({
     height: 635 * width / 488,
   },
   forgotTxt: {
-    marginTop: scaleWidth(10)
+    marginTop: scaleWidth(10),
+    fontSize: SIZE.small_size
+
   },
 
 });

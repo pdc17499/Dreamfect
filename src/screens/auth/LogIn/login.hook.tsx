@@ -1,13 +1,18 @@
 import { useNavigation } from '@react-navigation/native';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import * as yup from 'yup';
-import { FORGOT_PASSWORD, SIGNUP } from '@routeName';
+import { FORGOT_PASSWORD, PROFILE, SIGNUP } from '@routeName';
+import { validateForm } from '@util';
+import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin';
+import { Alert } from 'react-native';
 
 interface screenNavigationProp {
   navigate: any;
 }
 export function useModel(props: any) {
   const navigation = useNavigation<screenNavigationProp>();
+  const [loggedIn, setloggedIn] = useState(false);
+  const [userInfo, setUserInfo] = useState([]);
   const [isChecked, setIsChecked] = useState(false)
   const moveToForgot = () => {
     navigation.navigate(FORGOT_PASSWORD)
@@ -19,19 +24,12 @@ export function useModel(props: any) {
   };
 
   const validationSign = yup.object().shape({
-    // email: yup
-    //   .string()
-    //   .required('This field is required')
-    //   .email('Email is not valid'),
-    // password: yup
-    //   .string()
-    //   .required('This field is required')
-    //   .min(8, 'Password must be at least 8 characters')
-    //   .max(30, 'Password may not be greater than 30 characters'),
+    // email: validateForm().common.email,
+    // password: validateForm().common.password,
   });
 
   const onSubmit = () => {
-    // navigation.navigate(VERIFICATION)
+    navigation.navigate(PROFILE)
   };
 
   const moveToSignup = () => {
@@ -39,11 +37,45 @@ export function useModel(props: any) {
 
   }
 
+
+  const signInGoogle = async () => {
+    GoogleSignin.configure({
+      scopes: [], // what API you want to access on behalf of the user, default is email and profile
+      webClientId:
+        '523059104460-lmipqm9d9pg6nt9aa29mrhqfpu3ns4t4.apps.googleusercontent.com', // client ID of type WEB for your server (needed to verify user ID and offline access)
+      offlineAccess: true,
+    });
+
+    try {
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
+      console.log('userInfo', userInfo);
+
+    } catch (error: any) {
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+
+        Alert.alert('Cancel');
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        Alert.alert('Signin in progress');
+
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        Alert.alert('PLAY_SERVICES_NOT_AVAILABLE');
+
+      } else {
+        console.log('err', error.code);
+
+        Alert.alert('ERROR');
+      }
+    }
+  };
+
+
   return {
     moveToForgot,
     formInitialValues,
     validationSign,
     onSubmit,
-    moveToSignup
+    moveToSignup,
+    signInGoogle
   }
 }

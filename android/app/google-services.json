@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "523059104460",
+    "project_id": "dreamfect",
+    "storage_bucket": "dreamfect.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:523059104460:android:070c9cfef0782aef4d1069",
+        "android_client_info": {
+          "package_name": "Dream.app.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "523059104460-lmipqm9d9pg6nt9aa29mrhqfpu3ns4t4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6Ajbn-3U7GOzTNLhv-aF95YdY1lTbPDM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "523059104460-lmipqm9d9pg6nt9aa29mrhqfpu3ns4t4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:523059104460:android:343098d081d0c1104d1069",
+        "android_client_info": {
+          "package_name": "com.dreamfect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "523059104460-lmipqm9d9pg6nt9aa29mrhqfpu3ns4t4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6Ajbn-3U7GOzTNLhv-aF95YdY1lTbPDM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "523059104460-lmipqm9d9pg6nt9aa29mrhqfpu3ns4t4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

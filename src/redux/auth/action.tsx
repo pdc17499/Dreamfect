@@ -1,7 +1,7 @@
 import {
   SAVE_DATA_USER,
   LOGIN,
-  SIGNUP,
+  SIGNUP_EMAIL,
   LOGOUT,
   REMOVE_TOKEN,
   SET_DATA_SIGNUP,
@@ -31,8 +31,8 @@ export const saveDataUser = (payload: any) => ({
   payload,
 });
 
-export const signUp = (payload: any) => ({
-  type: SIGNUP,
+export const signUpEmail = (payload: any) => ({
+  type: SIGNUP_EMAIL,
   payload,
 });
 

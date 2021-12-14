@@ -4,37 +4,22 @@ export const validateForm = () => {
   return {
     common: {
       require: yup.string().required('This field is required'),
-      selectAtLeast: yup.string().required('You must select 1 option'),
-      atLeastOnePicker: yup
-        .string()
-        .typeError('You must select 1 option')
-        .required('You must select 1 option'),
-      atLeastOneArray: yup
-        .array()
-        .min(1, 'You must select 1 option')
-        .required(),
-      compareNA: yup.string().test({
-        name: 'compareNA',
-        message: 'You must select 1 option',
-        test: function (value) {
-          return value !== 'N/A';
-        },
-      }),
     },
     email: yup
       .string()
-      .required('This field is required')
-      .email('Email is not valid'),
+      .required('You must select 1 option')
+      .max(150, 'Email is not over 150 characters')
+      .email('Email is invalid'),
     password: yup
       .string()
-      .required('This field is required')
-      .min(8, 'Password must be at least 8 characters')
-      .max(32, 'Password may not be greater than 32 characters'),
+      .min(8, 'You must select 1 option')
+      .max(30, 'Password is not over 30 characters')
+      .required(),
     newPassword: yup
       .string()
       .required('This field is required')
       .min(8, 'Password must be at least 8 characters')
-      .max(32, 'Password may not be greater than 32 characters'),
+      .max(30, 'Password is not over 30 characters'),
     confirmPassword: yup
       .string()
       .required('This field is required')
@@ -45,7 +30,7 @@ export const validateForm = () => {
     fullname: yup
       .string()
       .required('This field is required')
-      .max(32, 'Password may not be greater than 32 characters'),
+      .max(32, 'Full name may not be greater than 32 characters'),
     phone: yup
       .string()
       .required('This field is required')
@@ -70,10 +55,5 @@ export const validateForm = () => {
           }
         },
       }),
-    prefix: yup.string().required('This field is required'),
-    is_volunteer: yup.number().required('This field is required'),
-    dob: yup.string().required('This field is required'),
-    location: yup.string().required('This field is required'),
-    language: yup.string().required('This field is required'),
   };
 };

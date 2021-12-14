@@ -79,3 +79,10 @@ export interface HeaderProps {
   onPressBack?: () => void;
   iconFillColor?: string;
 }
+
+export interface AppProfileProps {
+  name?: string;
+  avatar?: string;
+  title?: string;
+  type?: 'checkbox' | 'profile' | 'reply';
+}

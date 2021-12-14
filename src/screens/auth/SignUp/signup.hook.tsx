@@ -9,6 +9,8 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 import { background_signup, IconCheck } from '@assets';
 import { LOGIN, VERIFICATION } from '@routeName';
+import { useDispatch } from 'react-redux';
+import { signUpEmail } from '@redux';
 
 interface screenNavigationProp {
   navigate: any;
@@ -16,6 +18,7 @@ interface screenNavigationProp {
 
 export function useModel(props: any) {
   const navigation = useNavigation<screenNavigationProp>();
+  const dispatch = useDispatch()
   const [isChecked, setIsChecked] = useState(false)
   const changeRemember = () => {
     setIsChecked(!isChecked)
@@ -44,6 +47,8 @@ export function useModel(props: any) {
   });
 
   const onSubmit = () => {
+    dispatch(signUpEmail)
+
     navigation.navigate(VERIFICATION, { params: 'SignUp' })
   };
 

@@ -1,11 +1,11 @@
 import axios from 'axios';
-import {describeSuccessResponse, describeErrorResponse} from './logger';
-import {showMessage} from 'react-native-flash-message';
-import {getToken} from '@services';
-import {DeviceEventEmitter} from 'react-native';
+import { describeSuccessResponse, describeErrorResponse } from './logger';
+import { showMessage } from 'react-native-flash-message';
+import { getToken } from '@services';
+import { DeviceEventEmitter } from 'react-native';
 
 const ApiConfigs: any = {
-  baseURL: 'https://tap-api.adamo.tech/',
+  baseURL: 'https://dreamfect-api.adamo.tech/',
   responseType: 'json',
   timeout: 30000,
   headers: {
@@ -28,7 +28,7 @@ api.interceptors.request.use(
       };
     }
     if (config.method.toUpperCase() === 'GET') {
-      config.params = {...config.params};
+      config.params = { ...config.params };
     }
     return config;
   },
@@ -54,8 +54,8 @@ api.interceptors.response.use(
     }
   },
   function (error) {
-    const {message, status} = error?.response?.data;
-    console.log({error});
+    const { message, status } = error?.response?.data;
+    console.log({ error });
     if (status === 401) {
       DeviceEventEmitter.emit('UNAUTHENTICATION', {});
     }

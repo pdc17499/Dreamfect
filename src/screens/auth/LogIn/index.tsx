@@ -1,12 +1,14 @@
 import { AppButton, AppInput, AppText, Footer } from '@component';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { scaleWidth, SIZE } from '@util';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ImageBackground, Pressable, View } from 'react-native';
 import { styles } from './style';
 import { Formik } from 'formik';
 import { background_signup } from '@assets';
 import { useModel } from './login.hook';
+import { LoginButton, AccessToken } from 'react-native-fbsdk-next';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 interface LogInProp { }
 
 const LogIn = (props: LogInProp) => {
@@ -16,7 +18,11 @@ const LogIn = (props: LogInProp) => {
     formInitialValues,
     validationSign,
     onSubmit,
-    moveToSignup } = useModel(props)
+    moveToSignup,
+    signInGoogle,
+  } = useModel(props)
+
+
 
   return (
     <>
@@ -50,7 +56,6 @@ const LogIn = (props: LogInProp) => {
                 />
 
                 <Pressable onPress={moveToForgot}>
-
                   <AppText style={styles.forgotTxt}>{'Forgot password?'}</AppText>
                 </Pressable>
 
@@ -74,6 +79,7 @@ const LogIn = (props: LogInProp) => {
                     <AppButton
                       typeButton={'orange'}
                       title={'Google'}
+                      onPress={signInGoogle}
                     />
                   </View>
                   <AppButton
@@ -93,6 +99,25 @@ const LogIn = (props: LogInProp) => {
             )}
           </Formik >
         </KeyboardAwareScrollView >
+        {/* <View>
+          <LoginButton
+            onLoginFinished={
+              (error, result: any) => {
+                if (error) {
+                  console.log("login has error: " + result.error);
+                } else if (result.isCancelled) {
+                  console.log("login is cancelled.");
+                } else {
+                  AccessToken.getCurrentAccessToken().then(
+                    (data: any) => {
+                      console.log(data.accessToken.toString())
+                    }
+                  )
+                }
+              }
+            }
+            onLogoutFinished={() => console.log("logout.")} />
+        </View> */}
         <Footer />
       </ImageBackground>
     </>

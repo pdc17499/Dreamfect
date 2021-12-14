@@ -1,6 +1,9 @@
 export const LOGIN = 'LOGIN';
 export const SAVE_DATA_USER = 'SAVE_DATA_USER';
-export const SIGNUP = 'SIGNUP';
+export const SIGNUP_EMAIL = 'SIGNUP_EMAIL';
+
+
+
 export const LOGOUT = 'LOGOUT';
 export const REMOVE_TOKEN = 'REMOVE_TOKEN';
 export const VERIFY_EMAIL = 'VERIFY_EMAIL';

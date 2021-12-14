@@ -35,7 +35,7 @@ const Profile = (props: ProfileProp) => {
           <View style={styles.buttonBlock}>
             <AppButton
               containerStyle={{ width: scaleWidth(130), alignSelf: 'center' }}
-              title={'Add to list'}
+              title={'My lists'}
               isNotFocus={!onMyDream}
               onPress={setDreamRender}
             />
