@@ -1,6 +1,9 @@
 export const LOGIN = 'LOGIN';
 export const SAVE_DATA_USER = 'SAVE_DATA_USER';
 export const SIGNUP_EMAIL = 'SIGNUP_EMAIL';
+export const SIGNUP_GOOGLE = 'SIGNUP_GOOGLE';
+
+
 
 
 

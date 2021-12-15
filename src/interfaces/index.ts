@@ -81,8 +81,17 @@ export interface HeaderProps {
 }
 
 export interface AppProfileProps {
+  id: string;
   name?: string;
   avatar?: string;
   title?: string;
   type?: 'checkbox' | 'profile' | 'reply';
+  onSelected?: (id: string) => void;
+}
+
+export interface DataSignupProps {
+  tokenSignUp: string;
+  first_name: string;
+  last_name: string;
+  phone: string;
 }

@@ -1,7 +1,9 @@
 import { USER_INFO } from '@mocks';
 import { useNavigation } from '@react-navigation/native';
+import { logoutApp } from '@redux';
 import { useState } from 'react';
 import ImagePicker from 'react-native-image-crop-picker';
+import { useDispatch } from 'react-redux';
 import * as yup from 'yup';
 interface ProfileProp { }
 
@@ -11,11 +13,12 @@ interface screenNavigationProp {
 
 export function useModel(props: any) {
   const navigation = useNavigation<screenNavigationProp>();
-
+  const dispatch = useDispatch()
   const user = USER_INFO
   const [avatar, setAvatar] = useState<any>()
 
-  const onEdit = () => {
+  const onLogOut = () => {
+    dispatch(logoutApp());
     // navigation.navigate(),
   }
 
@@ -58,7 +61,7 @@ export function useModel(props: any) {
 
   return {
     user,
-    onEdit,
+    onLogOut,
     avatar,
     setAvatar,
     onChangeAvatar,

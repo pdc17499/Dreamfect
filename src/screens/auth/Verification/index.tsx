@@ -1,10 +1,10 @@
 import { background_welcome, BoardLoading, ManSitting } from '@assets';
 import { AppButton, AppText, Footer, Header } from '@component';
 import { useNavigation } from '@react-navigation/native';
-import { SIGNUP_SUCCESS, SUCCESS_SCREEN } from '@routeName';
+import { LOGIN, SIGNUP_SUCCESS, SUCCESS_SCREEN } from '@routeName';
 import { scaleWidth } from '@util';
 import React from 'react';
-import { View, SafeAreaView, ImageBackground, Linking } from 'react-native';
+import { View, SafeAreaView, ImageBackground, Linking, BackHandler } from 'react-native';
 import { styles } from './style';
 import { openInbox } from "react-native-email-link";
 
@@ -23,10 +23,10 @@ const Verification = (props: any) => {
       // message: "Whatcha wanna do?",
       cancelLabel: "Cancel",
     });
-
-    (params === 'SignUp')
-      ? navigation.navigate(SIGNUP_SUCCESS)
-      : navigation.navigate(SUCCESS_SCREEN)
+    navigation.navigate(LOGIN)
+    // (params === 'SignUp')
+    //   ? navigation.navigate(SIGNUP_SUCCESS)
+    //   : navigation.navigate(SUCCESS_SCREEN)
   }
 
 

@@ -5,7 +5,6 @@ import {
   RESET_DATA_SIGNUP,
 } from './type';
 import { INITIAL_STATE_AUTH } from './state';
-
 import _ from 'lodash';
 
 export default function dataSave(state = INITIAL_STATE_AUTH, action: any) {
@@ -13,10 +12,8 @@ export default function dataSave(state = INITIAL_STATE_AUTH, action: any) {
     case SAVE_DATA_USER:
       return {
         ...state,
-        typeUser: action?.payload?.role?.idType || state?.typeUser,
-        user: action?.payload?.user || state?.user,
-        token: action?.payload?.tokens || state?.token,
-        role: action?.payload?.role || state?.role,
+        user: action?.payload || state?.user,
+        token: action?.payload?.idToken || state?.token,
       };
     case LOGOUT:
       return {
@@ -24,6 +21,7 @@ export default function dataSave(state = INITIAL_STATE_AUTH, action: any) {
         user: null,
         token: null,
         role: null,
+        dataSignup: {}
       };
     case SET_DATA_SIGNUP:
       return {
@@ -32,10 +30,7 @@ export default function dataSave(state = INITIAL_STATE_AUTH, action: any) {
       };
     case RESET_DATA_SIGNUP:
       const nState = { ...state };
-      nState.dataSignup = {
-        min_range_price: 4000,
-        max_range_price: 25000,
-      };
+      nState.dataSignup = {};
       return nState;
     default:
       return state;

@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Dreamfect</string>
     <string name="facebook_app_id">1028173587761172</string>
+   <!-- <string name="facebook_client_token">Facebook Client ID</string> -->
 </resources>

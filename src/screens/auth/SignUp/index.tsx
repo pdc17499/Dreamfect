@@ -24,11 +24,13 @@ const SignUp = (props: SignUpProp) => {
       <ImageBackground source={background_signup} resizeMode='stretch' style={styles.image} >
         <KeyboardAwareScrollView style={styles.container} showsVerticalScrollIndicator={false} >
           <Formik
-            enableReinitialize
+            // enableReinitialize
             initialValues={formInitialValues}
             validationSchema={validationSign}
             validateOnChange={false}
-            onSubmit={onSubmit}>
+            onSubmit={values => {
+              onSubmit(values.email, values.password)
+            }}>
             {props => (
               <View style={{ flex: 1 }}>
                 <AppText numberOfLines={2} style={styles.title}>{'Sign Up'}</AppText>

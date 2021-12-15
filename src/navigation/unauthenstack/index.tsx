@@ -11,11 +11,7 @@ import {
   LOGIN,
   FORGOT_PASSWORD,
   CREATE_PASSWORD,
-  SUCCESS_SCREEN,
-  PROFILE_SETTING,
-  EDIT_PROFILE,
-  PROFILE,
-  CHANGE_PASSWORD
+  SUCCESS_SCREEN
 } from '../routeName';
 
 import {
@@ -30,12 +26,6 @@ import {
   ForgotPassword,
   CreatePassword,
   SuccessScreen,
-
-  // Authen
-  ProfileSetting,
-  EditProfile,
-  Profile,
-  ChangePassword
 
 } from '../../screens';
 
@@ -57,15 +47,6 @@ const UnAuthenStack = () => {
       <Stack.Screen name={CREATE_PASSWORD} component={CreatePassword} />
       <Stack.Screen name={FORGOT_PASSWORD} component={ForgotPassword} />
       <Stack.Screen name={SUCCESS_SCREEN} component={SuccessScreen} />
-
-
-      <Stack.Screen name={PROFILE_SETTING} component={ProfileSetting} />
-      <Stack.Screen name={EDIT_PROFILE} component={EditProfile} />
-      <Stack.Screen name={PROFILE} component={Profile} />
-      <Stack.Screen name={CHANGE_PASSWORD} component={ChangePassword} />
-
-
-
     </Stack.Navigator>
   );
 };

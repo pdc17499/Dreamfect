@@ -4,7 +4,6 @@ import React from 'react';
 import { View, ImageBackground, Pressable, Image } from 'react-native';
 import { useModel } from './editprofile.hook';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-
 import { styles } from './style';
 import { Formik } from 'formik';
 import { scaleHeight, SIZE } from '@util';
@@ -14,7 +13,7 @@ interface EditProfileProp { }
 const EditProfile = (props: EditProfileProp) => {
   const {
     user,
-    onEdit,
+    onLogOut,
     avatar,
     setAvatar,
     onChangeAvatar,
@@ -25,9 +24,8 @@ const EditProfile = (props: EditProfileProp) => {
   return (
     <>
       <ImageBackground source={background_home} resizeMode='cover' style={styles.image} >
-        <Header title={'Edit Account'} iconRight={'logout'} iconLeft={'back'} onPressRight={onEdit} />
+        <Header title={'Edit Account'} iconRight={'logout'} iconLeft={'back'} onPressRight={onLogOut} />
         <KeyboardAwareScrollView style={styles.container} showsVerticalScrollIndicator={false} >
-
           <Formik
             enableReinitialize
             initialValues={formInitialValues}
@@ -36,7 +34,6 @@ const EditProfile = (props: EditProfileProp) => {
             onSubmit={onSubmit}>
             {props => (
               <View style={{ flex: 1, paddingTop: scaleHeight(76) }}>
-
                 <AppInput
                   label={'First name'}
                   value={props.values.first_name}

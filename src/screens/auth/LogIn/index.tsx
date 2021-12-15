@@ -20,8 +20,8 @@ const LogIn = (props: LogInProp) => {
     onSubmit,
     moveToSignup,
     signInGoogle,
+    signInWithFacebook
   } = useModel(props)
-
 
 
   return (
@@ -33,7 +33,7 @@ const LogIn = (props: LogInProp) => {
             initialValues={formInitialValues}
             validationSchema={validationSign}
             validateOnChange={false}
-            onSubmit={onSubmit}>
+            onSubmit={values => onSubmit(values.email, values.password)}>
             {props => (
               <View style={{ flex: 1 }}>
                 <AppText numberOfLines={2} style={styles.title}>{'Log in'}</AppText>
@@ -54,7 +54,6 @@ const LogIn = (props: LogInProp) => {
                   onValueChange={props.handleChange('password')}
                   error={props.errors.password}
                 />
-
                 <Pressable onPress={moveToForgot}>
                   <AppText style={styles.forgotTxt}>{'Forgot password?'}</AppText>
                 </Pressable>
@@ -73,6 +72,7 @@ const LogIn = (props: LogInProp) => {
                   <AppButton
                     containerStyle={styles.block}
                     typeButton={'rose'}
+                    onPress={signInWithFacebook}
                     title={'Facebook'}
                   />
                   <View style={{ flex: 1, marginHorizontal: scaleWidth(10) }}>
@@ -99,25 +99,6 @@ const LogIn = (props: LogInProp) => {
             )}
           </Formik >
         </KeyboardAwareScrollView >
-        {/* <View>
-          <LoginButton
-            onLoginFinished={
-              (error, result: any) => {
-                if (error) {
-                  console.log("login has error: " + result.error);
-                } else if (result.isCancelled) {
-                  console.log("login is cancelled.");
-                } else {
-                  AccessToken.getCurrentAccessToken().then(
-                    (data: any) => {
-                      console.log(data.accessToken.toString())
-                    }
-                  )
-                }
-              }
-            }
-            onLogoutFinished={() => console.log("logout.")} />
-        </View> */}
         <Footer />
       </ImageBackground>
     </>

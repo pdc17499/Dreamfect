@@ -46,9 +46,8 @@ export function useModel(props: any) {
     //   .max(30, 'Password may not be greater than 30 characters'),
   });
 
-  const onSubmit = () => {
-    dispatch(signUpEmail)
-
+  const onSubmit = (email: any, password: any) => {
+    dispatch(signUpEmail({ email, password }))
     navigation.navigate(VERIFICATION, { params: 'SignUp' })
   };
 

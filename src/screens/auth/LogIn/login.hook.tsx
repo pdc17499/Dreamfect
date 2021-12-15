@@ -5,11 +5,15 @@ import { FORGOT_PASSWORD, PROFILE, SIGNUP } from '@routeName';
 import { validateForm } from '@util';
 import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin';
 import { Alert } from 'react-native';
+import { useDispatch } from 'react-redux';
+import { loginApp, signUpGoogle } from '@redux';
+import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
 
 interface screenNavigationProp {
   navigate: any;
 }
 export function useModel(props: any) {
+  const dispatch = useDispatch()
   const navigation = useNavigation<screenNavigationProp>();
   const [loggedIn, setloggedIn] = useState(false);
   const [userInfo, setUserInfo] = useState([]);
@@ -28,15 +32,31 @@ export function useModel(props: any) {
     // password: validateForm().common.password,
   });
 
-  const onSubmit = () => {
-    navigation.navigate(PROFILE)
+  const onSubmit = (email: string, password: string) => {
+    dispatch(loginApp({ email: email, password: password }))
+    // navigation.navigate(PROFILE)
   };
 
   const moveToSignup = () => {
     navigation.navigate(SIGNUP)
-
   }
 
+  const signInWithFacebook = () => {
+    LoginManager.logInWithPermissions(["public_profile", "email"]).then(
+      function (result: any) {
+        if (result.isCancelled) {
+          console.log("==> Login cancelled");
+        } else {
+          console.log("Login success with permissions: ", { result });
+        }
+      },
+      function (error) {
+        console.log("==> Login fail with error: " + error);
+      }
+    );
+    AccessToken.getCurrentAccessToken().then((accessToken) => console.log('acc', accessToken))
+
+  }
 
   const signInGoogle = async () => {
     GoogleSignin.configure({
@@ -50,6 +70,7 @@ export function useModel(props: any) {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
       console.log('userInfo', userInfo);
+      dispatch(signUpGoogle(userInfo.idToken))
 
     } catch (error: any) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
@@ -60,10 +81,8 @@ export function useModel(props: any) {
 
       } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
         Alert.alert('PLAY_SERVICES_NOT_AVAILABLE');
-
       } else {
         console.log('err', error.code);
-
         Alert.alert('ERROR');
       }
     }
@@ -76,6 +95,7 @@ export function useModel(props: any) {
     validationSign,
     onSubmit,
     moveToSignup,
-    signInGoogle
+    signInGoogle,
+    signInWithFacebook
   }
 }

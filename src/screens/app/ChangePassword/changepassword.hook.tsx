@@ -42,6 +42,21 @@ export function useModel(props: any) {
     navigation.navigate(SUCCESS_SCREEN)
   };
 
+  // const [result, setResult] = useState<string[]>()
+  // // const result: string[] = [];
+  // const onListSelect = (id: any) => {
+  //   const result2 = result
+  //   if (result2) {
+  //     const index = result2.findIndex(e => e === id)
+  //     console.log('index', index);
+  //     index === -1
+  //       ? result2.push(id)
+  //       : result2.splice(index, 1);
+  //   }
+  //   console.log('rr', result2);
+  //   setResult(result2)
+  // }
+
 
 
   return {
@@ -49,7 +64,8 @@ export function useModel(props: any) {
     onEdit,
     formInitialValues,
     validationSign,
-    onSubmit
+    onSubmit,
+    // onListSelect
   }
 
 }

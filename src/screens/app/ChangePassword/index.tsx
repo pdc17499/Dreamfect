@@ -1,5 +1,5 @@
 import { avatar_default } from '@assets';
-import { AppButton, AppInput, Footer, Header } from '@component';
+import { AppButton, AppInput, AppProfile, Footer, Header } from '@component';
 import React from 'react';
 import { View, Pressable, Image } from 'react-native';
 import { useModel } from './changepassword.hook';
@@ -15,14 +15,13 @@ const ChangePassword = (props: ChangePasswordProp) => {
   const {
     formInitialValues,
     validationSign,
-    onSubmit } = useModel(props)
+    onSubmit,
+  } = useModel(props)
 
   return (
-
     <View style={styles.container} >
       <Header title={'Change password'} iconLeft={'back'} />
       <Formik
-
         enableReinitialize
         initialValues={formInitialValues}
         validationSchema={validationSign}
@@ -30,7 +29,6 @@ const ChangePassword = (props: ChangePasswordProp) => {
         onSubmit={onSubmit}>
         {props => (
           <View style={{ flex: 1, paddingTop: scaleHeight(60), paddingHorizontal: SIZE.padding }}>
-
             <AppInput
               label={'Current password'}
               showEye
