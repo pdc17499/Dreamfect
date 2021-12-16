@@ -18,6 +18,8 @@ import {
   ChangePassword
 
 } from '../../screens';
+import { APP_STACK } from '@util';
+import BottomTab from '../../component/BottomTab/BottomTab';
 
 const Stack = createStackNavigator();
 const screenOptions = {
@@ -26,11 +28,16 @@ const screenOptions = {
 
 const AuthenStack = () => {
   return (
-    <Stack.Navigator screenOptions={screenOptions} initialRouteName={PROFILE}>
-      <Stack.Screen name={PROFILE} component={Profile} />
-      <Stack.Screen name={PROFILE_SETTING} component={ProfileSetting} />
-      <Stack.Screen name={EDIT_PROFILE} component={EditProfile} />
-      <Stack.Screen name={CHANGE_PASSWORD} component={ChangePassword} />
+    <Stack.Navigator screenOptions={screenOptions}>
+      {Object.keys(APP_STACK).map((item, index) => {
+        return (
+          <Stack.Screen
+            name={item}
+            component={APP_STACK[item]}
+            key={index}
+          />
+        )
+      })}
     </Stack.Navigator>
   );
 };

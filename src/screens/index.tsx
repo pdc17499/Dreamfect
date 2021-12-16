@@ -16,6 +16,11 @@ import { ProfileSetting } from './app/ProfileSetting';
 import { EditProfile } from './app/EditProfile';
 import { Profile } from './app/Profile';
 import { ChangePassword } from './app/ChangePassword';
+import HomeScreen from './app/Home';
+import UserScreen from './app/User';
+import ExplorerScreen from './app/Explorer';
+import SearchScreen from './app/Search';
+import NotificationScreen from './app/Notifications';
 
 
 
@@ -36,5 +41,10 @@ export {
     ProfileSetting,
     EditProfile,
     Profile,
-    ChangePassword
+    ChangePassword,
+    HomeScreen,
+    UserScreen,
+    ExplorerScreen,
+    NotificationScreen,
+    SearchScreen
 };
