@@ -5,6 +5,7 @@ import { LOGIN, PROFILE } from '@routeName';
 import React from 'react';
 import { View, ImageBackground } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { useSelector } from 'react-redux';
 import { styles } from './style';
 
 interface SuccessScreenProp { }
@@ -15,8 +16,10 @@ interface screenNavigationProp {
 
 const SuccessScreen = (props: SuccessScreenProp) => {
   const navigation = useNavigation<screenNavigationProp>();
+  const token = useSelector((state: any) => state?.auth?.token);
   const moveToHomePage = () => {
-    navigation.navigate(LOGIN)
+    token ? navigation.navigate(PROFILE)
+      : navigation.navigate(LOGIN)
   }
 
   return (

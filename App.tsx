@@ -23,7 +23,11 @@ const App = () => {
       <ActionSheetProvider>
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
-            <NavigationApp />
+            <NavigationApp
+              ref={(navigatorRef: any) =>
+                NavigationUtils.setTopLevelNavigator(navigatorRef)
+              }
+            />
           </PersistGate>
         </Provider>
       </ActionSheetProvider>

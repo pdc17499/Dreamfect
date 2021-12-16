@@ -10,6 +10,9 @@ import * as yup from 'yup';
 import { background_signup, IconCheck, IconProfile } from '@assets';
 import ImagePicker, { ImageOrVideo } from 'react-native-image-crop-picker';
 import { LOGIN, VERIFICATION } from '@routeName';
+import { useDispatch, useSelector } from 'react-redux';
+import { DataSignupProps } from '@interfaces';
+import { updateSignUpInfo, updateUserInfo } from '@redux';
 
 interface SignUpUserAccountProp { }
 
@@ -21,6 +24,11 @@ const SignUpUserAccount = (props: SignUpUserAccountProp) => {
   const navigation = useNavigation<screenNavigationProp>();
   const formRef = useRef<any>();
   const [avatar, setAvatar] = useState()
+  const [file, setFile] = useState()
+  const dispatch = useDispatch()
+  const dataSignUp: DataSignupProps = useSelector((state: any) => state?.auth?.dataSignup);
+  const user_id = useSelector((state: any) => state?.auth?.userID);
+
 
   const uploadPhoto = (mediaType: any) => {
     ImagePicker.openPicker({
@@ -28,8 +36,9 @@ const SignUpUserAccount = (props: SignUpUserAccountProp) => {
       height: 400,
       cropping: true
     }).then((image: any) => {
-      console.log(image);
+      console.log('ima', image);
       setAvatar(image?.path)
+      setFile(image)
     });
   };
 
@@ -47,17 +56,32 @@ const SignUpUserAccount = (props: SignUpUserAccountProp) => {
   };
 
   const validationSign = yup.object().shape({
-    // user_name: yup
-    //   .string()
-    //   .required('This field is required'),
-    // description: yup
-    //   .string()
-    //   .required('This field is required'),
+    user_name: yup
+      .string()
+      .required('This field is required'),
+    description: yup
+      .string()
+      .required('This field is required'),
 
   });
 
-  const onSubmit = () => {
-    navigation.navigate(LOGIN)
+  const onSubmit = (username: string, des: string) => {
+    const body = {
+      id: user_id,
+      first_name: dataSignUp.first_name,
+      last_name: dataSignUp.first_name,
+      phone: dataSignUp.phone,
+      username: username,
+      description: des,
+      avatar: file,
+    }
+
+    console.log('body', body);
+
+    avatar ? dispatch(updateSignUpInfo(body))
+      : null
+
+    // navigation.navigate(LOGIN)
   };
 
   return (
@@ -71,7 +95,7 @@ const SignUpUserAccount = (props: SignUpUserAccountProp) => {
             initialValues={formInitialValues}
             validationSchema={validationSign}
             validateOnChange={false}
-            onSubmit={onSubmit}>
+            onSubmit={values => onSubmit(values.user_name, values.description)}>
             {props => (
               <View style={{ flex: 1 }}>
                 <AppText numberOfLines={2} style={styles.title}>{'Let’s start by adding your user account'}</AppText>

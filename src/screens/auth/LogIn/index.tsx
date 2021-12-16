@@ -19,7 +19,7 @@ const LogIn = (props: LogInProp) => {
     validationSign,
     onSubmit,
     moveToSignup,
-    signInGoogle,
+    signInWithGoogle,
     signInWithFacebook
   } = useModel(props)
 
@@ -79,7 +79,7 @@ const LogIn = (props: LogInProp) => {
                     <AppButton
                       typeButton={'orange'}
                       title={'Google'}
-                      onPress={signInGoogle}
+                      onPress={signInWithGoogle}
                     />
                   </View>
                   <AppButton

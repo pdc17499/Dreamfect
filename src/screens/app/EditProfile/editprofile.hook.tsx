@@ -1,9 +1,9 @@
 import { USER_INFO } from '@mocks';
 import { useNavigation } from '@react-navigation/native';
 import { logoutApp } from '@redux';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ImagePicker from 'react-native-image-crop-picker';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as yup from 'yup';
 interface ProfileProp { }
 
@@ -16,6 +16,11 @@ export function useModel(props: any) {
   const dispatch = useDispatch()
   const user = USER_INFO
   const [avatar, setAvatar] = useState<any>()
+  const profile: any = useSelector((state: any) => state?.auth?.profileUser);
+
+  useEffect(() => {
+    setAvatar(profile?.avatar)
+  }, []);
 
   const onLogOut = () => {
     dispatch(logoutApp());
@@ -34,22 +39,30 @@ export function useModel(props: any) {
   }
 
   const formInitialValues = {
-    first_name: user?.first_name,
-    last_name: user?.last_name,
-    phone: user?.phone,
-    email: user?.email,
-    user_name: user?.user_name,
+    first_name: profile.fname | null,
+    last_name: profile.lname || '',
+    phone: profile.phone || '',
+    user_name: profile.uname || '',
     error: '',
   };
 
   const validationSign = yup.object().shape({
-    // first_name: yup
-    //   .string()
-    //   .required('This field is required'),
+    first_name: yup
+      .string()
+      .required('This field is required'),
 
-    // last_name: yup
-    //   .string()
-    //   .required('This field is required'),
+    last_name: yup
+      .string()
+      .required('This field is required'),
+
+    phone: yup
+      .string()
+      .min(8, 'Phone number at least 8 characters')
+      .required('This field is required'),
+
+    user_name: yup
+      .string()
+      .required('This field is required'),
 
   });
 
@@ -67,7 +80,8 @@ export function useModel(props: any) {
     onChangeAvatar,
     formInitialValues,
     validationSign,
-    onSubmit
+    onSubmit,
+    profile
   }
 
 }

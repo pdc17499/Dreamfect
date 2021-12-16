@@ -1,8 +1,11 @@
 import { USER_INFO } from '@mocks';
 import { useNavigation } from '@react-navigation/native';
+import { changePassword } from '@redux';
 import { SUCCESS_SCREEN } from '@routeName';
+import { validateForm } from '@util';
 import { useState } from 'react';
 import ImagePicker from 'react-native-image-crop-picker';
+import { useDispatch, useSelector } from 'react-redux';
 import * as yup from 'yup';
 interface ProfileProp { }
 
@@ -12,17 +15,16 @@ interface screenNavigationProp {
 
 export function useModel(props: any) {
   const navigation = useNavigation<screenNavigationProp>();
-
+  const dispatch = useDispatch()
   const user = USER_INFO
+  const user_id = useSelector((state: any) => state?.auth?.user?.localId);
 
   const onEdit = () => {
     // navigation.navigate(),
   }
 
-
-
   const formInitialValues = {
-    current_password: '',
+    // current_password: '',
     new_password: '',
     error: '',
   };
@@ -31,15 +33,16 @@ export function useModel(props: any) {
     // current_password: yup
     //   .string()
     //   .required('This field is required'),
-
-    // new_password: yup
-    //   .string()
-    //   .required('This field is required'),
+    new_password: validateForm().password
 
   });
 
-  const onSubmit = () => {
-    navigation.navigate(SUCCESS_SCREEN)
+  const onSubmit = (pass: string) => {
+    dispatch(changePassword({
+      "id": user_id,
+      "password": pass
+    }))
+    // navigation.navigate(SUCCESS_SCREEN)
   };
 
   // const [result, setResult] = useState<string[]>()

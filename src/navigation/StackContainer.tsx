@@ -6,7 +6,7 @@ import AuthenStack from './authenstack';
 import { resetDataSignup } from '@redux';
 
 //main stack app
-const NavigationApp = () => {
+const NavigationApp = React.forwardRef((props: any, ref: any) => {
   let token: any = useSelector((state: any) => state?.auth?.token);
   const dispatch = useDispatch();
   console.log({ token });
@@ -24,8 +24,8 @@ const NavigationApp = () => {
     }
   };
   return (
-    <NavigationContainer>{renderStackApp()}</NavigationContainer>
+    <NavigationContainer ref={ref}>{renderStackApp()}</NavigationContainer>
   );
-};
+});
 
 export default NavigationApp;

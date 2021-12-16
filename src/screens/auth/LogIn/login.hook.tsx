@@ -6,7 +6,7 @@ import { validateForm } from '@util';
 import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin';
 import { Alert } from 'react-native';
 import { useDispatch } from 'react-redux';
-import { loginApp, signUpGoogle } from '@redux';
+import { loginApp, signInFacebook, signInGoogle } from '@redux';
 import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
 
 interface screenNavigationProp {
@@ -28,8 +28,8 @@ export function useModel(props: any) {
   };
 
   const validationSign = yup.object().shape({
-    // email: validateForm().common.email,
-    // password: validateForm().common.password,
+    email: validateForm().email,
+    password: validateForm().password,
   });
 
   const onSubmit = (email: string, password: string) => {
@@ -47,18 +47,20 @@ export function useModel(props: any) {
         if (result.isCancelled) {
           console.log("==> Login cancelled");
         } else {
-          console.log("Login success with permissions: ", { result });
+          AccessToken.getCurrentAccessToken().then((accessToken) => {
+            console.log('acc', accessToken?.accessToken)
+            dispatch(signInFacebook(accessToken?.accessToken))
+          })
         }
       },
       function (error) {
         console.log("==> Login fail with error: " + error);
       }
     );
-    AccessToken.getCurrentAccessToken().then((accessToken) => console.log('acc', accessToken))
 
   }
 
-  const signInGoogle = async () => {
+  const signInWithGoogle = async () => {
     GoogleSignin.configure({
       scopes: [], // what API you want to access on behalf of the user, default is email and profile
       webClientId:
@@ -70,7 +72,7 @@ export function useModel(props: any) {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
       console.log('userInfo', userInfo);
-      dispatch(signUpGoogle(userInfo.idToken))
+      dispatch(signInGoogle(userInfo.idToken))
 
     } catch (error: any) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
@@ -95,7 +97,7 @@ export function useModel(props: any) {
     validationSign,
     onSubmit,
     moveToSignup,
-    signInGoogle,
+    signInWithGoogle,
     signInWithFacebook
   }
 }

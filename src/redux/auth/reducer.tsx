@@ -3,9 +3,13 @@ import {
   SET_DATA_SIGNUP,
   LOGOUT,
   RESET_DATA_SIGNUP,
+  SET_USER_ID,
+  SET_PROFILE_USER
 } from './type';
 import { INITIAL_STATE_AUTH } from './state';
 import _ from 'lodash';
+
+
 
 export default function dataSave(state = INITIAL_STATE_AUTH, action: any) {
   switch (action.type) {
@@ -26,12 +30,23 @@ export default function dataSave(state = INITIAL_STATE_AUTH, action: any) {
     case SET_DATA_SIGNUP:
       return {
         ...state,
-        dataSignup: action?.payload?.data,
+        dataSignup: action?.payload,
+      };
+    case SET_USER_ID:
+      return {
+        ...state,
+        userID: action?.payload
       };
     case RESET_DATA_SIGNUP:
       const nState = { ...state };
       nState.dataSignup = {};
       return nState;
+
+    case SET_PROFILE_USER:
+      return {
+        ...state,
+        profileUser: action?.payload
+      };
     default:
       return state;
   }

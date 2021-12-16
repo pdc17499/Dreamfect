@@ -513,6 +513,21 @@ export const EnableNotification = (props: iconProps) => (
   </Svg>
 );
 
+export const DisableNotification = (props: iconProps) => (
+  <Svg
+    width={45}
+    height={27}
+    fill="none"
+    {...props}
+  >
+    <Rect width={43} height={23} rx={11.5} fill="gray" />
+    <G clipPath="url(#a)">
+      <Rect x={22} y={2} width={19} height={19} rx={9.5} fill="#fff" />
+    </G>
+    <Defs></Defs>
+  </Svg>
+);
+
 export const IconLogOut = (props: iconProps) => (
   <Svg
     width={24}

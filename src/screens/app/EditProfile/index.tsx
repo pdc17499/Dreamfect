@@ -19,7 +19,8 @@ const EditProfile = (props: EditProfileProp) => {
     onChangeAvatar,
     formInitialValues,
     validationSign,
-    onSubmit } = useModel(props)
+    onSubmit,
+    profile } = useModel(props)
 
   return (
     <>
@@ -53,12 +54,6 @@ const EditProfile = (props: EditProfileProp) => {
                   error={props.errors.phone}
                 />
                 <AppInput
-                  label={'Email'}
-                  value={props.values.email}
-                  onValueChange={props.handleChange('email')}
-                  error={props.errors.email}
-                />
-                <AppInput
                   label={'User name'}
                   value={props.values.user_name}
                   onValueChange={props.handleChange('user_name')}
@@ -78,6 +73,7 @@ const EditProfile = (props: EditProfileProp) => {
 
         </KeyboardAwareScrollView>
         <Pressable style={styles.upPhoto} onPress={onChangeAvatar}>
+
           {avatar ? <Image source={{ uri: avatar }} style={styles.avatar} />
             : <Image source={avatar_default} style={styles.avatar} />}
         </Pressable>

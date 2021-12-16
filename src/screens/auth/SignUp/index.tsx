@@ -16,8 +16,9 @@ const SignUp = (props: SignUpProp) => {
     moveToSignIn,
     formInitialValues,
     validationSign,
-    onSubmit } = useModel(props)
-
+    onSubmit,
+    signUpWithFacebook,
+    signUpWithGoogle } = useModel(props)
 
   return (
     <>
@@ -51,12 +52,7 @@ const SignUp = (props: SignUpProp) => {
                   onValueChange={props.handleChange('password')}
                   error={props.errors.password}
                 />
-                {/* <View style={{ flexDirection: 'row', alignItems: 'center', marginTop: scaleWidth(15), marginBottom: scaleWidth(48) }}>
-                  <Pressable style={styles.checkBox} onPress={changeRemember}>
-                    {isChecked ? <IconCheck style={styles.check} /> : null}
-                  </Pressable>
-                  <AppText>{'Remember me'}</AppText>
-                </View> */}
+
                 <AppButton
                   title={'Sign up with email'}
                   onPress={props.handleSubmit}
@@ -72,11 +68,13 @@ const SignUp = (props: SignUpProp) => {
                     containerStyle={styles.block}
                     typeButton={'rose'}
                     title={'Facebook'}
+                    onPress={signUpWithFacebook}
                   />
                   <View style={{ flex: 1, marginHorizontal: scaleWidth(10) }}>
                     <AppButton
                       typeButton={'orange'}
                       title={'Google'}
+                      onPress={signUpWithGoogle}
                     />
                   </View>
                   <AppButton

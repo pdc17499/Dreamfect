@@ -25,7 +25,7 @@ const ForgotPassword = (props: ForgotPasswordProp) => {
             initialValues={formInitialValues}
             validationSchema={validationSign}
             validateOnChange={false}
-            onSubmit={onSubmit}>
+            onSubmit={values => onSubmit(values.email)}>
             {props => (
               <View style={{ flex: 1 }}>
                 <AppText numberOfLines={2} style={styles.title}>{'Forgot Password?'}</AppText>

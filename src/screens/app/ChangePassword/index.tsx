@@ -26,19 +26,19 @@ const ChangePassword = (props: ChangePasswordProp) => {
         initialValues={formInitialValues}
         validationSchema={validationSign}
         validateOnChange={false}
-        onSubmit={onSubmit}>
+        onSubmit={values => onSubmit(values.new_password)}>
         {props => (
           <View style={{ flex: 1, paddingTop: scaleHeight(60), paddingHorizontal: SIZE.padding }}>
-            <AppInput
+            {/* <AppInput
               label={'Current password'}
               showEye
               secureTextEntry
               value={props.values.current_password}
               onValueChange={props.handleChange('current_password')}
               error={props.errors.current_password}
-            />
+            /> */}
             <AppInput
-              label={'New password'}
+              label={'Password'}
               showEye
               secureTextEntry
               value={props.values.new_password}

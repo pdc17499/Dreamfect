@@ -6,7 +6,8 @@ import {
   PROFILE_SETTING,
   EDIT_PROFILE,
   PROFILE,
-  CHANGE_PASSWORD
+  CHANGE_PASSWORD,
+  SUCCESS_SCREEN
 } from '../routeName';
 
 import {
@@ -15,7 +16,8 @@ import {
   ProfileSetting,
   EditProfile,
   Profile,
-  ChangePassword
+  ChangePassword,
+  SuccessScreen
 
 } from '../../screens';
 
@@ -31,6 +33,8 @@ const AuthenStack = () => {
       <Stack.Screen name={PROFILE_SETTING} component={ProfileSetting} />
       <Stack.Screen name={EDIT_PROFILE} component={EditProfile} />
       <Stack.Screen name={CHANGE_PASSWORD} component={ChangePassword} />
+      <Stack.Screen name={SUCCESS_SCREEN} component={SuccessScreen} />
+
     </Stack.Navigator>
   );
 };

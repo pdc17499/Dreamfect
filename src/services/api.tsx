@@ -23,7 +23,8 @@ api.interceptors.request.use(
     const token = await getToken();
     if (token) {
       config.headers = {
-        Authorization: 'Bearer ' + token,
+        // Authorization: 'Bearer ' + token,
+        Authorization: token,
         ...config.headers,
       };
     }

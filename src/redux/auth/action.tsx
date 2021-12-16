@@ -7,13 +7,30 @@ import {
   SET_DATA_SIGNUP,
   RESET_DATA_SIGNUP,
   FORGOT_PASSWORD,
-  VERIFY_CODE_FORGOT_PASSWORD,
   RESET_NEW_PASSWORD,
   UPDATE_USER_INFO,
+  SIGNUP_GOOGLE,
+  SET_USER_ID,
+  SIGNIN_FACEBOOK,
+  SIGNUP_FACEBOOK,
+  SIGNIN_GOOGLE,
+  UPDATE_SIGNUP_INFO,
+
+  // Profile
+  CHANGE_NOTIFICATION,
+  CHANGE_PROFILE_USER,
+  SET_PROFILE_USER,
   CHANGE_PASSWORD,
   GET_PROFILE_USER,
-  SIGNUP_GOOGLE,
+
 } from '@redux';
+
+
+export const setUserId = (payload: string) => ({
+  type: SET_USER_ID,
+  payload,
+});
+
 
 export const loginApp = (payload: any) => ({
   type: LOGIN,
@@ -24,13 +41,23 @@ export const logoutApp = () => ({
   type: LOGOUT,
 });
 
-export const saveDataUser = (payload: any) => ({
-  type: SAVE_DATA_USER,
+export const signUpEmail = (payload: any) => ({
+  type: SIGNUP_EMAIL,
   payload,
 });
 
-export const signUpEmail = (payload: any) => ({
-  type: SIGNUP_EMAIL,
+export const signInGoogle = (payload: any) => ({
+  type: SIGNIN_GOOGLE,
+  payload,
+});
+
+export const signInFacebook = (payload: any) => ({
+  type: SIGNIN_FACEBOOK,
+  payload,
+});
+
+export const signUpFacebook = (payload: any) => ({
+  type: SIGNUP_FACEBOOK,
   payload,
 });
 
@@ -43,25 +70,15 @@ export const resetDataSignup = () => ({
   type: RESET_DATA_SIGNUP,
 });
 
-export const removeToken = () => ({
-  type: REMOVE_TOKEN,
-});
-
 export const forgotPassword = (payload: any) => ({
   type: FORGOT_PASSWORD,
   payload,
 });
 
-export const verifyCodeForgotPassword = (payload: any) => ({
-  type: VERIFY_CODE_FORGOT_PASSWORD,
-  payload,
-});
 
-export const resetNewPassword = (payload: any) => ({
-  type: RESET_NEW_PASSWORD,
-  payload,
+export const removeToken = () => ({
+  type: REMOVE_TOKEN,
 });
-
 
 
 export const setDataSignup = (payload: any) => ({
@@ -69,12 +86,16 @@ export const setDataSignup = (payload: any) => ({
   payload,
 });
 
-
-
 export const updateUserInfo = (payload: any) => ({
   type: UPDATE_USER_INFO,
   payload,
 });
+
+export const updateSignUpInfo = (payload: any) => ({
+  type: UPDATE_SIGNUP_INFO,
+  payload,
+});
+
 
 export const changePassword = (payload: any) => ({
   type: CHANGE_PASSWORD,
@@ -83,4 +104,26 @@ export const changePassword = (payload: any) => ({
 
 export const getProfileUser = () => ({
   type: GET_PROFILE_USER,
+});
+
+export const setProfileUser = (payload: any) => ({
+  type: SET_PROFILE_USER,
+  payload
+});
+
+export const changeProfileUser = (payload: any) => ({
+  type: CHANGE_PROFILE_USER,
+  payload
+});
+
+
+export const saveDataUser = (payload: any) => ({
+  type: SAVE_DATA_USER,
+  payload,
+});
+
+export const changeNotification = (payload: any, id: string) => ({
+  type: CHANGE_NOTIFICATION,
+  payload,
+  id
 });

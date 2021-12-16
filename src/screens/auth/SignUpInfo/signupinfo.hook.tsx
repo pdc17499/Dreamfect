@@ -9,6 +9,8 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 import { background_signup, IconCheck } from '@assets';
 import { SIGNUP_USER_ACCOUNT, VERIFICATION } from '@routeName';
+import { useDispatch } from 'react-redux';
+import { setDataSignup } from '@redux';
 
 interface SignUpInfoProp { }
 
@@ -19,6 +21,7 @@ interface screenNavigationProp {
 export function useModel(props: any) {
     const navigation = useNavigation<screenNavigationProp>();
     const formRef = useRef<any>();
+    const dispatch = useDispatch()
 
     const formInitialValues = {
         first_name: '',
@@ -46,7 +49,8 @@ export function useModel(props: any) {
         }
     };
 
-    const onSubmit = () => {
+    const onSubmit = (first_name: any, last_name: any, phone: any) => {
+        dispatch(setDataSignup({ first_name: first_name, last_name: last_name, phone: phone }))
         navigation.navigate(SIGNUP_USER_ACCOUNT)
     };
 

@@ -13,7 +13,6 @@ const AppProfile = React.memo((props: AppProfileProps) => {
     title,
     onSelected,
     type } = props;
-
   const [isChecked, setIsChecked] = useState(false)
 
   const setSelected = () => {

@@ -23,10 +23,10 @@ const Verification = (props: any) => {
       // message: "Whatcha wanna do?",
       cancelLabel: "Cancel",
     });
-    navigation.navigate(LOGIN)
-    // (params === 'SignUp')
-    //   ? navigation.navigate(SIGNUP_SUCCESS)
-    //   : navigation.navigate(SUCCESS_SCREEN)
+    // navigation.navigate(LOGIN)
+    (params === 'SignUp')
+      ? navigation.navigate(SIGNUP_SUCCESS)
+      : navigation.navigate(SUCCESS_SCREEN)
   }
 
 
