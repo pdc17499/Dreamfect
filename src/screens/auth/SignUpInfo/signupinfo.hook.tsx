@@ -31,16 +31,19 @@ export function useModel(props: any) {
     };
 
     const validationSign = yup.object().shape({
-        // first_name: yup
-        //   .string()
-        //   .required('This field is required'),
+        first_name: yup
+            .string()
+            .required('This field is required'),
 
-        // last_name: yup
-        //   .string()
-        //   .required('This field is required'),
-        // phone: yup
-        //   .string()
-        //   .required('This field is required'),
+        last_name: yup
+            .string()
+            .required('This field is required'),
+        phone: yup
+            .string()
+            .min(9, 'Phone number at least 9 numbers')
+            .max(15, 'Phone number no longer than 15 numbers')
+
+            .required('This field is required'),
 
     });
     const handleSubmit = () => {

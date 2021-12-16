@@ -13,6 +13,7 @@ import {
   changeNotificationApi,
   changePasswordApi,
   getProfileUserApi,
+  changeProfileUserApi,
 } from '@services';
 import { showMessage } from 'react-native-flash-message';
 import { NavigationUtils } from '@navigation';
@@ -28,9 +29,10 @@ import {
   FORGOT_PASSWORD,
   CHANGE_NOTIFICATION,
   CHANGE_PASSWORD,
-  GET_PROFILE_USER
+  GET_PROFILE_USER,
+  CHANGE_PROFILE_USER
 } from './type';
-import { SIGNUP_INFO, SUCCESS_SCREEN, VERIFICATION, WELCOME } from '@routeName';
+import { PROFILE, SIGNUP_INFO, SUCCESS_SCREEN, VERIFICATION, WELCOME } from '@routeName';
 import { Linking } from 'react-native';
 
 export interface ResponseGenerator {
@@ -227,6 +229,23 @@ export function* getProfileUserSaga() {
   }
 }
 
+export function* changeProfileUserSaga(action: any) {
+  console.log('acc', action);
+  try {
+    GlobalService.showLoading();
+    const result: ResponseGenerator = yield changeProfileUserApi(action?.payload, action?.id);
+    // console.log({ result });
+    if (result) {
+      yield put(setProfileUser(result?.data))
+      NavigationUtils.navigate(PROFILE);
+    }
+  } catch (error) {
+    GlobalService.hideLoading();
+  } finally {
+    GlobalService.hideLoading();
+  }
+}
+
 export function* authSaga() {
   yield takeLatest(LOGIN, loginSaga);
   yield takeLatest(SIGNUP_EMAIL, signUpEmailSaga);
@@ -239,8 +258,6 @@ export function* authSaga() {
   yield takeLatest(CHANGE_NOTIFICATION, changeNotificationSaga);
   yield takeLatest(CHANGE_PASSWORD, changePasswordSaga);
   yield takeLatest(GET_PROFILE_USER, getProfileUserSaga);
-
-
-
+  yield takeLatest(CHANGE_PROFILE_USER, changeProfileUserSaga);
 
 }

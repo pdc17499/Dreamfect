@@ -520,9 +520,9 @@ export const DisableNotification = (props: iconProps) => (
     fill="none"
     {...props}
   >
-    <Rect width={43} height={23} rx={11.5} fill="gray" />
+    <Rect x={2} width={43} height={23} rx={11.5} fill="#BBB" />
     <G clipPath="url(#a)">
-      <Rect x={22} y={2} width={19} height={19} rx={9.5} fill="#fff" />
+      <Rect x={4} y={2} width={19} height={19} rx={9.5} fill="#fff" />
     </G>
     <Defs></Defs>
   </Svg>

@@ -84,20 +84,23 @@ export const getProfileUserApi: any = async () => {
 
 export const changeProfileUserApi: any = async (data: any, id: string) => {
   const bodyFormData = new FormData();
-  bodyFormData.append('fname', data?.first_name);
-  bodyFormData.append('lname', data?.last_name);
+  bodyFormData.append('fname', data?.fname);
+  bodyFormData.append('lname', data?.lname);
   bodyFormData.append('phone', data?.phone);
-  bodyFormData.append('uname', data?.username);
-  bodyFormData.append('avatar', {
-    fileName: data?.avatar?.path.replace(/^.*[\\\/]/, ''),
-    name: data?.avatar?.path.replace(/^.*[\\\/]/, ''),
-    width: data?.avatar?.width,
-    uri: data?.avatar?.path,
-    path: data?.avatar?.path,
-    size: data?.avatar?.size,
-    type: data?.avatar?.mime,
-    height: data?.avatar?.height,
-  });
+  bodyFormData.append('uname', data?.uname);
+  bodyFormData.append('desc', data?.desc);
+  if (data?.avatar) {
+    bodyFormData.append('avatar', {
+      fileName: data?.avatar?.path.replace(/^.*[\\\/]/, ''),
+      name: data?.avatar?.path.replace(/^.*[\\\/]/, ''),
+      width: data?.avatar?.width,
+      uri: data?.avatar?.path,
+      path: data?.avatar?.path,
+      size: data?.avatar?.size,
+      type: data?.avatar?.mime,
+      height: data?.avatar?.height,
+    });
+  }
 
   const response = await api.post(CHANGE_PROFILE_USER + id, bodyFormData, {
     headers: {

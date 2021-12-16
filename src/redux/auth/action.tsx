@@ -111,9 +111,10 @@ export const setProfileUser = (payload: any) => ({
   payload
 });
 
-export const changeProfileUser = (payload: any) => ({
+export const changeProfileUser = (payload: any, id: string) => ({
   type: CHANGE_PROFILE_USER,
-  payload
+  payload,
+  id
 });
 
 

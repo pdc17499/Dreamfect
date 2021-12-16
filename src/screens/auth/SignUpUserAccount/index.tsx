@@ -75,7 +75,6 @@ const SignUpUserAccount = (props: SignUpUserAccountProp) => {
       description: des,
       avatar: file,
     }
-
     console.log('body', body);
 
     avatar ? dispatch(updateSignUpInfo(body))

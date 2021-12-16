@@ -32,7 +32,7 @@ const EditProfile = (props: EditProfileProp) => {
             initialValues={formInitialValues}
             validationSchema={validationSign}
             validateOnChange={false}
-            onSubmit={onSubmit}>
+            onSubmit={values => onSubmit(values.first_name, values.last_name, values.phone, values.user_name, values.description)}>
             {props => (
               <View style={{ flex: 1, paddingTop: scaleHeight(76) }}>
                 <AppInput
@@ -48,6 +48,7 @@ const EditProfile = (props: EditProfileProp) => {
                   error={props.errors.last_name}
                 />
                 <AppInput
+                  keyboardType={'numeric'}
                   label={'Phone'}
                   value={props.values.phone}
                   onValueChange={props.handleChange('phone')}
@@ -59,6 +60,12 @@ const EditProfile = (props: EditProfileProp) => {
                   onValueChange={props.handleChange('user_name')}
                   error={props.errors.user_name}
                 />
+                <AppInput
+                  label={'Description'}
+                  value={props.values.description}
+                  onValueChange={props.handleChange('description')}
+                  error={props.errors.description}
+                />
                 <AppButton
                   title={'Save'}
                   onPress={props.handleSubmit}
@@ -67,9 +74,6 @@ const EditProfile = (props: EditProfileProp) => {
               </View>
             )}
           </Formik >
-
-
-
 
         </KeyboardAwareScrollView>
         <Pressable style={styles.upPhoto} onPress={onChangeAvatar}>
