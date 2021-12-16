@@ -1,4 +1,4 @@
-import {pickerProps} from '@interfaces';
+import { pickerProps } from '@interfaces';
 import moment from 'moment';
 
 const BASE_URL = 'https://tap-api.adamo.tech';
@@ -11,7 +11,7 @@ export const YEARS = () => {
   let data = [];
   const year = parseInt(moment().format('YYYY'));
   for (let i = 0; i <= year; i++) {
-    data.push({label: `${year - i}`, value: `${year - i}`});
+    data.push({ label: `${year - i}`, value: `${year - i}` });
   }
 
   return data;
@@ -34,5 +34,9 @@ export const mergeArrayServer = (
 
   return [];
 };
-
+export function jsonToArray(jsonData: any) {
+  var result = []
+  for (var i in jsonData) result.push(jsonData[i])
+  return result
+}
 // export const

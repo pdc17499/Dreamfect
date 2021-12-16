@@ -51,7 +51,7 @@ const Profile = (props: ProfileProp) => {
         <Pressable style={styles.upPhoto} onPress={onEdit}>
           <Image source={avatar_default} style={styles.avatar} />
         </Pressable>
-        <Footer />
+        {/* <Footer /> */}
       </ImageBackground>
     </>
   );

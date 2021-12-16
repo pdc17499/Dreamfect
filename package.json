@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "android": "react-native run-android",
-    "ios": "react-native run-ios",
+    "ios": "react-native run-ios --simulator='iPhone 8'",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "pod":"cd ios && pod install && cd .."
   },
   "dependencies": {
     "@expo/react-native-action-sheet": "^3.12.0",

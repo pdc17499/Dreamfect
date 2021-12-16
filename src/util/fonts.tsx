@@ -9,10 +9,10 @@ const fontFamily = StyleSheet.create({
     fontFamily: 'Prompt-ExtraBold'
   },
   Proxima400: {
-    fontFamily: DEVICE?.isIos ? 'ProximaNova Regular' : 'ProximaNovaRegular',
+    fontFamily: DEVICE?.isIos ? 'ProximaNova-Regular' : 'ProximaNova-Regular',
   },
   Proxima600: {
-    fontFamily: DEVICE?.isIos ? 'ProximaNova Bold' : 'ProximaNovaBold',
+    fontFamily: DEVICE?.isIos ? 'ProximaNova-Bold' : 'ProximaNova-Bold',
   },
 });
 
