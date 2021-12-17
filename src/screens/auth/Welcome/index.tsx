@@ -29,11 +29,11 @@ const Welcome = (props: WelcomeProp) => {
   return (
     <>
       <ImageBackground source={background_welcome} resizeMode='cover' style={styles.image} >
-        <KeyboardAwareScrollView style={styles.container} showsVerticalScrollIndicator={false} >
+        <View style={styles.container}  >
           <View style={styles.manWithLap}>
             <ManWithLap />
           </View>
-          <AppText numberOfLines={2} style={styles.title}>{'Creat a dream and follow it'}</AppText>
+          <AppText numberOfLines={2} style={styles.title}>{'Create a dream and follow it'}</AppText>
           <AppText style={styles.miniTxt}>{'Lorem ipsum dolor sit amet, consectetur adipiscing. Lorem ipsum dolor sit amet.'}</AppText>
           <IconSlide style={{ alignSelf: 'center', marginTop: scaleWidth(36), marginBottom: scaleWidth(38) }} />
           <AppButton
@@ -47,7 +47,7 @@ const Welcome = (props: WelcomeProp) => {
               <AppText style={styles.bottomTxt}>{'Sign in'}</AppText>
             </Pressable>
           </View>
-        </KeyboardAwareScrollView>
+        </View>
         <Footer />
       </ImageBackground>
     </>

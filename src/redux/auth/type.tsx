@@ -11,6 +11,8 @@ export const LOGOUT = 'LOGOUT';
 export const FORGOT_PASSWORD = 'FORGOT_PASSWORD';
 
 export const REMOVE_TOKEN = 'REMOVE_TOKEN';
+export const SAVE_TOKEN_REDUX = 'SAVE_TOKEN_REDUX';
+
 export const UPDATE_SIGNUP_INFO = 'UPDATE_SIGNUP_INFO';
 export const UPDATE_USER_INFO = 'UPDATE_USER_INFO';
 

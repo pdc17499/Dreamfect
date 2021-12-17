@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     // height: 563 * width / 488,
   },
   manWithLap: {
-    marginTop: scaleHeight(140),
+    marginTop: scaleHeight(115),
     marginLeft: scaleWidth(25),
   }
 });

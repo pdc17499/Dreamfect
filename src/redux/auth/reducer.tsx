@@ -8,6 +8,7 @@ import {
 } from './type';
 import { INITIAL_STATE_AUTH } from './state';
 import _ from 'lodash';
+import { SAVE_TOKEN_REDUX } from '.';
 
 
 
@@ -18,6 +19,11 @@ export default function dataSave(state = INITIAL_STATE_AUTH, action: any) {
         ...state,
         user: action?.payload || state?.user,
         token: action?.payload?.idToken || state?.token,
+      };
+    case SAVE_TOKEN_REDUX:
+      return {
+        ...state,
+        token: action?.payload
       };
     case LOGOUT:
       return {

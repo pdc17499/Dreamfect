@@ -64,7 +64,8 @@ const styles = StyleSheet.create({
   },
   numberDream: {
     fontSize: SIZE.medium_size,
-    ...fontFamily.Proxima600
+    ...fontFamily.Proxima600,
+    color: colors.primary
   },
   dreamTxt: {
     flexDirection: 'row',

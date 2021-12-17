@@ -34,6 +34,7 @@ import {
 } from './type';
 import { PROFILE, SIGNUP_INFO, SUCCESS_SCREEN, VERIFICATION, WELCOME } from '@routeName';
 import { Linking } from 'react-native';
+import { saveTokenRedux } from '.';
 
 export interface ResponseGenerator {
   result?: any;
@@ -45,10 +46,16 @@ export function* loginSaga(action: any) {
     console.log('act', action?.payload);
     GlobalService.showLoading();
     const result: ResponseGenerator = yield loginApi(action.payload);
-    console.log('resss', result);
-    const token = result?.data?.data?.idToken;
-    yield setToken(token);
-    yield put(saveDataUser(result?.data?.data));
+    if (result) {
+      showMessage({
+        type: 'success',
+        message: 'Login Success!',
+      });
+      const token = result?.data?.data?.idToken;
+      yield setToken(token);
+      yield put(saveDataUser(result?.data?.data));
+      yield put(saveTokenRedux(token));
+    }
   } catch (error) {
     GlobalService.hideLoading();
   } finally {
@@ -64,7 +71,6 @@ export function* signUpEmailSaga(action: any) {
     console.log('ress', result);
     if (result) {
       yield put(setUserId(result?.data?.data?.uid));
-      console.log('33');
       NavigationUtils.navigate(VERIFICATION, { params: 'SignUp' });
     }
   } catch (error) {
@@ -77,13 +83,17 @@ export function* signUpEmailSaga(action: any) {
 export function* signInGoogleSaga(action: any) {
   try {
     GlobalService.showLoading();
-    console.log('payload2', action?.payload);
     const result: ResponseGenerator = yield signInGoogleApi(action?.payload);
     console.log({ result });
     if (result) {
-      const token = result?.data?.data?.idToken;
+      showMessage({
+        type: 'success',
+        message: ' Login Success!',
+      });
+      const token = result?.data?.idToken;
       yield setToken(token);
       yield put(saveDataUser(result?.data?.data));
+      yield put(saveTokenRedux(token));
     }
   } catch (error) {
     GlobalService.hideLoading();
@@ -117,9 +127,16 @@ export function* signInFaceBookSaga(action: any) {
     const result: ResponseGenerator = yield signInFacebookApi(action?.payload);
     console.log({ result });
     if (result) {
-      const token = result?.data?.data?.idToken;
+      showMessage({
+        type: 'success',
+        message: 'Login Success!',
+      });
+      const token = result?.data?.idToken;
+      console.log('t', token);
+
       yield setToken(token);
       yield put(saveDataUser(result?.data?.data));
+      yield put(saveTokenRedux(token));
     }
   } catch (error) {
     GlobalService.hideLoading();
@@ -259,5 +276,4 @@ export function* authSaga() {
   yield takeLatest(CHANGE_PASSWORD, changePasswordSaga);
   yield takeLatest(GET_PROFILE_USER, getProfileUserSaga);
   yield takeLatest(CHANGE_PROFILE_USER, changeProfileUserSaga);
-
 }

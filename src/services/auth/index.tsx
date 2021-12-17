@@ -12,7 +12,8 @@ import {
   CHANGE_NOTIFICATION,
   CHANGE_PASSWORD,
   CHANGE_PROFILE_USER,
-  GET_PROFILE_USER
+  GET_PROFILE_USER,
+  GET_MY_LIST_DREAM
 
 } from './types';
 
@@ -110,25 +111,15 @@ export const changeProfileUserApi: any = async (data: any, id: string) => {
   return response;
 };
 
+export const getMyListDreamApi: any = async (id: string) => {
+  const response = await api.get(GET_MY_LIST_DREAM + id + '/dream?page=1&type=1');
+  return response;
+};
 
+export const getFollowDreamApi: any = async (id: string) => {
+  const response = await api.get(GET_MY_LIST_DREAM + id + '/dream?page=1&type=2');
+  return response;
+};
 
-
-
-
-
-// export const updateUserInfoApi: any = async (data: any, id: string) => {
-//   console.log('4', data?.avatar);
-//   var bodyFormData = new FormData();
-//   bodyFormData.append('fname', data?.first_name);
-//   bodyFormData.append('lname', data?.last_name);
-//   bodyFormData.append('phone', data?.phone);
-//   bodyFormData.append('uname', data?.username);
-//   bodyFormData.append('desc', data?.description);
-//   bodyFormData.append('avatar', data?.avatar);
-
-//   const response = await api.post(UPDATE_USER_INFO + id, bodyFormData);
-//   return response;
-
-// };
 
 

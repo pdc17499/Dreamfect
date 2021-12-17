@@ -15,11 +15,13 @@ export function useModel(props: any) {
   const navigation = useNavigation<screenNavigationProp>();
   const dispatch = useDispatch()
   const user = USER_INFO
-  const [avatar, setAvatar] = useState()
+
   const [file, setFile] = useState()
-  const profile: any = useSelector((state: any) => state?.auth?.profileUser);
+
   const uID: any = useSelector((state: any) => state?.auth?.user?.localId);
 
+  const [avatar, setAvatar] = useState()
+  const profile: any = useSelector((state: any) => state?.auth?.profileUser);
   useEffect(() => {
     setAvatar(profile?.avatar)
   }, []);

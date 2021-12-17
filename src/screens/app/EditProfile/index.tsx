@@ -77,7 +77,6 @@ const EditProfile = (props: EditProfileProp) => {
 
         </KeyboardAwareScrollView>
         <Pressable style={styles.upPhoto} onPress={onChangeAvatar}>
-
           {avatar ? <Image source={{ uri: avatar }} style={styles.avatar} />
             : <Image source={avatar_default} style={styles.avatar} />}
         </Pressable>

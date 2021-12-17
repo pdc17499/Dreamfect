@@ -12,6 +12,9 @@ const CHANGE_PASSWORD = 'api/passwords'
 const CHANGE_PROFILE_USER = 'api/users/'
 const GET_PROFILE_USER = 'api/users/profile'
 
+const GET_MY_LIST_DREAM = 'api/users/'
+
+
 
 
 export {
@@ -25,5 +28,6 @@ export {
   CHANGE_NOTIFICATION,
   CHANGE_PASSWORD,
   CHANGE_PROFILE_USER,
-  GET_PROFILE_USER
+  GET_PROFILE_USER,
+  GET_MY_LIST_DREAM
 };

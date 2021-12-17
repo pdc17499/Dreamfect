@@ -24,6 +24,7 @@ import {
   GET_PROFILE_USER,
 
 } from '@redux';
+import { SAVE_TOKEN_REDUX } from '.';
 
 
 export const setUserId = (payload: string) => ({
@@ -120,6 +121,11 @@ export const changeProfileUser = (payload: any, id: string) => ({
 
 export const saveDataUser = (payload: any) => ({
   type: SAVE_DATA_USER,
+  payload,
+});
+
+export const saveTokenRedux = (payload: any) => ({
+  type: SAVE_TOKEN_REDUX,
   payload,
 });
 

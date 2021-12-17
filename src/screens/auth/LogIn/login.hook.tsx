@@ -48,7 +48,7 @@ export function useModel(props: any) {
           console.log("==> Login cancelled");
         } else {
           AccessToken.getCurrentAccessToken().then((accessToken) => {
-            console.log('acc', accessToken?.accessToken)
+            console.log('afacebook', accessToken?.accessToken)
             dispatch(signInFacebook(accessToken?.accessToken))
           })
         }
@@ -71,7 +71,7 @@ export function useModel(props: any) {
     try {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
-      console.log('userInfo', userInfo);
+      console.log('googk', userInfo.idToken);
       dispatch(signInGoogle(userInfo.idToken))
 
     } catch (error: any) {
