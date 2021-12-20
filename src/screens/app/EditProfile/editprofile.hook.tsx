@@ -14,16 +14,15 @@ interface screenNavigationProp {
 export function useModel(props: any) {
   const navigation = useNavigation<screenNavigationProp>();
   const dispatch = useDispatch()
-  const user = USER_INFO
-
   const [file, setFile] = useState()
-
   const uID: any = useSelector((state: any) => state?.auth?.user?.localId);
-
-  const [avatar, setAvatar] = useState()
+  const [avatar, setAvatar] = useState<string>()
   const profile: any = useSelector((state: any) => state?.auth?.profileUser);
+  const user: any = useSelector((state: any) => state?.auth?.user);
+
+
   useEffect(() => {
-    setAvatar(profile?.avatar)
+    user?.providerId ? setAvatar(profile?.avatar) : setAvatar('https://dreamfect-api.adamo.tech/storage/avatars/' + profile?.avatar)
   }, []);
   const onLogOut = () => {
     dispatch(logoutApp());
@@ -65,7 +64,7 @@ export function useModel(props: any) {
       .required('This field is required'),
     description: yup
       .string()
-    // .required('This field is required'),
+      .required('This field is required'),
   });
 
   const onSubmit = (fname: string, lname: string, phone: string, uname: string, desc: string) => {

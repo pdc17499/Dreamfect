@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   bottom: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: scaleWidth(52),
+    marginTop: scaleWidth(42),
     justifyContent: 'center',
     marginBottom: SIZE.base_space
   },
@@ -64,7 +64,7 @@ const styles = StyleSheet.create({
     // height: 563 * width / 488,
   },
   manWithLap: {
-    marginTop: scaleHeight(115),
+    marginTop: scaleHeight(100),
     marginLeft: scaleWidth(25),
   }
 });

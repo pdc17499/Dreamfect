@@ -22,8 +22,8 @@ export function useModel(props: any) {
 
   const [info, setInfo] = useState<any>()
 
-  // const user = USER_LIST_DREAM
-  // const follow = USER_FOLLOW_DREAM
+  const user: any = useSelector((state: any) => state?.auth?.user);
+  const [avatar, setAvatar] = useState<string>()
 
   useEffect(() => {
 
@@ -35,11 +35,12 @@ export function useModel(props: any) {
         setFollowDream(response2?.data?.data?.list?.data)
         setInfo(response?.data?.data)
         console.log('info', info);
-
       } catch (e) {
         console.error(e);
       }
     })();
+
+
   }, []);
 
 
@@ -87,7 +88,8 @@ export function useModel(props: any) {
     setDreamRender,
     RenderDream,
     myList,
-    info
+    info,
+    user
 
   }
 

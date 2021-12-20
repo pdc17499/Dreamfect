@@ -8,6 +8,7 @@ import { Alert } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { loginApp, signInFacebook, signInGoogle } from '@redux';
 import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
+import { Settings } from 'react-native-fbsdk-next';
 
 interface screenNavigationProp {
   navigate: any;
@@ -42,6 +43,7 @@ export function useModel(props: any) {
   }
 
   const signInWithFacebook = () => {
+    Settings.setAppID('1028173587761172');
     LoginManager.logInWithPermissions(["public_profile", "email"]).then(
       function (result: any) {
         if (result.isCancelled) {
@@ -64,7 +66,9 @@ export function useModel(props: any) {
     GoogleSignin.configure({
       scopes: [], // what API you want to access on behalf of the user, default is email and profile
       webClientId:
-        '523059104460-lmipqm9d9pg6nt9aa29mrhqfpu3ns4t4.apps.googleusercontent.com', // client ID of type WEB for your server (needed to verify user ID and offline access)
+        '523059104460-lmipqm9d9pg6nt9aa29mrhqfpu3ns4t4.apps.googleusercontent.com',
+
+      // client ID of type WEB for your server (needed to verify user ID and offline access)
       offlineAccess: true,
     });
 
@@ -85,7 +89,7 @@ export function useModel(props: any) {
         Alert.alert('PLAY_SERVICES_NOT_AVAILABLE');
       } else {
         console.log('err', error.code);
-        Alert.alert('ERROR');
+        Alert.alert(error.code);
       }
     }
   };

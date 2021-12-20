@@ -75,6 +75,18 @@ const styles = StyleSheet.create({
   },
   buttonBlock: {
     marginBottom: scaleWidth(32), marginTop: SIZE.padding, flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: scaleWidth(47)
+  },
+  NoDreamTxt: {
+    ...fontFamily.Proxima600,
+    fontWeight: '700',
+    color: colors.primary,
+    fontSize: SIZE.big_size,
+    marginTop: scaleWidth(80),
+    marginBottom: scaleWidth(10)
+  },
+  miniTxt: {
+    width: scaleWidth(200),
+    textAlign: 'center'
   }
 });
 
