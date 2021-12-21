@@ -21,6 +21,8 @@ import UserScreen from './app/User';
 import ExplorerScreen from './app/Explorer';
 import SearchScreen from './app/Search';
 import NotificationScreen from './app/Notifications';
+import FindUser from './app/FindUser';
+
 
 
 
@@ -46,5 +48,6 @@ export {
     UserScreen,
     ExplorerScreen,
     NotificationScreen,
-    SearchScreen
+    SearchScreen,
+    FindUser
 };

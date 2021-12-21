@@ -95,13 +95,12 @@ const Header = React.memo((props: HeaderProps) => {
 const styles = StyleSheet.create({
 
   txtTitle: {
-
     fontSize: SIZE.small_size,
     color: colors.primary,
     flex: 1,
-    // paddingHorizontal: SIZE.small_size,
     textAlign: 'center',
     ...fontFamily.Proxima600,
+    fontWeight: '700'
   },
   viewRow: {
     flexDirection: 'row',

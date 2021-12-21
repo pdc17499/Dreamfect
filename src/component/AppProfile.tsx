@@ -28,9 +28,9 @@ const AppProfile = React.memo((props: AppProfileProps) => {
         <AppText numberOfLines={1} style={styles.titleTxt}>{title}</AppText>
       </View>
       {type === 'checkbox' && (
-        <Pressable style={styles.checkbox} onPress={setSelected}>
+        <Pressable style={isChecked ? styles.checkbox2 : styles.checkbox} onPress={setSelected}>
           {isChecked
-            ? <IconCheck />
+            ? <IconCheck style={{ alignSelf: 'center' }} />
             : null}
         </Pressable>
       )}
@@ -42,6 +42,8 @@ const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
+
   },
   avatar: {
     height: scaleWidth(40),
@@ -53,6 +55,7 @@ const styles = StyleSheet.create({
     color: colors.primary,
     fontSize: SIZE.small_size,
     ...fontFamily.Proxima600,
+    fontWeight: '700'
   },
   titleTxt: {
     fontSize: SIZE.small_size
@@ -60,8 +63,17 @@ const styles = StyleSheet.create({
   checkbox: {
     backgroundColor: colors.inputBg,
     borderRadius: scaleWidth(8),
-    width: scaleWidth(24),
-    height: scaleWidth(24),
+    width: scaleWidth(26),
+    height: scaleWidth(26),
+    marginRight: scaleWidth(10),
+    borderWidth: 1,
+    borderColor: colors.inputBg,
+  },
+  checkbox2: {
+    backgroundColor: colors.violet,
+    borderRadius: scaleWidth(8),
+    width: scaleWidth(26),
+    height: scaleWidth(26),
     marginRight: scaleWidth(10)
   }
 });

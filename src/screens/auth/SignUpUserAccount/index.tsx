@@ -79,13 +79,12 @@ const SignUpUserAccount = (props: SignUpUserAccountProp) => {
 
     avatar ? dispatch(updateSignUpInfo(body))
       : null
-
     // navigation.navigate(LOGIN)
   };
 
   return (
     <>
-      <ImageBackground source={background_signup} resizeMode='stretch' style={styles.image} >
+      <ImageBackground source={background_signup} resizeMode='cover' style={styles.image} >
         <Header iconLeft={'back'} />
         <KeyboardAwareScrollView style={styles.container} showsVerticalScrollIndicator={false} >
           <Formik

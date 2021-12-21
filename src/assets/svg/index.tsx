@@ -65,7 +65,7 @@ export const IconCheck = (props: iconProps) => (
   >
     <Path
       d="M20 6 9 17l-5-5"
-      stroke="#57526A"
+      stroke="white"
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"
@@ -619,6 +619,23 @@ export const IconTickGreen = (props: iconProps) => (
     <Path
       d="M13.333 4 6 11.333 2.667 8"
       stroke="#42E2AA"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </Svg>
+);
+
+export const IconSearch = (props: iconProps) => (
+  <Svg
+    width={24}
+    height={24}
+    fill="none"
+    {...props}
+  >
+    <Path
+      d="M10 17a6 6 0 1 0 0-12 6 6 0 0 0 0 12ZM18 19l-3-3"
+      stroke="#57526A"
       strokeWidth={2}
       strokeLinecap="round"
       strokeLinejoin="round"

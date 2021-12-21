@@ -19,11 +19,12 @@ const styles = StyleSheet.create({
     color: colors.primary,
     fontSize: SIZE.big_size,
     ...fontFamily.Proxima600,
+    fontWeight: '700',
     alignSelf: 'center',
     textAlign: 'center',
-    // width: scaleWidth(250),
+    width: scaleWidth(250),
     lineHeight: scaleWidth(40),
-    marginTop: scaleHeight(82),
+    marginTop: scaleHeight(432),
     marginBottom: scaleHeight(120),
   },
   miniTxt: {
@@ -55,16 +56,9 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
-    justifyContent: "center",
-    // width: width,
-    // height: 563 * width / 488,
+    justifyContent: 'center'
+
   },
-  manWithLap: {
-    marginTop: scaleHeight(84),
-    marginLeft: scaleWidth(5)
-    // backgroundColor: 'yellow'
-    // marginLeft: scaleWidth(25),
-  }
 });
 
 export { styles };

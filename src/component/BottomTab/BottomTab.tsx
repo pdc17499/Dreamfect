@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
     marginTop: 2,
   },
   iconBlock: {
-    marginBottom: 48,
+    marginBottom: 36,
     marginTop: 15,
     // alignItems: 'center',
     // justifyContent: 'center',
@@ -169,7 +169,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 24
   },
   customTabBar: {
-    height: Platform.OS == 'android' ? height * 0.11 : height * 0.11,
+    height: Platform.OS == 'android' ? height * 0.1 : height * 0.11,
   },
   explorerIcon: {
     width: 80,

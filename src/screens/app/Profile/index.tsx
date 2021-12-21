@@ -64,15 +64,9 @@ const Profile = (props: ProfileProp) => {
                 {RenderDream()}</>
 
           }
-
-
         </View>
         <Pressable style={styles.upPhoto} onPress={onEdit}>
-          {
-            user?.providerId
-              ? <Image source={{ uri: info?.avatar }} style={styles.avatar} />
-              : <Image source={{ uri: 'https://dreamfect-api.adamo.tech/storage/avatars/' + info?.avatar }} style={styles.avatar} />
-          }
+          <Image source={{ uri: 'https://dreamfect-api.adamo.tech/storage/avatars/' + info?.avatar }} style={styles.avatar} />
         </Pressable>
         {/* <Footer /> */}
       </ImageBackground>

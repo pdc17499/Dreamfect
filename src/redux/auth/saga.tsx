@@ -127,16 +127,12 @@ export function* signInFaceBookSaga(action: any) {
     const result: ResponseGenerator = yield signInFacebookApi(action?.payload);
     console.log({ result });
     if (result) {
-      showMessage({
-        type: 'success',
-        message: 'Login Success!',
-      });
+
       const token = result?.data?.idToken;
       console.log('t', token);
-
       yield setToken(token);
       yield put(saveDataUser(result?.data?.data));
-      yield put(saveTokenRedux(token));
+      // yield put(saveTokenRedux(token));
     }
   } catch (error) {
     GlobalService.hideLoading();
@@ -189,7 +185,7 @@ export function* forgotPasswordSaga(action: any) {
     if (result) {
       const url = result?.data?.data
       Linking.openURL(url);
-      NavigationUtils.navigate(LOGIN);
+      NavigationUtils.navigate(SUCCESS_SCREEN);
     }
   } catch (error) {
     GlobalService.hideLoading();
@@ -251,7 +247,6 @@ export function* changeProfileUserSaga(action: any) {
   try {
     GlobalService.showLoading();
     const result: ResponseGenerator = yield changeProfileUserApi(action?.payload, action?.id);
-    // console.log({ result });
     if (result) {
       yield put(setProfileUser(result?.data))
       NavigationUtils.navigate(PROFILE);

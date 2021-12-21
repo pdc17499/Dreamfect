@@ -1,5 +1,5 @@
 import { iconHome, iconNotification, iconProfile, iconSearch } from '@assets';
-import { ChangePassword, EditProfile, ExplorerScreen, HomeScreen, NotificationScreen, Profile, ProfileSetting, SearchScreen, UserScreen, SuccessScreen } from '@screens';
+import { ChangePassword, EditProfile, ExplorerScreen, HomeScreen, NotificationScreen, Profile, ProfileSetting, SearchScreen, UserScreen, SuccessScreen, FindUser } from '@screens';
 import { Dimensions, Platform, NativeModules } from 'react-native';
 import BottomTab from '../component/BottomTab/BottomTab';
 const { width, height } = Dimensions.get('window');
@@ -39,7 +39,8 @@ export const SCREEN_ROUTER_APP = {
     PROFILE_SETTING: 'PROFILE_SETTING',
     EDIT_PROFILE: 'EDIT_PROFILE',
     CHANGE_PASSWORD: 'CHANGE_PASSWORD',
-    SUCCESS_SCREEN: 'SUCCESS_SCREEN'
+    SUCCESS_SCREEN: 'SUCCESS_SCREEN',
+    FIND_USER: 'FIND_USER'
 }
 export const TAB_BAR = {
     HOME: {
@@ -68,11 +69,14 @@ export const TAB_BAR = {
         route: SearchScreen,
     },
 }
-const { CHANGE_PASSWORD, MAIN, PROFILE_SETTING, EDIT_PROFILE, SUCCESS_SCREEN } = SCREEN_ROUTER_APP
+const { CHANGE_PASSWORD, MAIN, PROFILE_SETTING, EDIT_PROFILE, SUCCESS_SCREEN, SEARCH, FIND_USER } = SCREEN_ROUTER_APP
 export const APP_STACK = {
     [MAIN]: BottomTab,
     [PROFILE_SETTING]: ProfileSetting,
     [EDIT_PROFILE]: EditProfile,
     [CHANGE_PASSWORD]: ChangePassword,
-    [SUCCESS_SCREEN]: SuccessScreen
+    [SUCCESS_SCREEN]: SuccessScreen,
+    [SEARCH]: SearchScreen,
+    [FIND_USER]: FindUser
+
 }

@@ -43,7 +43,7 @@ export function useModel(props: any) {
   }
 
   const signInWithFacebook = () => {
-    Settings.setAppID('1028173587761172');
+    // Settings.setAppID('1028173587761172');
     LoginManager.logInWithPermissions(["public_profile", "email"]).then(
       function (result: any) {
         if (result.isCancelled) {
@@ -59,7 +59,6 @@ export function useModel(props: any) {
         console.log("==> Login fail with error: " + error);
       }
     );
-
   }
 
   const signInWithGoogle = async () => {
@@ -67,7 +66,6 @@ export function useModel(props: any) {
       scopes: [], // what API you want to access on behalf of the user, default is email and profile
       webClientId:
         '523059104460-lmipqm9d9pg6nt9aa29mrhqfpu3ns4t4.apps.googleusercontent.com',
-
       // client ID of type WEB for your server (needed to verify user ID and offline access)
       offlineAccess: true,
     });

@@ -15,6 +15,10 @@ export const PROFILE_SETTING = 'PROFILE_SETTING';
 export const PROFILE = 'PROFILE';
 export const EDIT_PROFILE = 'EDIT_PROFILE';
 export const CHANGE_PASSWORD = 'CHANGE_PASSWORD';
+export const SEARCH = 'SEARCH';
+export const FIND_USER = 'FIND_USER';
+
+
 
 
 

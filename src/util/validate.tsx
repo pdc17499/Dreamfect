@@ -14,7 +14,7 @@ export const validateForm = () => {
       .string()
       .min(8, 'Password is at least 8 characters')
       .max(30, 'Password must not greater than 30 characters')
-      .required(),
+      .required('Password is required'),
     newPassword: yup
       .string()
       .required('This field is required')

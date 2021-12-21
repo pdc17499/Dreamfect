@@ -102,7 +102,6 @@ export const changeProfileUserApi: any = async (data: any, id: string) => {
       height: data?.avatar?.height,
     });
   }
-
   const response = await api.post(CHANGE_PROFILE_USER + id, bodyFormData, {
     headers: {
       'Content-Type': 'multipart/form-data',

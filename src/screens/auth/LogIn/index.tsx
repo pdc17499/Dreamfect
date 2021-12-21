@@ -26,7 +26,7 @@ const LogIn = (props: LogInProp) => {
 
   return (
     <>
-      <ImageBackground source={background_signup} resizeMode='stretch' style={styles.image} >
+      <ImageBackground source={background_signup} resizeMode='cover' style={styles.image} >
         <KeyboardAwareScrollView style={styles.container} showsVerticalScrollIndicator={false} >
           <Formik
             enableReinitialize
@@ -63,7 +63,7 @@ const LogIn = (props: LogInProp) => {
                   onPress={props.handleSubmit}
                   customStyleButton={{ marginTop: SIZE.medium_space }}
                 />
-                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: SIZE.medium_space, marginBottom: SIZE.base_space }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: scaleWidth(40), marginBottom: SIZE.base_space }}>
                   <View style={styles.hr}></View>
                   <AppText style={styles.OrTxt}>{'or'}</AppText>
                   <View style={styles.hr}></View>
