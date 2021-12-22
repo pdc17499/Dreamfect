@@ -7,14 +7,14 @@ export const validateForm = () => {
     },
     email: yup
       .string()
-      .required('Email is required')
-      .max(150, 'Email is not over 150 characters')
+      .required('The email field is required ')
+      .max(150, 'Email must not greater than 150 characters')
       .email('Email is invalid'),
     password: yup
       .string()
       .min(8, 'Password is at least 8 characters')
       .max(30, 'Password must not greater than 30 characters')
-      .required('Password is required'),
+      .required('The password field is required '),
     newPassword: yup
       .string()
       .required('This field is required')

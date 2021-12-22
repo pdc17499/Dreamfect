@@ -1,6 +1,7 @@
 
 
 import api from '../api';
+import * as qs from 'qs'
 import {
   SIGNUP_EMAIL,
   SIGNUP_GOOGLE,
@@ -13,7 +14,9 @@ import {
   CHANGE_PASSWORD,
   CHANGE_PROFILE_USER,
   GET_PROFILE_USER,
-  GET_MY_LIST_DREAM
+  GET_MY_LIST_DREAM,
+  GET_LIST_USER,
+  GET_DREAM_HOMEPAGE
 
 } from './types';
 
@@ -119,6 +122,39 @@ export const getFollowDreamApi: any = async (id: string) => {
   const response = await api.get(GET_MY_LIST_DREAM + id + '/dream?page=1&type=2');
   return response;
 };
+
+export const getListUserApi: any = async () => {
+  const response = await api.get(GET_LIST_USER);
+  return response;
+};
+
+export const getListSearchUserApi: any = async (data: string) => {
+  const response = await api.get(GET_LIST_USER, { params: { search: data } });
+  return response;
+};
+
+export const getDreamHomePageApi: any = async () => {
+  const response = await api.get(GET_DREAM_HOMEPAGE);
+  return response;
+};
+
+
+export const findUserApi: any = async (data: any) => {
+  console.log('data', data);
+  let array = data.map((e: string) => 'users/' + e)
+  console.log('param2', array);
+
+  const response = await api.get(GET_DREAM_HOMEPAGE,
+    {
+      params: { 'arr': array },
+      paramsSerializer: params => {
+        return qs.stringify(params)
+      }
+    });
+  return response;
+};
+
+
 
 
 

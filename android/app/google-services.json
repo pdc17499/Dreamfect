@@ -7,12 +7,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:523059104460:android:070c9cfef0782aef4d1069",
+        "mobilesdk_app_id": "1:523059104460:android:40af0b776364312e4d1069",
         "android_client_info": {
-          "package_name": "Dream.app.android"
+          "package_name": "com.adamo.dreamfect"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "523059104460-fshsfaru949musq06q1s56c57usktne8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.adamo.dreamfect",
+            "certificate_hash": "033e6e03bb915c893d73c70fc504be2ee29e8844"
+          }
+        },
         {
           "client_id": "523059104460-lmipqm9d9pg6nt9aa29mrhqfpu3ns4t4.apps.googleusercontent.com",
           "client_type": 3

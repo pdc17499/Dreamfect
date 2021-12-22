@@ -12,6 +12,10 @@ const CHANGE_PASSWORD = 'api/passwords'
 const CHANGE_PROFILE_USER = 'api/users/'
 const GET_PROFILE_USER = 'api/users/profile'
 const GET_MY_LIST_DREAM = 'api/users/'
+const GET_LIST_USER = 'api/new-users'
+const GET_DREAM_HOMEPAGE = 'api/user-acitves'
+
+
 
 
 
@@ -28,5 +32,7 @@ export {
   CHANGE_PASSWORD,
   CHANGE_PROFILE_USER,
   GET_PROFILE_USER,
-  GET_MY_LIST_DREAM
+  GET_MY_LIST_DREAM,
+  GET_LIST_USER,
+  GET_DREAM_HOMEPAGE
 };

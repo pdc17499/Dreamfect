@@ -5,6 +5,8 @@ const background_profile = require('./backGroundProfile.png');
 const background_home = require('./backGroundHomepage.png')
 const background_setup = require('./backGroundSetUpProfile.png')
 const background_verify = require('./backGroundVerify.png')
+const background_success = require('./backGroundSuccess.png')
+
 
 
 const avatar_default = require('./avatar_default.png');
@@ -27,5 +29,6 @@ export {
     iconExplorer,
     background_home,
     background_setup,
-    background_verify
+    background_verify,
+    background_success
 };

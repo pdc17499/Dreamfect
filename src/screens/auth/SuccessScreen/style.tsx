@@ -19,11 +19,12 @@ const styles = StyleSheet.create({
     color: colors.primary,
     fontSize: SIZE.big_size,
     ...fontFamily.Proxima600,
+    fontWeight: '700',
     alignSelf: 'center',
     textAlign: 'center',
     width: scaleWidth(250),
     lineHeight: scaleWidth(40),
-    marginTop: scaleHeight(36),
+    marginTop: scaleHeight(492),
     marginBottom: 10
   },
   miniTxt: {

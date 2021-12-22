@@ -54,7 +54,7 @@ const LogIn = (props: LogInProp) => {
                   onValueChange={props.handleChange('password')}
                   error={props.errors.password}
                 />
-                <Pressable onPress={moveToForgot}>
+                <Pressable onPress={moveToForgot} style={{ height: scaleWidth(40) }}>
                   <AppText style={styles.forgotTxt}>{'Forgot password?'}</AppText>
                 </Pressable>
 
@@ -91,7 +91,6 @@ const LogIn = (props: LogInProp) => {
                 <View style={styles.bottom} >
                   <AppText style={styles.bottomTxt2}>{"If your don’t have an account?"}</AppText>
                   <Pressable onPress={moveToSignup}>
-
                     <AppText style={styles.bottomTxt}>{'Sign up'}</AppText>
                   </Pressable>
                 </View>

@@ -1,11 +1,9 @@
-import { background_setup, background_signup, background_welcome, BoardLoading, IconDelete, ManSitting, ManWithLap, WomanSlide, WomanStand } from '@assets';
-import { AppButton, AppInput, AppText, Footer, Header } from '@component';
+import { background_setup } from '@assets';
+import { AppButton, AppText, Footer, Header } from '@component';
 import { useNavigation } from '@react-navigation/native';
-import { SIGNUP, SIGNUP_INFO } from '@routeName';
-import { colors, fontFamily, scaleHeight, scaleWidth, SIZE } from '@util';
-import React, { useEffect } from 'react';
-import { View, Image, TouchableOpacity, SafeAreaView, ImageBackground, Pressable } from 'react-native';
-import { useDispatch } from 'react-redux';
+import { SIGNUP_INFO } from '@routeName';
+import React from 'react';
+import { View, SafeAreaView, ImageBackground } from 'react-native';
 import { styles } from './style';
 
 interface SignUpSuccessProp { }

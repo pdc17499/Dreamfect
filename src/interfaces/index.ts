@@ -86,7 +86,7 @@ export interface AppProfileProps {
   avatar?: string;
   title?: string;
   type?: 'checkbox' | 'profile' | 'reply';
-  onSelected?: (id: string) => void;
+  onSelected?: (id: string, isSelected: boolean) => void;
 }
 
 export interface DataSignupProps {

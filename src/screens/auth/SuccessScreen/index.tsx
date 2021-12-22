@@ -1,9 +1,9 @@
-import { background_welcome, WomanSuccess } from '@assets';
+import { background_success } from '@assets';
 import { AppButton, AppText, Footer } from '@component';
 import { useNavigation } from '@react-navigation/native';
 import { LOGIN, PROFILE } from '@routeName';
 import React from 'react';
-import { View, ImageBackground } from 'react-native';
+import { ImageBackground } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { useSelector } from 'react-redux';
 import { styles } from './style';
@@ -24,11 +24,8 @@ const SuccessScreen = (props: SuccessScreenProp) => {
 
   return (
     <>
-      <ImageBackground source={background_welcome} resizeMode='cover' style={styles.image} >
+      <ImageBackground source={background_success} resizeMode='cover' style={styles.image} >
         <KeyboardAwareScrollView style={styles.container} showsVerticalScrollIndicator={false} >
-          <View style={styles.manWithLap}>
-            <WomanSuccess />
-          </View>
           <AppText numberOfLines={2} style={styles.title}>{'Success'}</AppText>
           <AppText style={styles.miniTxt}>{'Your password has been successfully recovered'}</AppText>
 

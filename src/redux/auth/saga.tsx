@@ -1,5 +1,5 @@
 import { put, takeLatest } from 'redux-saga/effects';
-import { saveDataUser, resetDataSignup, setUserId, setProfileUser } from './action';
+import { saveDataUser, resetDataSignup, setUserId, setProfileUser, setListDream, saveTokenRedux } from './action';
 import {
   GlobalService,
   setToken,
@@ -14,6 +14,8 @@ import {
   changePasswordApi,
   getProfileUserApi,
   changeProfileUserApi,
+  getDreamHomePageApi,
+  findUserApi,
 } from '@services';
 import { showMessage } from 'react-native-flash-message';
 import { NavigationUtils } from '@navigation';
@@ -30,11 +32,12 @@ import {
   CHANGE_NOTIFICATION,
   CHANGE_PASSWORD,
   GET_PROFILE_USER,
-  CHANGE_PROFILE_USER
+  CHANGE_PROFILE_USER,
+  GET_DREAM_HOMEPAGE,
+  FIND_USER
 } from './type';
 import { PROFILE, SIGNUP_INFO, SUCCESS_SCREEN, VERIFICATION, WELCOME } from '@routeName';
 import { Linking } from 'react-native';
-import { saveTokenRedux } from '.';
 
 export interface ResponseGenerator {
   result?: any;
@@ -47,10 +50,6 @@ export function* loginSaga(action: any) {
     GlobalService.showLoading();
     const result: ResponseGenerator = yield loginApi(action.payload);
     if (result) {
-      showMessage({
-        type: 'success',
-        message: 'Login Success!',
-      });
       const token = result?.data?.data?.idToken;
       yield setToken(token);
       yield put(saveDataUser(result?.data?.data));
@@ -86,10 +85,7 @@ export function* signInGoogleSaga(action: any) {
     const result: ResponseGenerator = yield signInGoogleApi(action?.payload);
     console.log({ result });
     if (result) {
-      showMessage({
-        type: 'success',
-        message: ' Login Success!',
-      });
+
       const token = result?.data?.idToken;
       yield setToken(token);
       yield put(saveDataUser(result?.data?.data));
@@ -132,7 +128,7 @@ export function* signInFaceBookSaga(action: any) {
       console.log('t', token);
       yield setToken(token);
       yield put(saveDataUser(result?.data?.data));
-      // yield put(saveTokenRedux(token));
+      yield put(saveTokenRedux(token));
     }
   } catch (error) {
     GlobalService.hideLoading();
@@ -258,6 +254,38 @@ export function* changeProfileUserSaga(action: any) {
   }
 }
 
+export function* getDreamHomePageSaga(action: any) {
+  console.log('acc', action);
+  try {
+    GlobalService.showLoading();
+    const result: ResponseGenerator = yield getDreamHomePageApi();
+    if (result) {
+      yield put(setListDream(result?.data?.data?.data))
+    }
+  } catch (error) {
+    GlobalService.hideLoading();
+  } finally {
+    GlobalService.hideLoading();
+  }
+}
+
+export function* findUserSaga(action: any) {
+  // console.log('acc', action?.payload);
+  try {
+    GlobalService.showLoading();
+    const result: ResponseGenerator = yield findUserApi(action?.payload);
+    console.log('us', result);
+    if (result) {
+      yield put(setListDream(result?.data?.data?.data))
+      NavigationUtils.goBack()
+    }
+  } catch (error) {
+    GlobalService.hideLoading();
+  } finally {
+    GlobalService.hideLoading();
+  }
+}
+
 export function* authSaga() {
   yield takeLatest(LOGIN, loginSaga);
   yield takeLatest(SIGNUP_EMAIL, signUpEmailSaga);
@@ -271,4 +299,8 @@ export function* authSaga() {
   yield takeLatest(CHANGE_PASSWORD, changePasswordSaga);
   yield takeLatest(GET_PROFILE_USER, getProfileUserSaga);
   yield takeLatest(CHANGE_PROFILE_USER, changeProfileUserSaga);
+  yield takeLatest(GET_DREAM_HOMEPAGE, getDreamHomePageSaga);
+  yield takeLatest(FIND_USER, findUserSaga);
+
+
 }

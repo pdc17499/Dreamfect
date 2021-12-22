@@ -26,7 +26,6 @@ export function useModel(props: any) {
   const [avatar, setAvatar] = useState<string>()
 
   useEffect(() => {
-
     (async function () {
       try {
         const response = await getMyListDreamApi(userID)

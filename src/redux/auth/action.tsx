@@ -15,6 +15,7 @@ import {
   SIGNUP_FACEBOOK,
   SIGNIN_GOOGLE,
   UPDATE_SIGNUP_INFO,
+  SAVE_TOKEN_REDUX,
 
   // Profile
   CHANGE_NOTIFICATION,
@@ -22,10 +23,11 @@ import {
   SET_PROFILE_USER,
   CHANGE_PASSWORD,
   GET_PROFILE_USER,
+  GET_DREAM_HOMEPAGE,
+  SET_LIST_DREAM,
 
+  FIND_USER
 } from '@redux';
-import { SAVE_TOKEN_REDUX } from '.';
-
 
 export const setUserId = (payload: string) => ({
   type: SET_USER_ID,
@@ -133,4 +135,18 @@ export const changeNotification = (payload: any, id: string) => ({
   type: CHANGE_NOTIFICATION,
   payload,
   id
+});
+
+export const getDreamHomePage = () => ({
+  type: GET_DREAM_HOMEPAGE,
+});
+
+export const setListDream = (payload: any) => ({
+  type: SET_LIST_DREAM,
+  payload,
+});
+
+export const findUser = (payload: any) => ({
+  type: FIND_USER,
+  payload,
 });

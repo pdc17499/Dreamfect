@@ -1,82 +1,103 @@
 import { IconSearch } from '@assets'
 import { AppButton, AppProfile, Footer, Header } from '@component'
+import { findUser } from '@redux'
+import { getMyListDreamApi, getFollowDreamApi, getListUserApi, getListSearchUserApi } from '@services'
 import { scaleWidth, SIZE } from '@util'
-import React from 'react'
-import { View, Text, ScrollView, FlatList, TextInput } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { View, Text, ScrollView, FlatList, TextInput, Pressable } from 'react-native'
+import { useDispatch } from 'react-redux'
 import { styles } from './style'
 
 const FindUser = () => {
+  const [listUser, setListUser] = useState<any>()
+  const [listSelected, setListSelected] = useState<Array<string>>([])
+  const dispatch = useDispatch()
+  const [text, setText] = useState('')
 
-  const mockList = [
-    {
-      id: '1',
-      name: 'Tom Hardy',
-      avatar: 'https://i.pinimg.com/236x/d0/b5/46/d0b546e0d3046ea8653981f7913ffa52.jpg',
-      title: 'I wanna be a great photographer',
-    },
-    {
-      id: '2',
-      name: 'Tom Hardy',
-      avatar: 'https://i.pinimg.com/236x/d0/b5/46/d0b546e0d3046ea8653981f7913ffa52.jpg',
-      title: 'I wanna be a great photographer',
-    },
+  useEffect(() => {
+    (async function () {
+      try {
+        const response = await getListUserApi()
+        console.log('res', response);
+        setListUser(response?.data?.data?.data)
+      } catch (e) {
+        console.error(e);
+      }
+    })();
+  }, []);
 
-    {
-      id: '3',
-      name: 'Tom Hardy',
-      avatar: 'https://i.pinimg.com/236x/d0/b5/46/d0b546e0d3046ea8653981f7913ffa52.jpg',
-      title: 'I wanna be a great photographer',
-    },
-    {
-      id: '4',
-      name: 'Tom Hardy',
-      avatar: 'https://i.pinimg.com/236x/d0/b5/46/d0b546e0d3046ea8653981f7913ffa52.jpg',
-      title: 'I wanna be a great photographer',
-    },
-    {
-      id: '5',
-      name: 'Tom Hardy',
-      avatar: 'https://i.pinimg.com/236x/d0/b5/46/d0b546e0d3046ea8653981f7913ffa52.jpg',
-      title: 'I wanna be a great photographer',
-    },
-
-  ]
-
-  const setItemSelect = (id: string) => {
-    console.log('iddd', id);
-
+  const setItemSelect = (id: string, isSelected: boolean) => {
+    if (!isSelected) {
+      const nSelectedItem = listSelected.filter(
+        (itm: string) => id !== itm,
+      );
+      setListSelected(nSelectedItem);
+    } else {
+      listSelected.push(id);
+      setListSelected([...listSelected]);
+    }
   }
 
-  const renderItem = ({ item }: any) => (
-    <View style={{ marginTop: scaleWidth(20) }}>
-      <AppProfile
-        id={item.id}
-        title={item.title}
-        avatar={item.avatar}
-        type={'checkbox'}
-        name={item.name}
-        // onSelected={setItemSelect(item.id)}
-        onSelected={setItemSelect}
+  const renderItem = ({ item }: any) => {
 
-      />
-    </View>
-  )
+    return (
+      <View style={{ marginTop: scaleWidth(20) }}>
+        <AppProfile
+          id={item.id}
+          title={item.desc}
+          avatar={item.avatar}
+          type={'checkbox'}
+          name={item.uname}
+          onSelected={setItemSelect}
+        />
+      </View>
+    )
+  }
+
+  const onDone = () => {
+    console.log('s', listSelected);
+    dispatch(findUser(listSelected))
+  }
+
+  const searchUser = () => {
+    (async function () {
+      try {
+        const response = await getListSearchUserApi(text)
+        console.log('res', response);
+        setListUser(response?.data?.data?.data)
+      } catch (e) {
+        console.error(e);
+      }
+    })();
+  }
+
   return (
     <>
       <View style={{ flex: 1, backgroundColor: 'white' }}>
         <Header iconLeft='back' title='New users' />
         <View style={styles.container}>
           <View style={styles.search}>
-            <IconSearch />
-            <TextInput placeholder='Search' style={styles.input} ></TextInput>
+            <Pressable onPress={searchUser}>
+
+              <IconSearch />
+            </Pressable>
+            <TextInput
+              value={text}
+              onChangeText={setText}
+              placeholder='Search'
+              style={styles.input}
+            ></TextInput>
           </View>
           <FlatList
             showsVerticalScrollIndicator={false}
             renderItem={renderItem}
-            data={mockList}
+            data={listUser}
             keyExtractor={item => item.id}
           />
-          <AppButton customStyleButton={styles.button} title='Done' />
+          <AppButton
+            onPress={onDone}
+            customStyleButton={styles.button}
+            title='Done' />
           <Footer />
         </View>
       </View>

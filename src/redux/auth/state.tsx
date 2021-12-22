@@ -9,6 +9,7 @@ export type AuthState = {
   dataSignup: DataSignupProps | {};
   userID: string;
   profileUser: any;
+  listDream: Array<any> | []
 };
 
 export const INITIAL_STATE_DATA_SIGN_UP: DataSignupProps = {
@@ -24,6 +25,7 @@ export const INITIAL_STATE_AUTH: AuthState = {
   showIntroScreen: true,
   dataSignup: INITIAL_STATE_DATA_SIGN_UP,
   userID: '',
-  profileUser: null
+  profileUser: null,
+  listDream: []
 };
 

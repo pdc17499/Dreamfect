@@ -1,4 +1,4 @@
-package com.dreamfect;
+package com.adamo.dreamfect;
 
 import com.facebook.react.ReactActivity;
 public class MainActivity extends ReactActivity {

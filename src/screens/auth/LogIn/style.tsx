@@ -76,9 +76,7 @@ const styles = StyleSheet.create({
   forgotTxt: {
     marginTop: scaleWidth(10),
     fontSize: SIZE.small_size
-
   },
-
 });
 
 export { styles };

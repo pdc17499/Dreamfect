@@ -1,13 +1,11 @@
-import { background_signup, background_welcome, IconSlide, ManWithLap } from '@assets';
-import { AppButton, AppInput, AppText, Footer } from '@component';
+import { background_welcome, IconSlide } from '@assets';
+import { AppButton, AppText, Footer } from '@component';
 import { useNavigation } from '@react-navigation/native';
 import { LOGIN, SIGNUP } from '@routeName';
-import { colors, fontFamily, scaleHeight, scaleWidth, SIZE } from '@util';
-import React, { useEffect } from 'react';
-import { View, Image, TouchableOpacity, SafeAreaView, ImageBackground, Pressable } from 'react-native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { scaleWidth } from '@util';
+import React from 'react';
+import { View, ImageBackground, Pressable } from 'react-native';
 
-import { useDispatch } from 'react-redux';
 import { styles } from './style';
 
 interface WelcomeProp { }

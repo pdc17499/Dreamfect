@@ -35,7 +35,6 @@ export function useModel(props: any) {
 
   const onSubmit = (email: string, password: string) => {
     dispatch(loginApp({ email: email, password: password }))
-    // navigation.navigate(PROFILE)
   };
 
   const moveToSignup = () => {

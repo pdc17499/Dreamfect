@@ -4,7 +4,8 @@ import {
   LOGOUT,
   RESET_DATA_SIGNUP,
   SET_USER_ID,
-  SET_PROFILE_USER
+  SET_PROFILE_USER,
+  SET_LIST_DREAM
 } from './type';
 import { INITIAL_STATE_AUTH } from './state';
 import _ from 'lodash';
@@ -31,7 +32,8 @@ export default function dataSave(state = INITIAL_STATE_AUTH, action: any) {
         user: null,
         token: null,
         role: null,
-        dataSignup: {}
+        dataSignup: {},
+        listDream: []
       };
     case SET_DATA_SIGNUP:
       return {
@@ -52,6 +54,11 @@ export default function dataSave(state = INITIAL_STATE_AUTH, action: any) {
       return {
         ...state,
         profileUser: action?.payload
+      };
+    case SET_LIST_DREAM:
+      return {
+        ...state,
+        listDream: action?.payload
       };
     default:
       return state;

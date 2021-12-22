@@ -22,6 +22,10 @@ export {
     DEVICE,
     STYLE,
 };
+
+export const LINK_AVATAR = 'https://dreamfect-api.adamo.tech/storage/avatars/';
+export const LINK_DREAM = 'https://dreamfect-api.adamo.tech/storage/dreams/'
+
 export const MAIN_TAB_BAR = {
     HOME: 'HOME',
     PROFILE: 'PROFILE',
