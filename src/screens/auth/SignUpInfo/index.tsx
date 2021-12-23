@@ -29,7 +29,6 @@ const SignUpInfo = (props: SignUpInfoProp) => {
   return (
     <>
       <ImageBackground source={background_signup} resizeMode='cover' style={styles.image} >
-        <Header iconLeft={'back'} />
         <KeyboardAwareScrollView style={styles.container} showsVerticalScrollIndicator={false} >
           <Formik
             innerRef={formRef}

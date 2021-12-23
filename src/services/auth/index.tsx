@@ -114,12 +114,12 @@ export const changeProfileUserApi: any = async (data: any, id: string) => {
 };
 
 export const getMyListDreamApi: any = async (id: string) => {
-  const response = await api.get(GET_MY_LIST_DREAM + id + '/dream?page=1&type=1');
+  const response = await api.get(GET_MY_LIST_DREAM + 'dream?page=1&type=1');
   return response;
 };
 
 export const getFollowDreamApi: any = async (id: string) => {
-  const response = await api.get(GET_MY_LIST_DREAM + id + '/dream?page=1&type=2');
+  const response = await api.get(GET_MY_LIST_DREAM + 'dream?page=1&type=2');
   return response;
 };
 

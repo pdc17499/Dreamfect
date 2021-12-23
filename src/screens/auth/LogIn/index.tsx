@@ -1,4 +1,4 @@
-import { AppButton, AppInput, AppText, Footer } from '@component';
+import { AppButton, AppInput, AppText, Footer, Header } from '@component';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { scaleWidth, SIZE } from '@util';
 import React, { useEffect } from 'react';
@@ -27,6 +27,7 @@ const LogIn = (props: LogInProp) => {
   return (
     <>
       <ImageBackground source={background_signup} resizeMode='cover' style={styles.image} >
+        <Header iconLeft='back' />
         <KeyboardAwareScrollView style={styles.container} showsVerticalScrollIndicator={false} >
           <Formik
             enableReinitialize

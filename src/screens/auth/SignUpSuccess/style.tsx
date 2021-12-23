@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     width: scaleWidth(250),
     lineHeight: scaleWidth(40),
     marginTop: scaleHeight(432),
-    marginBottom: scaleHeight(120),
+    marginBottom: scaleHeight(100),
   },
   miniTxt: {
     ...fontFamily.Proxima400,

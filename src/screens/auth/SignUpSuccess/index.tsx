@@ -21,7 +21,7 @@ const SignUpSuccess = (props: SignUpSuccessProp) => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ImageBackground source={background_setup} resizeMode='cover' style={styles.image} >
-        <Header iconLeft={'delete'} />
+        {/* <Header iconLeft={'delete'} /> */}
         <View style={styles.container}>
 
           <AppText numberOfLines={2} style={styles.title}>{"Awesome! Let’s set up your profile"}</AppText>

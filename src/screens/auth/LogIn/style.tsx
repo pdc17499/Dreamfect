@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     width: scaleWidth(250),
     lineHeight: scaleWidth(40),
-    marginTop: scaleHeight(106),
+    marginTop: scaleHeight(20),
     marginBottom: 5
   },
   miniTxt: {

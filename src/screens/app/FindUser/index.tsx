@@ -74,11 +74,11 @@ const FindUser = () => {
   return (
     <>
       <View style={{ flex: 1, backgroundColor: 'white' }}>
-        <Header iconLeft='back' title='New users' />
+        <Header iconLeft='back' title='New users' customTitleStyle={{ marginLeft: -10 }} />
         <View style={styles.container}>
+
           <View style={styles.search}>
             <Pressable onPress={searchUser}>
-
               <IconSearch />
             </Pressable>
             <TextInput
@@ -88,12 +88,16 @@ const FindUser = () => {
               style={styles.input}
             ></TextInput>
           </View>
+
+
           <FlatList
             showsVerticalScrollIndicator={false}
             renderItem={renderItem}
             data={listUser}
             keyExtractor={item => item.id}
+            style={{ marginBottom: scaleWidth(120) }}
           />
+
           <AppButton
             onPress={onDone}
             customStyleButton={styles.button}

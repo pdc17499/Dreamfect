@@ -27,11 +27,11 @@ const Profile = (props: ProfileProp) => {
           <View style={styles.dreamTxt}>
             <View style={{ alignItems: 'center' }}>
               <AppText style={styles.numberDream}>{info?.count_ongoing_dream || '0'}</AppText>
-              <AppText>{'Ongoing dream'}</AppText>
+              <AppText>{'Ongoing dreams'}</AppText>
             </View>
             <View style={{ alignItems: 'center' }}>
               <AppText style={styles.numberDream}>{info?.count_complete_dream || '0'}</AppText>
-              <AppText>{'Completed dream'}</AppText>
+              <AppText>{'Completed dreams'}</AppText>
             </View>
           </View>
 
@@ -50,7 +50,7 @@ const Profile = (props: ProfileProp) => {
                 <View style={styles.buttonBlock}>
                   <AppButton
                     containerStyle={{ width: scaleWidth(130), alignSelf: 'center' }}
-                    title={'My lists'}
+                    title={'Connections'}
                     isNotFocus={!onMyDream}
                     onPress={setDreamRender}
                   />
@@ -66,7 +66,10 @@ const Profile = (props: ProfileProp) => {
           }
         </View>
         <Pressable style={styles.upPhoto} onPress={onEdit}>
-          <Image source={{ uri: 'https://dreamfect-api.adamo.tech/storage/avatars/' + info?.avatar }} style={styles.avatar} />
+          {info?.avatar
+            ? <Image source={{ uri: 'https://dreamfect-api.adamo.tech/storage/avatars/' + info?.avatar }} style={styles.avatar} />
+            : <Image source={avatar_default} style={styles.avatar} />
+          }
         </Pressable>
         {/* <Footer /> */}
       </ImageBackground>

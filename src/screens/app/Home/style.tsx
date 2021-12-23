@@ -9,7 +9,8 @@ const styles = StyleSheet.create({
   container2: {
     flex: 1,
     paddingHorizontal: SIZE.padding,
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+
   },
   image: {
     flex: 1,
@@ -20,7 +21,7 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     alignSelf: 'center',
     color: colors.primary,
-    marginTop: scaleWidth(200)
+    marginTop: scaleWidth(185)
 
   },
   miniTxt: {

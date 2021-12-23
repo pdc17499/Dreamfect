@@ -23,9 +23,6 @@ import SearchScreen from './app/Search';
 import NotificationScreen from './app/Notifications';
 import FindUser from './app/FindUser';
 
-
-
-
 export {
     //Auth
     Welcome,
@@ -49,5 +46,7 @@ export {
     ExplorerScreen,
     NotificationScreen,
     SearchScreen,
-    FindUser
+    FindUser,
+
+
 };

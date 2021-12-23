@@ -412,6 +412,79 @@ export const IconReply = (props: iconProps) => (
   </Svg>
 );
 
+export const IconPickDream = (props: iconProps) => (
+  <Svg
+    width={345}
+    height={172}
+    fill="none"
+    {...props}
+  >
+    <Rect width={345} height={172} rx={16} fill="#42E2AA" />
+    <Path
+      d="M178 93a2 2 0 0 1-2 2h-18a2 2 0 0 1-2-2V82a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2v11Z"
+      stroke="#fff"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <Path
+      d="M167 91a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"
+      stroke="#fff"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </Svg>
+);
+
+export const IconPencil = (props: iconProps) => (
+  <Svg
+    width={16}
+    height={16}
+    fill="none"
+    {...props}
+  >
+    <Path
+      d="M11.333 2A1.885 1.885 0 1 1 14 4.667l-9 9-3.667 1 1-3.667 9-9Z"
+      stroke="#fff"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </Svg>
+);
+
+export const IconEditPhoto = (props: iconProps) => (
+  <Svg
+    width={32}
+    height={32}
+    fill="none"
+    {...props}
+  >
+    <Circle cx={16} cy={16} r={16} fill="#42E2AA" />
+    <G
+      clipPath="url(#a)"
+      stroke="#fff"
+      strokeWidth={2}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <Path d="M23.278 21.722a1.444 1.444 0 0 1-1.445 1.444h-13a1.444 1.444 0 0 1-1.444-1.444v-7.944a1.445 1.445 0 0 1 1.444-1.445h2.89l1.444-2.167H17.5l1.444 2.167h2.89a1.445 1.445 0 0 1 1.444 1.445v7.944Z" />
+      <Path d="M15.333 20.278a2.889 2.889 0 1 0 0-5.778 2.889 2.889 0 0 0 0 5.778Z" />
+    </G>
+    <Defs>
+      <ClipPath id="a">
+        <Path
+          fill="#fff"
+          transform="translate(6.667 8)"
+          d="M0 0h17.333v17.333H0z"
+        />
+      </ClipPath>
+    </Defs>
+  </Svg>
+);
+
+
 
 
 

@@ -77,8 +77,11 @@ const EditProfile = (props: EditProfileProp) => {
 
         </KeyboardAwareScrollView>
         <Pressable style={styles.upPhoto} onPress={onChangeAvatar}>
-          {avatar ? <Image source={{ uri: avatar }} style={styles.avatar} />
-            : <Image source={avatar_default} style={styles.avatar} />}
+
+          {avatar
+            ? <Image source={{ uri: 'https://dreamfect-api.adamo.tech/storage/avatars/' + avatar }} style={styles.avatar} />
+            : <Image source={avatar_default} style={styles.avatar} />
+          }
         </Pressable>
         <Footer />
       </ImageBackground>

@@ -1,10 +1,9 @@
-import { background_verify, background_welcome, BoardLoading, ManSitting } from '@assets';
-import { AppButton, AppText, Footer, Header } from '@component';
+import { background_verify } from '@assets';
+import { AppButton, AppText, Footer } from '@component';
 import { useNavigation } from '@react-navigation/native';
-import { LOGIN, SIGNUP_SUCCESS, SUCCESS_SCREEN } from '@routeName';
-import { scaleWidth } from '@util';
+import { SIGNUP_SUCCESS, SUCCESS_SCREEN } from '@routeName';
 import React from 'react';
-import { View, SafeAreaView, ImageBackground, Linking, BackHandler } from 'react-native';
+import { View, SafeAreaView, ImageBackground } from 'react-native';
 import { styles } from './style';
 import { openInbox } from "react-native-email-link";
 
@@ -16,7 +15,6 @@ const Verification = (props: any) => {
   const navigation = useNavigation<screenNavigationProp>();
   const { params } = props?.route?.params
   console.log('prps', params);
-
 
   const openMailApp = () => {
     openInbox({
@@ -31,7 +29,7 @@ const Verification = (props: any) => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ImageBackground source={background_verify} resizeMode='cover' style={styles.image} >
-        <Header iconLeft={'delete'} />
+        {/* <Header iconLeft={'delete'} /> */}
         <View style={styles.container}>
 
           <AppText numberOfLines={2} style={styles.title}>{'A verification link email has been sent'}</AppText>

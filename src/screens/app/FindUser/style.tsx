@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     borderRadius: scaleWidth(16),
     marginTop: scaleWidth(27),
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   button: {
     position: 'absolute', bottom: SIZE.medium_space, width: '100%'

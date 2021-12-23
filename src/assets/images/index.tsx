@@ -2,13 +2,10 @@
 const background_signup = require('./backGround.png');
 const background_welcome = require('./backWelcom.png');
 const background_profile = require('./backGroundProfile.png');
-const background_home = require('./backGroundHomepage.png')
+const background_home = require('./backGroundHomePage.png')
 const background_setup = require('./backGroundSetUpProfile.png')
 const background_verify = require('./backGroundVerify.png')
 const background_success = require('./backGroundSuccess.png')
-
-
-
 const avatar_default = require('./avatar_default.png');
 const iconHome = require('./iconHome.png');
 const iconNotification = require('./iconNotification.png');

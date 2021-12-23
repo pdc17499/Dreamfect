@@ -24,11 +24,12 @@ const ProfileSetting = (props: ProfileSettingProp) => {
         <Header title={'Account'} iconRight={'edit'} iconLeft={'back'} onPressRight={onEdit} />
         <View style={styles.container} >
           <Pressable style={styles.upPhoto} onPress={onEdit}>
-            {
-              user?.providerId
-                ? <Image source={{ uri: profile?.avatar }} style={styles.avatar} />
-                : <Image source={{ uri: 'https://dreamfect-api.adamo.tech/storage/avatars/' + profile?.avatar }} style={styles.avatar} />
+
+            {profile?.avatar
+              ? <Image source={{ uri: 'https://dreamfect-api.adamo.tech/storage/avatars/' + profile?.avatar }} style={styles.avatar} />
+              : <Image source={avatar_default} style={styles.avatar} />
             }
+
           </Pressable>
           <AppText style={styles.nameTxt}>{profile?.uname || ''}</AppText>
           <AppText style={styles.emailTxt}>{profile?.email || ''}</AppText>

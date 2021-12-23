@@ -36,7 +36,7 @@ import {
   GET_DREAM_HOMEPAGE,
   FIND_USER
 } from './type';
-import { PROFILE, SIGNUP_INFO, SUCCESS_SCREEN, VERIFICATION, WELCOME } from '@routeName';
+import { PROFILE, PROFILE_SETTING, SIGNUP_INFO, SUCCESS_SCREEN, VERIFICATION, WELCOME } from '@routeName';
 import { Linking } from 'react-native';
 
 export interface ResponseGenerator {
@@ -195,10 +195,7 @@ export function* changeNotificationSaga(action: any) {
     GlobalService.showLoading();
     const result: ResponseGenerator = yield changeNotificationApi(action.payload, action.id);
     if (result) {
-      showMessage({
-        type: 'success',
-        message: 'Success!',
-      });
+
     }
   } catch (error) {
     GlobalService.hideLoading();
@@ -244,6 +241,10 @@ export function* changeProfileUserSaga(action: any) {
     GlobalService.showLoading();
     const result: ResponseGenerator = yield changeProfileUserApi(action?.payload, action?.id);
     if (result) {
+      showMessage({
+        type: 'success',
+        message: 'Update Successfully!',
+      });
       yield put(setProfileUser(result?.data))
       NavigationUtils.navigate(PROFILE);
     }

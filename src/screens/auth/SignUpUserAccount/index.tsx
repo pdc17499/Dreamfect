@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { scaleWidth, SIZE } from '@util';
 import React, { useRef, useState } from 'react';
-import { Image, ImageBackground, Pressable, View } from 'react-native';
+import { Alert, Image, ImageBackground, Pressable, View } from 'react-native';
 import { styles } from './style';
 import { Formik } from 'formik';
 import * as yup from 'yup';
@@ -58,11 +58,12 @@ const SignUpUserAccount = (props: SignUpUserAccountProp) => {
   const validationSign = yup.object().shape({
     user_name: yup
       .string()
-      .required('This field is required'),
+      .required('This field is required')
+      .max(150, 'User name must not greater than 150 characters'),
     description: yup
       .string()
-      .required('This field is required'),
-
+      .required('This field is required')
+      .max(150, 'Description must not greater than 500 characters'),
   });
 
   const onSubmit = (username: string, des: string) => {
@@ -78,14 +79,12 @@ const SignUpUserAccount = (props: SignUpUserAccountProp) => {
     console.log('body', body);
 
     avatar ? dispatch(updateSignUpInfo(body))
-      : null
-    // navigation.navigate(LOGIN)
+      : Alert.alert('Please choose your avatar')
   };
 
   return (
     <>
       <ImageBackground source={background_signup} resizeMode='cover' style={styles.image} >
-        <Header iconLeft={'back'} />
         <KeyboardAwareScrollView style={styles.container} showsVerticalScrollIndicator={false} >
           <Formik
             innerRef={formRef}

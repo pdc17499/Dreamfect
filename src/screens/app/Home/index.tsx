@@ -25,19 +25,19 @@ const HomeScreen = () => {
 
   const renderItem = ({ item }: any) => {
     return (
-      <>
+      <View style={{ marginBottom: scaleWidth(24) }}>
         <AppProfile id={item.dream_id}
           avatar={item.avatar}
           title={item.desc}
           name={item.uname}
           type='profile'
         />
-        {/* <Image source={{ uri: LINK_DREAM + item.image }} style={styles.dream} /> */}
-        <Image source={{ uri: 'https://i.pinimg.com/236x/a2/69/a8/a269a85e0460683980ae82bef70d820d.jpg' }} style={styles.dream} />
+        <Image source={{ uri: LINK_DREAM + item.image }} style={styles.dream} />
+        {/* <Image source={{ uri: 'https://i.pinimg.com/236x/a2/69/a8/a269a85e0460683980ae82bef70d820d.jpg' }} style={styles.dream} /> */}
         <AppText numberOfLines={1} style={styles.dreamTitle}>{item.title}</AppText>
 
         <AppText numberOfLines={2} style={styles.dreamDes}>{item.description}</AppText>
-      </>
+      </View>
     )
   }
 
@@ -67,6 +67,8 @@ const HomeScreen = () => {
         renderItem={renderItem}
         data={dreamList}
         keyExtractor={item => item.id}
+        style={{ marginBottom: scaleWidth(50) }}
+
       />
 
     </View>

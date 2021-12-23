@@ -22,7 +22,6 @@ export function useModel(props: any) {
 
   useEffect(() => {
     dispatch(getProfileUser());
-    // user?.providerId ? setAvatar(profile?.avatar) : setAvatar('https://dreamfect-api.adamo.tech/storage/avatars/' + profile?.avatar)
     console.log('avaaa', profile?.avatar);
   }, []);
 

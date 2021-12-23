@@ -22,7 +22,7 @@ export function useModel(props: any) {
 
 
   useEffect(() => {
-    user?.providerId ? setAvatar(profile?.avatar) : setAvatar('https://dreamfect-api.adamo.tech/storage/avatars/' + profile?.avatar)
+    setAvatar(profile?.avatar)
   }, []);
   const onLogOut = () => {
     dispatch(logoutApp());
@@ -51,14 +51,17 @@ export function useModel(props: any) {
   const validationSign = yup.object().shape({
     first_name: yup
       .string()
-      .required('This field is required'),
+      .required('This field is required')
+      .max(150, 'First name must not greater than 150 characters'),
     last_name: yup
       .string()
-      .required('This field is required'),
+      .required('This field is required')
+      .max(150, 'Last name must not greater than 150 characters'),
     phone: yup
       .string()
       .min(8, 'Phone number at least 8 characters')
-      .required('This field is required'),
+      .required('This field is required')
+      .max(15, 'Phone number must not greater than 15 numbers'),
     user_name: yup
       .string()
       .required('This field is required'),

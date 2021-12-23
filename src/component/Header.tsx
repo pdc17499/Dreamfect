@@ -72,7 +72,6 @@ const Header = React.memo((props: HeaderProps) => {
     <View style={styles.viewRow}>
       {iconLeft && (
         <Pressable
-          // style={styles.buttonLeft}
           onPress={goBack}
           hitSlop={STYLE.hitSlop}>
           {renderIconLeft()}
@@ -81,7 +80,6 @@ const Header = React.memo((props: HeaderProps) => {
       <AppText style={[styles.txtTitle, customTitleStyle]}>{title}</AppText>
       {iconRight && (
         <Pressable
-          // style={styles.buttonRight}
           onPress={onPressRight}
           hitSlop={STYLE.hitSlop}>
           {renderIconRight()}
@@ -100,19 +98,17 @@ const styles = StyleSheet.create({
     flex: 1,
     textAlign: 'center',
     ...fontFamily.Proxima600,
-    fontWeight: '700'
+    fontWeight: '700',
+    marginRight: scaleWidth(5)
   },
   viewRow: {
     flexDirection: 'row',
     width: DEVICE.width,
     marginTop: scaleWidth(56),
-    paddingHorizontal: SIZE.padding,
-    alignItems: 'center'
+    paddingHorizontal: scaleWidth(15),
+    alignItems: 'center',
   },
-  // buttonLeft: {
-  //   left: SIZE.padding + 3,
-  //   position: 'absolute',
-  // },
+
   buttonRight: {
     right: SIZE.padding,
     position: 'absolute',

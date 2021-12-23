@@ -26,15 +26,16 @@ export function useModel(props: any) {
   const validationSign = yup.object().shape({
     first_name: yup
       .string()
-      .required('This field is required'),
-
+      .required('This field is required')
+      .max(150, 'First name must not greater than 150 characters'),
     last_name: yup
       .string()
-      .required('This field is required'),
+      .required('This field is required')
+      .max(150, 'Last name must not greater than 150 characters'),
     phone: yup
       .string()
       .min(9, 'Phone number at least 9 numbers')
-      .max(15, 'Phone number no longer than 15 numbers')
+      .max(15, 'Phone number must not greater than 15 numbers')
 
       .required('This field is required'),
 

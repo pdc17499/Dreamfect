@@ -1,5 +1,5 @@
 import { iconHome, iconNotification, iconProfile, iconSearch } from '@assets';
-import { ChangePassword, EditProfile, ExplorerScreen, HomeScreen, NotificationScreen, Profile, ProfileSetting, SearchScreen, UserScreen, SuccessScreen, FindUser } from '@screens';
+import { ChangePassword, EditProfile, HomeScreen, NotificationScreen, Profile, ProfileSetting, ExplorerScreen, SearchScreen, UserScreen, SuccessScreen, FindUser } from '@screens';
 import { Dimensions, Platform, NativeModules } from 'react-native';
 import BottomTab from '../component/BottomTab/BottomTab';
 const { width, height } = Dimensions.get('window');
@@ -73,7 +73,7 @@ export const TAB_BAR = {
         route: SearchScreen,
     },
 }
-const { CHANGE_PASSWORD, MAIN, PROFILE_SETTING, EDIT_PROFILE, SUCCESS_SCREEN, SEARCH, FIND_USER } = SCREEN_ROUTER_APP
+const { CHANGE_PASSWORD, MAIN, PROFILE_SETTING, EDIT_PROFILE, SUCCESS_SCREEN, SEARCH, FIND_USER, EXPLORER } = SCREEN_ROUTER_APP
 export const APP_STACK = {
     [MAIN]: BottomTab,
     [PROFILE_SETTING]: ProfileSetting,
@@ -81,6 +81,6 @@ export const APP_STACK = {
     [CHANGE_PASSWORD]: ChangePassword,
     [SUCCESS_SCREEN]: SuccessScreen,
     [SEARCH]: SearchScreen,
-    [FIND_USER]: FindUser
-
+    [FIND_USER]: FindUser,
+    [EXPLORER]: ExplorerScreen
 }

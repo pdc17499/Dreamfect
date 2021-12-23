@@ -66,6 +66,19 @@ const styles = StyleSheet.create({
   manWithLap: {
     marginTop: scaleHeight(100),
     marginLeft: scaleWidth(25),
+  },
+  dot: {
+    width: scaleWidth(8),
+    height: scaleWidth(8),
+    borderRadius: scaleWidth(4),
+    marginHorizontal: 0,
+    backgroundColor: colors.primary
+  },
+  carousel: {
+    paddingHorizontal: scaleWidth(25),
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: scaleWidth(20),
   }
 });
 
