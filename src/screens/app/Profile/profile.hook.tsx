@@ -1,12 +1,11 @@
-import { AppDream, AppText } from '@component';
-import { USER_INFO, USER_LIST_DREAM, USER_FOLLOW_DREAM } from '@mocks';
+import { AppDream } from '@component';
 import { useNavigation } from '@react-navigation/native';
-import { EDIT_PROFILE, PROFILE_SETTING } from '@routeName';
+import { EXPLORER, PROFILE_SETTING } from '@routeName';
 import { getFollowDreamApi, getMyListDreamApi } from '@services';
-import { height, scaleWidth, SIZE } from '@util';
+import { scaleWidth, SIZE } from '@util';
 import React, { useEffect, useState } from 'react';
 import { FlatList, View } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 interface ProfileProp { }
 
 interface screenNavigationProp {
@@ -16,15 +15,10 @@ interface screenNavigationProp {
 export function useModel(props: any) {
   const navigation = useNavigation<screenNavigationProp>();
   const userID: any = useSelector((state: any) => state?.auth?.user?.localId);
-  const dispatch = useDispatch()
   const [myList, setMyList] = useState()
   const [followDream, setFollowDream] = useState()
-
   const [info, setInfo] = useState<any>()
-
   const user: any = useSelector((state: any) => state?.auth?.user);
-  const [avatar, setAvatar] = useState<string>()
-
   useEffect(() => {
     (async function () {
       try {
@@ -38,8 +32,6 @@ export function useModel(props: any) {
         console.error(e);
       }
     })();
-
-
   }, []);
 
 
@@ -48,7 +40,6 @@ export function useModel(props: any) {
   }
 
   const [onMyDream, setOnMyDream] = useState(true)
-
   const setDreamRender = () => {
     setOnMyDream(!onMyDream)
   }
@@ -79,6 +70,10 @@ export function useModel(props: any) {
     )
   }
 
+  const moveToCreateDream = () => {
+    navigation.navigate(EXPLORER)
+  }
+
 
   return {
     onEdit,
@@ -88,7 +83,8 @@ export function useModel(props: any) {
     RenderDream,
     myList,
     info,
-    user
+    user,
+    moveToCreateDream
 
   }
 

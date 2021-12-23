@@ -6,7 +6,7 @@ import { useModel } from './editprofile.hook';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { styles } from './style';
 import { Formik } from 'formik';
-import { scaleHeight, SIZE } from '@util';
+import { LINK_AVATAR, scaleHeight, SIZE } from '@util';
 
 interface EditProfileProp { }
 
@@ -79,7 +79,7 @@ const EditProfile = (props: EditProfileProp) => {
         <Pressable style={styles.upPhoto} onPress={onChangeAvatar}>
 
           {avatar
-            ? <Image source={{ uri: 'https://dreamfect-api.adamo.tech/storage/avatars/' + avatar }} style={styles.avatar} />
+            ? <Image source={{ uri: LINK_AVATAR + avatar }} style={styles.avatar} />
             : <Image source={avatar_default} style={styles.avatar} />
           }
         </Pressable>

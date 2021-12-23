@@ -17,6 +17,7 @@ module.exports = {
           '@redux': './src/redux',
           '@services': './src/services',
           '@routeName': './src/navigation/routeName',
+          '@HOC': './src/HOC',
         },
       },
     ],
