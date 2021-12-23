@@ -1,27 +1,8 @@
 import React from 'react';
 
 import { createStackNavigator } from '@react-navigation/stack';
-import {
 
-  PROFILE_SETTING,
-  EDIT_PROFILE,
-  PROFILE,
-  CHANGE_PASSWORD,
-  SUCCESS_SCREEN
-} from '../routeName';
-
-import {
-
-  // Authen
-  ProfileSetting,
-  EditProfile,
-  Profile,
-  ChangePassword,
-  SuccessScreen
-
-} from '../../screens';
 import { APP_STACK } from '@util';
-import BottomTab from '../../component/BottomTab/BottomTab';
 
 const Stack = createStackNavigator();
 const screenOptions = {

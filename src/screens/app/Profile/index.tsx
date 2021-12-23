@@ -10,12 +10,14 @@ interface ProfileProp { }
 
 const Profile = (props: ProfileProp) => {
   const {
-    user,
     onEdit,
     onMyDream,
     setOnMyDream,
     setDreamRender,
-    RenderDream } = useModel(props)
+    RenderDream,
+    myList,
+    info,
+    user } = useModel(props)
 
   return (
     <>
@@ -24,32 +26,50 @@ const Profile = (props: ProfileProp) => {
         <View style={styles.container}  >
           <View style={styles.dreamTxt}>
             <View style={{ alignItems: 'center' }}>
-              <AppText style={styles.numberDream}>{'8'}</AppText>
-              <AppText>{'Ongoing dream'}</AppText>
+              <AppText style={styles.numberDream}>{info?.count_ongoing_dream || '0'}</AppText>
+              <AppText>{'Ongoing dreams'}</AppText>
             </View>
             <View style={{ alignItems: 'center' }}>
-              <AppText style={styles.numberDream}>{'0'}</AppText>
-              <AppText>{'Completed dream'}</AppText>
+              <AppText style={styles.numberDream}>{info?.count_complete_dream || '0'}</AppText>
+              <AppText>{'Completed dreams'}</AppText>
             </View>
           </View>
-          <View style={styles.buttonBlock}>
-            <AppButton
-              containerStyle={{ width: scaleWidth(130), alignSelf: 'center' }}
-              title={'My lists'}
-              isNotFocus={!onMyDream}
-              onPress={setDreamRender}
-            />
-            <AppButton
-              containerStyle={{ width: scaleWidth(130), alignSelf: 'center' }}
-              title={'Follow dreams'}
-              isNotFocus={onMyDream}
-              onPress={setDreamRender}
-            />
-          </View>
-          {RenderDream()}
+
+          {
+            info?.count_ongoing_dream === 0
+              ? <View style={{ alignItems: 'center' }}>
+                <AppText style={styles.NoDreamTxt}>{'No dreams'}</AppText>
+                <AppText style={styles.miniTxt}>{'You currently do not have any dreams, try to create'}</AppText>
+                <AppButton
+                  title={'Create'}
+                  containerStyle={{ width: scaleWidth(335), marginTop: SIZE.medium_space }}
+                  onPress={setDreamRender}
+                />
+              </View>
+              : <>
+                <View style={styles.buttonBlock}>
+                  <AppButton
+                    containerStyle={{ width: scaleWidth(130), alignSelf: 'center' }}
+                    title={'Connections'}
+                    isNotFocus={!onMyDream}
+                    onPress={setDreamRender}
+                  />
+                  <AppButton
+                    containerStyle={{ width: scaleWidth(130), alignSelf: 'center' }}
+                    title={'Follow dreams'}
+                    isNotFocus={onMyDream}
+                    onPress={setDreamRender}
+                  />
+                </View>
+                {RenderDream()}</>
+
+          }
         </View>
         <Pressable style={styles.upPhoto} onPress={onEdit}>
-          <Image source={avatar_default} style={styles.avatar} />
+          {info?.avatar
+            ? <Image source={{ uri: 'https://dreamfect-api.adamo.tech/storage/avatars/' + info?.avatar }} style={styles.avatar} />
+            : <Image source={avatar_default} style={styles.avatar} />
+          }
         </Pressable>
         {/* <Footer /> */}
       </ImageBackground>

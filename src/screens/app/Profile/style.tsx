@@ -12,28 +12,25 @@ import { StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: 'center',
-    // paddingHorizontal: SIZE.padding,
     marginTop: scaleWidth(100),
     backgroundColor: colors.white,
     borderTopRightRadius: scaleWidth(48),
     borderTopLeftRadius: scaleWidth(48),
-    // paddingBottom: 50
   },
-
   image: {
     flex: 1,
     justifyContent: "center",
   },
-
   upPhoto: {
     alignSelf: 'center',
     position: 'absolute',
-    top: scaleWidth(120),
+    top: scaleWidth(130),
 
   },
   avatar: {
-    height: scaleWidth(104), width: scaleWidth(104), borderRadius: scaleWidth(52)
+    height: scaleWidth(104),
+    width: scaleWidth(104),
+    borderRadius: scaleWidth(52)
   },
   nameTxt: {
     marginTop: scaleWidth(84),
@@ -64,7 +61,9 @@ const styles = StyleSheet.create({
   },
   numberDream: {
     fontSize: SIZE.medium_size,
-    ...fontFamily.Proxima600
+    ...fontFamily.Proxima600,
+    fontWeight: '700',
+    color: colors.primary
   },
   dreamTxt: {
     flexDirection: 'row',
@@ -74,6 +73,18 @@ const styles = StyleSheet.create({
   },
   buttonBlock: {
     marginBottom: scaleWidth(32), marginTop: SIZE.padding, flexDirection: 'row', justifyContent: 'space-between', paddingHorizontal: scaleWidth(47)
+  },
+  NoDreamTxt: {
+    ...fontFamily.Proxima600,
+    fontWeight: '700',
+    color: colors.primary,
+    fontSize: SIZE.big_size,
+    marginTop: scaleWidth(80),
+    marginBottom: scaleWidth(10)
+  },
+  miniTxt: {
+    width: scaleWidth(200),
+    textAlign: 'center'
   }
 });
 

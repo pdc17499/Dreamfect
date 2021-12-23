@@ -18,7 +18,7 @@ const ForgotPassword = (props: ForgotPasswordProp) => {
 
   return (
     <>
-      <ImageBackground source={background_signup} resizeMode='stretch' style={styles.image} >
+      <ImageBackground source={background_signup} resizeMode='cover' style={styles.image} >
         <KeyboardAwareScrollView style={styles.container} showsVerticalScrollIndicator={false} >
           <Formik
             enableReinitialize

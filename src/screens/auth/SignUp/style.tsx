@@ -13,11 +13,12 @@ const styles = StyleSheet.create({
     color: colors.primary,
     fontSize: SIZE.big_size,
     ...fontFamily.Proxima600,
+    fontWeight: '700',
     alignSelf: 'center',
     textAlign: 'center',
     width: scaleWidth(250),
     lineHeight: scaleWidth(40),
-    marginTop: scaleHeight(136),
+    marginTop: scaleHeight(106),
     marginBottom: 5
   },
   miniTxt: {
@@ -27,7 +28,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     textAlign: 'center',
     width: scaleWidth(300),
-    marginBottom: scaleWidth(40)
+    marginBottom: scaleWidth(20)
   },
   bottomTxt: {
     color: colors.violet,
@@ -73,9 +74,7 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
-    // justifyContent: "center",
-    width: width,
-    height: 635 * width / 488,
+
   },
 
 });

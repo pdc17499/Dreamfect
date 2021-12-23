@@ -57,9 +57,6 @@ const ChangePassword = (props: ChangePasswordProp) => {
 
       <Footer />
     </View>
-
-
-
   );
 };
 export { ChangePassword };

@@ -9,12 +9,14 @@ interface ProfileSettingProp { }
 
 const ProfileSetting = (props: ProfileSettingProp) => {
   const {
-    user,
+
     onEdit,
     moveToChangePass,
     isEnable,
     changeNotify,
-    profile } = useModel(props)
+    profile,
+    avatar,
+    user } = useModel(props)
 
   return (
     <>
@@ -22,19 +24,19 @@ const ProfileSetting = (props: ProfileSettingProp) => {
         <Header title={'Account'} iconRight={'edit'} iconLeft={'back'} onPressRight={onEdit} />
         <View style={styles.container} >
           <Pressable style={styles.upPhoto} onPress={onEdit}>
-            {profile?.avatar ? <Image source={{ uri: profile?.avatar }} style={styles.avatar} />
+
+            {profile?.avatar
+              ? <Image source={{ uri: 'https://dreamfect-api.adamo.tech/storage/avatars/' + profile?.avatar }} style={styles.avatar} />
               : <Image source={avatar_default} style={styles.avatar} />
             }
-          </Pressable>
 
+          </Pressable>
           <AppText style={styles.nameTxt}>{profile?.uname || ''}</AppText>
           <AppText style={styles.emailTxt}>{profile?.email || ''}</AppText>
-
           <Pressable style={styles.line} onPress={moveToChangePass}>
             <AppText style={styles.text}>{'Change password'}</AppText>
             <IconArrowRight />
           </Pressable>
-
           <View style={styles.line}>
             <AppText style={styles.text}>{'Enable Notifications'}</AppText>
             {isEnable

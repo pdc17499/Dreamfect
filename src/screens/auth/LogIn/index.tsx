@@ -1,4 +1,4 @@
-import { AppButton, AppInput, AppText, Footer } from '@component';
+import { AppButton, AppInput, AppText, Footer, Header } from '@component';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { scaleWidth, SIZE } from '@util';
 import React, { useEffect } from 'react';
@@ -26,7 +26,8 @@ const LogIn = (props: LogInProp) => {
 
   return (
     <>
-      <ImageBackground source={background_signup} resizeMode='stretch' style={styles.image} >
+      <ImageBackground source={background_signup} resizeMode='cover' style={styles.image} >
+        <Header iconLeft='back' />
         <KeyboardAwareScrollView style={styles.container} showsVerticalScrollIndicator={false} >
           <Formik
             enableReinitialize
@@ -54,7 +55,7 @@ const LogIn = (props: LogInProp) => {
                   onValueChange={props.handleChange('password')}
                   error={props.errors.password}
                 />
-                <Pressable onPress={moveToForgot}>
+                <Pressable onPress={moveToForgot} style={{ height: scaleWidth(40) }}>
                   <AppText style={styles.forgotTxt}>{'Forgot password?'}</AppText>
                 </Pressable>
 
@@ -63,7 +64,7 @@ const LogIn = (props: LogInProp) => {
                   onPress={props.handleSubmit}
                   customStyleButton={{ marginTop: SIZE.medium_space }}
                 />
-                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: SIZE.medium_space, marginBottom: SIZE.base_space }}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: scaleWidth(40), marginBottom: SIZE.base_space }}>
                   <View style={styles.hr}></View>
                   <AppText style={styles.OrTxt}>{'or'}</AppText>
                   <View style={styles.hr}></View>
@@ -91,7 +92,6 @@ const LogIn = (props: LogInProp) => {
                 <View style={styles.bottom} >
                   <AppText style={styles.bottomTxt2}>{"If your don’t have an account?"}</AppText>
                   <Pressable onPress={moveToSignup}>
-
                     <AppText style={styles.bottomTxt}>{'Sign up'}</AppText>
                   </Pressable>
                 </View>

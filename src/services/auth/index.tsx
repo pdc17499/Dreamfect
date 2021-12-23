@@ -1,6 +1,7 @@
 
 
 import api from '../api';
+import * as qs from 'qs'
 import {
   SIGNUP_EMAIL,
   SIGNUP_GOOGLE,
@@ -12,7 +13,10 @@ import {
   CHANGE_NOTIFICATION,
   CHANGE_PASSWORD,
   CHANGE_PROFILE_USER,
-  GET_PROFILE_USER
+  GET_PROFILE_USER,
+  GET_MY_LIST_DREAM,
+  GET_LIST_USER,
+  GET_DREAM_HOMEPAGE
 
 } from './types';
 
@@ -84,21 +88,23 @@ export const getProfileUserApi: any = async () => {
 
 export const changeProfileUserApi: any = async (data: any, id: string) => {
   const bodyFormData = new FormData();
-  bodyFormData.append('fname', data?.first_name);
-  bodyFormData.append('lname', data?.last_name);
+  bodyFormData.append('fname', data?.fname);
+  bodyFormData.append('lname', data?.lname);
   bodyFormData.append('phone', data?.phone);
-  bodyFormData.append('uname', data?.username);
-  bodyFormData.append('avatar', {
-    fileName: data?.avatar?.path.replace(/^.*[\\\/]/, ''),
-    name: data?.avatar?.path.replace(/^.*[\\\/]/, ''),
-    width: data?.avatar?.width,
-    uri: data?.avatar?.path,
-    path: data?.avatar?.path,
-    size: data?.avatar?.size,
-    type: data?.avatar?.mime,
-    height: data?.avatar?.height,
-  });
-
+  bodyFormData.append('uname', data?.uname);
+  bodyFormData.append('desc', data?.desc);
+  if (data?.avatar) {
+    bodyFormData.append('avatar', {
+      fileName: data?.avatar?.path.replace(/^.*[\\\/]/, ''),
+      name: data?.avatar?.path.replace(/^.*[\\\/]/, ''),
+      width: data?.avatar?.width,
+      uri: data?.avatar?.path,
+      path: data?.avatar?.path,
+      size: data?.avatar?.size,
+      type: data?.avatar?.mime,
+      height: data?.avatar?.height,
+    });
+  }
   const response = await api.post(CHANGE_PROFILE_USER + id, bodyFormData, {
     headers: {
       'Content-Type': 'multipart/form-data',
@@ -107,25 +113,48 @@ export const changeProfileUserApi: any = async (data: any, id: string) => {
   return response;
 };
 
+export const getMyListDreamApi: any = async (id: string) => {
+  const response = await api.get(GET_MY_LIST_DREAM + 'dream?page=1&type=1');
+  return response;
+};
+
+export const getFollowDreamApi: any = async (id: string) => {
+  const response = await api.get(GET_MY_LIST_DREAM + 'dream?page=1&type=2');
+  return response;
+};
+
+export const getListUserApi: any = async () => {
+  const response = await api.get(GET_LIST_USER);
+  return response;
+};
+
+export const getListSearchUserApi: any = async (data: string) => {
+  const response = await api.get(GET_LIST_USER, { params: { search: data } });
+  return response;
+};
+
+export const getDreamHomePageApi: any = async () => {
+  const response = await api.get(GET_DREAM_HOMEPAGE);
+  return response;
+};
+
+
+export const findUserApi: any = async (data: any) => {
+  console.log('data', data);
+  let array = data.map((e: string) => 'users/' + e)
+  console.log('param2', array);
+
+  const response = await api.get(GET_DREAM_HOMEPAGE,
+    {
+      params: { 'arr': array },
+      paramsSerializer: params => {
+        return qs.stringify(params)
+      }
+    });
+  return response;
+};
 
 
 
-
-
-
-// export const updateUserInfoApi: any = async (data: any, id: string) => {
-//   console.log('4', data?.avatar);
-//   var bodyFormData = new FormData();
-//   bodyFormData.append('fname', data?.first_name);
-//   bodyFormData.append('lname', data?.last_name);
-//   bodyFormData.append('phone', data?.phone);
-//   bodyFormData.append('uname', data?.username);
-//   bodyFormData.append('desc', data?.description);
-//   bodyFormData.append('avatar', data?.avatar);
-
-//   const response = await api.post(UPDATE_USER_INFO + id, bodyFormData);
-//   return response;
-
-// };
 
 
