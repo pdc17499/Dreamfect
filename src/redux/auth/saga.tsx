@@ -246,7 +246,7 @@ export function* changeProfileUserSaga(action: any) {
         message: 'Update Successfully!',
       });
       yield put(setProfileUser(result?.data))
-      NavigationUtils.navigate(PROFILE);
+      NavigationUtils.navigate(PROFILE_SETTING);
     }
   } catch (error) {
     GlobalService.hideLoading();

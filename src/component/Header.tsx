@@ -15,6 +15,7 @@ import { IconBack, IconDelete, IconEdit, IconEmail, IconLogo, IconLogOut, IconSe
 import { useNavigation } from '@react-navigation/native';
 import { ifIphoneX } from 'react-native-iphone-x-helper';
 import { HeaderProps } from '@interfaces';
+import { withPreventDoubleClick } from '@HOC'
 
 interface screenNavigationProp {
   goBack: any;
@@ -49,7 +50,6 @@ const Header = React.memo((props: HeaderProps) => {
         return <IconBack iconFillColor='#1A133D' />;
       case 'logo':
         return <IconLogo />;
-
     }
     return null;
   };
@@ -68,14 +68,16 @@ const Header = React.memo((props: HeaderProps) => {
     return null;
   };
 
+  const Press = withPreventDoubleClick(Pressable)
+
   return (
     <View style={styles.viewRow}>
       {iconLeft && (
-        <Pressable
+        <Press
           onPress={goBack}
           hitSlop={STYLE.hitSlop}>
           {renderIconLeft()}
-        </Pressable>
+        </Press>
       )}
       <AppText style={[styles.txtTitle, customTitleStyle]}>{title}</AppText>
       {iconRight && (

@@ -15,9 +15,9 @@ export const withPreventDoubleClick = (WrappedComponent: any) => {
     return <WrappedComponent {...props} onPress={onPress} />;
   };
 
-  PreventDoubleClick.displayName = `withPreventDoubleClick(${
-    WrappedComponent.displayName || WrappedComponent.name
-  })`;
+  PreventDoubleClick.displayName = `withPreventDoubleClick(${WrappedComponent.displayName || WrappedComponent.name
+    })`;
 
   return PreventDoubleClick;
 };
+

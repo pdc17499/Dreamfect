@@ -1,8 +1,8 @@
-import { avatar_default, background_home, EnableNotification, IconArrowRight, IconEmail, IconProfile } from '@assets';
-import { AppButton, AppText, Footer, Header } from '@component';
-import { colors, scaleWidth, SIZE } from '@util';
+import { avatar_default, background_profile } from '@assets';
+import { AppButton, AppText, Header } from '@component';
+import { LINK_AVATAR, scaleWidth, SIZE } from '@util';
 import React from 'react';
-import { View, ImageBackground, Pressable, Image, ScrollView } from 'react-native';
+import { View, ImageBackground, Pressable, Image } from 'react-native';
 import { useModel } from './profile.hook';
 import { styles } from './style';
 
@@ -15,13 +15,13 @@ const Profile = (props: ProfileProp) => {
     setOnMyDream,
     setDreamRender,
     RenderDream,
-    myList,
     info,
-    user } = useModel(props)
+    user,
+    moveToCreateDream } = useModel(props)
 
   return (
     <>
-      <ImageBackground source={background_home} resizeMode='cover' style={styles.image} >
+      <ImageBackground source={background_profile} style={styles.image} >
         <Header iconRight={'setting'} iconLeft={'logo'} onPressRight={onEdit} />
         <View style={styles.container}  >
           <View style={styles.dreamTxt}>
@@ -34,7 +34,6 @@ const Profile = (props: ProfileProp) => {
               <AppText>{'Completed dreams'}</AppText>
             </View>
           </View>
-
           {
             info?.count_ongoing_dream === 0
               ? <View style={{ alignItems: 'center' }}>
@@ -43,7 +42,7 @@ const Profile = (props: ProfileProp) => {
                 <AppButton
                   title={'Create'}
                   containerStyle={{ width: scaleWidth(335), marginTop: SIZE.medium_space }}
-                  onPress={setDreamRender}
+                  onPress={moveToCreateDream}
                 />
               </View>
               : <>
@@ -62,12 +61,11 @@ const Profile = (props: ProfileProp) => {
                   />
                 </View>
                 {RenderDream()}</>
-
           }
         </View>
         <Pressable style={styles.upPhoto} onPress={onEdit}>
           {info?.avatar
-            ? <Image source={{ uri: 'https://dreamfect-api.adamo.tech/storage/avatars/' + info?.avatar }} style={styles.avatar} />
+            ? <Image source={{ uri: LINK_AVATAR + info?.avatar }} style={styles.avatar} />
             : <Image source={avatar_default} style={styles.avatar} />
           }
         </Pressable>

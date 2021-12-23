@@ -1,11 +1,11 @@
-import { background_home, IconEditPhoto, IconPickDream } from '@assets'
+import { background_profile, IconEditPhoto, IconPickDream } from '@assets'
 import { AppText, AppButton, Header, AppInput, AppFriend } from '@component'
 import { screenNavigationProp } from '@interfaces'
 import { useNavigation } from '@react-navigation/native'
 import { PROFILE_SETTING } from '@routeName'
-import { colors, DEVICE, scaleWidth, SIZE } from '@util'
+import { scaleWidth } from '@util'
 import React, { useState } from 'react'
-import { View, ImageBackground, Pressable, Image, Alert, Button } from 'react-native'
+import { View, ImageBackground, Pressable, Image } from 'react-native'
 import { styles } from './style'
 import * as yup from 'yup';
 import { Formik } from 'formik'
@@ -65,8 +65,6 @@ const ExplorerScreen = () => {
   }
 
   const renderVideo = (video: any) => {
-    console.log('rendering video');
-    console.log('rrr', video);
     return (
       <View style={styles.imageVideo}>
         <Video
@@ -81,7 +79,9 @@ const ExplorerScreen = () => {
           onLoad={(load) => console.log(load)}
           repeat={true}
         />
-        <IconEditPhoto style={styles.editPhoto} />
+        <Pressable onPress={toggleModal}>
+          <IconEditPhoto style={styles.editPhoto} />
+        </Pressable>
       </View>
     )
   }
@@ -94,7 +94,9 @@ const ExplorerScreen = () => {
           style={styles.imageVideo}
           source={{ uri: image.path }}
         />
-        <IconEditPhoto style={styles.editPhoto} />
+        <Pressable onPress={toggleModal}>
+          <IconEditPhoto style={styles.editPhoto} />
+        </Pressable>
       </View>
     );
   }
@@ -107,13 +109,13 @@ const ExplorerScreen = () => {
   }
 
   return (
-    <ImageBackground source={background_home} resizeMode='cover' style={styles.image} >
+    <ImageBackground source={background_profile} resizeMode='cover' style={styles.image} >
       <Header title='New dream' iconLeft={'delete'} />
       <KeyboardAwareScrollView style={styles.container} showsVerticalScrollIndicator={false}  >
-        <Pressable onPress={() => setModalVisible(!isModalVisible)}>
-          {file ? renderAsset(file)
-            : <IconPickDream style={{ alignSelf: 'center' }} />}
-        </Pressable>
+        {file ? renderAsset(file)
+          : <Pressable onPress={() => setModalVisible(!isModalVisible)}>
+            <IconPickDream style={{ alignSelf: 'center' }} />
+          </Pressable>}
         <Formik
           enableReinitialize
           initialValues={formInitialValues}
@@ -156,6 +158,7 @@ const ExplorerScreen = () => {
         </Formik >
 
         <Modal isVisible={isModalVisible} backdropOpacity={0.3}  >
+          <Pressable style={styles.modal} onPress={toggleModal} />
           <View style={{
             justifyContent: 'center',
             borderRadius: scaleWidth(16),
@@ -165,9 +168,6 @@ const ExplorerScreen = () => {
           </View>
         </Modal>
       </KeyboardAwareScrollView>
-
-
-
     </ImageBackground >
 
   )

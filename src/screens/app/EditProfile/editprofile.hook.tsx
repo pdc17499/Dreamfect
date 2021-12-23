@@ -20,7 +20,6 @@ export function useModel(props: any) {
   const profile: any = useSelector((state: any) => state?.auth?.profileUser);
   const user: any = useSelector((state: any) => state?.auth?.user);
 
-
   useEffect(() => {
     setAvatar(profile?.avatar)
   }, []);
@@ -37,6 +36,8 @@ export function useModel(props: any) {
       setAvatar(image?.path)
       setFile(image)
     });
+    console.log('ima', avatar);
+
   }
   const formInitialValues = {
 
@@ -96,5 +97,4 @@ export function useModel(props: any) {
     onSubmit,
     profile
   }
-
 }
