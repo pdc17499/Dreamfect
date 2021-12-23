@@ -14,7 +14,9 @@ const colors = {
     placehoderTxt: '#9C9C9C',
     hr: '#E0DFE4',
     red: 'red',
-    secondButton: '#E1DCFF'
+    secondButton: '#E1DCFF',
+    background2: '#FEE0E2',
+
 };
 
 export { colors };

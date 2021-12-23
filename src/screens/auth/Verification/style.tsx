@@ -20,11 +20,12 @@ const styles = StyleSheet.create({
     color: colors.primary,
     fontSize: SIZE.big_size,
     ...fontFamily.Proxima600,
+    fontWeight: '700',
     alignSelf: 'center',
     textAlign: 'center',
     // width: scaleWidth(250),
     lineHeight: scaleWidth(40),
-    marginTop: scaleHeight(200),
+    marginTop: scaleHeight(425),
     marginBottom: 10
   },
   miniTxt: {
@@ -34,7 +35,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     textAlign: 'center',
     lineHeight: scaleWidth(21),
-    marginBottom: scaleWidth(88)
+    marginBottom: scaleWidth(58)
   },
   block: {
     width: '27%'

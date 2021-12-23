@@ -28,8 +28,7 @@ const SignUpInfo = (props: SignUpInfoProp) => {
 
   return (
     <>
-      <ImageBackground source={background_signup} resizeMode='stretch' style={styles.image} >
-        <Header iconLeft={'back'} />
+      <ImageBackground source={background_signup} resizeMode='cover' style={styles.image} >
         <KeyboardAwareScrollView style={styles.container} showsVerticalScrollIndicator={false} >
           <Formik
             innerRef={formRef}
@@ -40,7 +39,7 @@ const SignUpInfo = (props: SignUpInfoProp) => {
             onSubmit={values => onSubmit(values.first_name, values.last_name, values.phone)}>
             {props => (
               <View style={{ flex: 1 }}>
-                <AppText numberOfLines={2} style={styles.title}>{'Personal Info'}</AppText>
+                <AppText numberOfLines={2} style={styles.title}>{'Personal info'}</AppText>
                 <AppInput
                   label={'First name'}
                   placeholder={'Enter your first name'}

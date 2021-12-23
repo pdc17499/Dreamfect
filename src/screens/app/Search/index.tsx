@@ -1,12 +1,16 @@
+import { scaleWidth } from '@util'
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, ScrollView, FlatList } from 'react-native'
+import { styles } from './style'
 
 const SearchScreen = () => {
-    return (
-        <View>
-            <Text></Text>
-        </View>
-    )
+
+  return (
+
+    <View>
+    </View>
+
+  )
 }
 
 export default SearchScreen

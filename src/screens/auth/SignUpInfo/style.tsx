@@ -11,12 +11,13 @@ const styles = StyleSheet.create({
     color: colors.primary,
     fontSize: SIZE.big_size,
     ...fontFamily.Proxima600,
+    fontWeight: '700',
     alignSelf: 'center',
     textAlign: 'center',
     width: scaleWidth(250),
     lineHeight: scaleWidth(40),
     marginTop: scaleHeight(68),
-    marginBottom: SIZE.medium_space
+    marginBottom: scaleWidth(36)
   },
   miniTxt: {
     ...fontFamily.Proxima400,
@@ -71,9 +72,7 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
-    // justifyContent: "center",
-    width: width,
-    height: 635 * width / 488,
+
   },
   button: {
     marginHorizontal: SIZE.padding, marginBottom: SIZE.medium_space

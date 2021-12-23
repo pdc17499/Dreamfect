@@ -7,19 +7,19 @@ export const validateForm = () => {
     },
     email: yup
       .string()
-      .required('You must select 1 option')
-      .max(150, 'Email is not over 150 characters')
+      .required('The email field is required ')
+      .max(150, 'Email must not greater than 150 characters')
       .email('Email is invalid'),
     password: yup
       .string()
-      .min(8, 'You must select 1 option')
-      .max(30, 'Password is not over 30 characters')
-      .required(),
+      .min(8, 'Password is at least 8 characters')
+      .max(30, 'Password must not greater than 30 characters')
+      .required('The password field is required '),
     newPassword: yup
       .string()
       .required('This field is required')
       .min(8, 'Password must be at least 8 characters')
-      .max(30, 'Password is not over 30 characters'),
+      .max(30, 'Password must not greater than 30 characters'),
     confirmPassword: yup
       .string()
       .required('This field is required')

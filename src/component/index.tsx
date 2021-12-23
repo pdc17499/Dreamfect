@@ -7,6 +7,8 @@ export * from './Footer';
 export * from './Header';
 export * from './AppDream';
 export * from './AppProfile';
+export * from './AppFriend';
+
 
 
 

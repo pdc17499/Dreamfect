@@ -17,12 +17,16 @@ export function useModel(props: any) {
   const userID: any = useSelector((state: any) => state?.auth?.user?.localId);
   const profile: any = useSelector((state: any) => state?.auth?.profileUser);
   console.log('id', userID);
-
-  const user = USER_INFO
+  const user: any = useSelector((state: any) => state?.auth?.user);
+  const [avatar, setAvatar] = useState<string>()
 
   useEffect(() => {
     dispatch(getProfileUser());
+    console.log('avaaa', profile?.avatar);
   }, []);
+
+  console.log('p', profile);
+
 
   const onEdit = () => {
     navigation.navigate(EDIT_PROFILE)
@@ -38,14 +42,15 @@ export function useModel(props: any) {
       : dispatch(changeNotification({ "noti": 2 }, userID))
   }
 
-
   return {
-    user,
+
     onEdit,
     moveToChangePass,
     isEnable,
     changeNotify,
-    profile
+    profile,
+    avatar,
+    user
   }
 
 }

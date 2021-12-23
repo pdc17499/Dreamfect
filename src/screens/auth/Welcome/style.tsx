@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     width: scaleWidth(250),
     lineHeight: scaleWidth(40),
-    marginTop: scaleHeight(50),
+    marginTop: scaleHeight(400),
     marginBottom: 10
   },
   miniTxt: {
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   bottom: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: scaleWidth(52),
+    marginTop: scaleWidth(42),
     justifyContent: 'center',
     marginBottom: SIZE.base_space
   },
@@ -64,8 +64,21 @@ const styles = StyleSheet.create({
     // height: 563 * width / 488,
   },
   manWithLap: {
-    marginTop: scaleHeight(140),
+    marginTop: scaleHeight(100),
     marginLeft: scaleWidth(25),
+  },
+  dot: {
+    width: scaleWidth(8),
+    height: scaleWidth(8),
+    borderRadius: scaleWidth(4),
+    marginHorizontal: 0,
+    backgroundColor: colors.primary
+  },
+  carousel: {
+    paddingHorizontal: scaleWidth(25),
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: scaleWidth(20),
   }
 });
 
