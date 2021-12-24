@@ -12,6 +12,13 @@ target 'Dreamfect' do
     :hermes_enabled => false
   )
 
+  pod 'FBSDKLoginKit'
+  pod 'FBSDKCoreKit'
+  pod 'GoogleSignIn', '~> 6.0.0'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Messaging'
+  pod 'Firebase/Core'
+
   target 'DreamfectTests' do
     inherit! :complete
     # Pods for testing

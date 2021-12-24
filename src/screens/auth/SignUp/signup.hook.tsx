@@ -1,13 +1,17 @@
-import { useNavigation } from '@react-navigation/native';
-import { useState } from 'react';
-import { Alert } from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import {useState} from 'react';
+import {Alert} from 'react-native';
 import * as yup from 'yup';
-import { LOGIN } from '@routeName';
-import { useDispatch } from 'react-redux';
-import { signUpEmail, signUpFacebook, signUpGoogle } from '@redux';
-import { AccessToken, LoginManager } from 'react-native-fbsdk-next';
-import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin';
-import { validateForm } from '@util';
+import {LOGIN} from '@routeName';
+import {useDispatch} from 'react-redux';
+import {signUpApple, signUpEmail, signUpFacebook, signUpGoogle} from '@redux';
+import {AccessToken, LoginManager} from 'react-native-fbsdk-next';
+import {
+  GoogleSignin,
+  statusCodes,
+} from '@react-native-google-signin/google-signin';
+import {validateForm} from '@util';
+import {onAppleButtonPress} from '@HOC';
 
 interface screenNavigationProp {
   navigate: any;
@@ -15,15 +19,15 @@ interface screenNavigationProp {
 
 export function useModel(props: any) {
   const navigation = useNavigation<screenNavigationProp>();
-  const dispatch = useDispatch()
-  const [isChecked, setIsChecked] = useState(false)
+  const dispatch = useDispatch();
+  const [isChecked, setIsChecked] = useState(false);
   const changeRemember = () => {
-    setIsChecked(!isChecked)
-  }
+    setIsChecked(!isChecked);
+  };
 
   const moveToSignIn = () => {
-    navigation.navigate(LOGIN)
-  }
+    navigation.navigate(LOGIN);
+  };
 
   const formInitialValues = {
     email: '',
@@ -37,42 +41,43 @@ export function useModel(props: any) {
   });
 
   const onSubmit = (email: any, password: any) => {
-    dispatch(signUpEmail({ email, password }))
+    dispatch(signUpEmail({email, password}));
     // navigation.navigate(VERIFICATION, { params: 'SignUp' })
   };
 
   const signUpWithFacebook = () => {
-    LoginManager.logInWithPermissions(["public_profile", "email"]).then(
+    LoginManager.logInWithPermissions(['public_profile', 'email']).then(
       function (result: any) {
         if (result.isCancelled) {
-          console.log("==> Login cancelled");
+          console.log('==> Login cancelled');
         } else {
-          AccessToken.getCurrentAccessToken().then((accessToken) => {
-            console.log('acc', accessToken?.accessToken)
-            dispatch(signUpFacebook(accessToken?.accessToken))
-          })
+          AccessToken.getCurrentAccessToken().then(accessToken => {
+            console.log('acc', accessToken?.accessToken);
+            dispatch(signUpFacebook(accessToken?.accessToken));
+          });
         }
       },
       function (error) {
-        console.log("==> Login fail with error: " + error);
-      }
+        console.log('==> Login fail with error: ' + error);
+      },
     );
-  }
+  };
 
   const signUpWithGoogle = async () => {
     GoogleSignin.configure({
-      scopes: [], // what API you want to access on behalf of the user, default is email and profile
+      scopes: ['email', 'profile'], // what API you want to access on behalf of the user, default is email and profile
       webClientId:
         '523059104460-lmipqm9d9pg6nt9aa29mrhqfpu3ns4t4.apps.googleusercontent.com', // client ID of type WEB for your server (needed to verify user ID and offline access)
       offlineAccess: true,
+      iosClientId:
+        '523059104460-b80sohasae2dq236ashu67afhkrd7hs9.apps.googleusercontent.com',
     });
 
     try {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
       console.log('userInfo', userInfo);
-      dispatch(signUpGoogle(userInfo.idToken))
-
+      dispatch(signUpGoogle(userInfo.idToken));
     } catch (error: any) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         Alert.alert('Cancel');
@@ -87,6 +92,15 @@ export function useModel(props: any) {
     }
   };
 
+  const signUpWithApple = () => {
+    // Settings.setAppID('1028173587761172');
+    onAppleButtonPress().then(data => {
+      console.log({data});
+      if (data.token) {
+        dispatch(signUpApple(data.token));
+      }
+    });
+  };
 
   return {
     changeRemember,
@@ -95,6 +109,7 @@ export function useModel(props: any) {
     validationSign,
     onSubmit,
     signUpWithFacebook,
-    signUpWithGoogle
-  }
+    signUpWithGoogle,
+    signUpWithApple,
+  };
 }

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>523059104460-b80sohasae2dq236ashu67afhkrd7hs9.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.523059104460-b80sohasae2dq236ashu67afhkrd7hs9</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>523059104460-911ues79gkt7g2urcsvjivpectutrpca.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyD555xEEWjVAO6L86QsDJ1VbOJCaMX4vf8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>523059104460</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.adamo.dreamfect</string>
+	<key>PROJECT_ID</key>
+	<string>dreamfect</string>
+	<key>STORAGE_BUCKET</key>
+	<string>dreamfect.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:523059104460:ios:8526c0ee3afd26eb4d1069</string>
+</dict>
+</plist>

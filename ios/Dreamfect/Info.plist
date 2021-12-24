@@ -20,8 +20,33 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb1028173587761172</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.523059104460-b80sohasae2dq236ashu67afhkrd7hs9</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>FacebookAppID</key>
+	<string>1028173587761172</string>
+	<key>FacebookClientToken</key>
+	<string>CLIENT-TOKEN</string>
+	<key>FacebookDisplayName</key>
+	<string>Dreamfect</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -36,7 +61,15 @@
 		</dict>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string/>
+	<string></string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Prompt-Bold.ttf</string>
+		<string>Prompt-ExtraBold.ttf</string>
+		<string>ProximaNovaBold.otf</string>
+		<string>ProximaNovaRegular.otf</string>
+		<string>ProximaNovaThinItalic.otf</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -51,13 +84,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>UIAppFonts</key>
-	<array>
-		<string>Prompt-Bold.ttf</string>
-		<string>Prompt-ExtraBold.ttf</string>
-		<string>ProximaNovaBold.otf</string>
-		<string>ProximaNovaRegular.otf</string>
-		<string>ProximaNovaThinItalic.otf</string>
-	</array>
 </dict>
 </plist>
