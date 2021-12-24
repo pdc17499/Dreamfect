@@ -66,6 +66,12 @@
 	<string>$(PRODUCT_NAME) camera use</string>
 	<key>Privacy - Photo Library Usage Description </key>
 	<string>$(PRODUCT_NAME) camera use</string>
+	<key>NSCameraUsageDescription</key>
+	<string>$(PRODUCT_NAME) camera use</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>$(PRODUCT_NAME) microphone use</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>$(PRODUCT_NAME) microphone use</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Prompt-Bold.ttf</string>

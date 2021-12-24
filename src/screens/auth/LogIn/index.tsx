@@ -106,7 +106,7 @@ const LogIn = (props: LogInProp) => {
                   containerStyle={[
                     styles.block,
                     Platform.OS === 'android' &&
-                      !appleAuthAndroid.isSupported && {opacity: 0.5},
+                      !appleAuthAndroid.isSupported && {opacity: 0.3},
                   ]}
                   typeButton={'green'}
                   title={'Apple'}
