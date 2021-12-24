@@ -46,7 +46,6 @@ export default function dataSave(state = INITIAL_STATE_AUTH, action: any) {
       const nState = { ...state };
       nState.dataSignup = {};
       return nState;
-
     case SET_PROFILE_USER:
       return {
         ...state,

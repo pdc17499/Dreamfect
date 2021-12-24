@@ -1,4 +1,4 @@
-import { avatar_default, background_home, EnableNotification, IconArrowRight, IconProfile } from '@assets';
+import { avatar_default, background_home, background_profile, EnableNotification, IconArrowRight, IconProfile } from '@assets';
 import { AppButton, AppInput, AppText, Footer, Header } from '@component';
 import React from 'react';
 import { View, ImageBackground, Pressable, Image } from 'react-native';
@@ -24,7 +24,7 @@ const EditProfile = (props: EditProfileProp) => {
 
   return (
     <>
-      <ImageBackground source={background_home} resizeMode='cover' style={styles.image} >
+      <ImageBackground source={background_profile} style={styles.image} >
         <Header title={'Edit Account'} iconRight={'logout'} iconLeft={'back'} onPressRight={onLogOut} />
         <KeyboardAwareScrollView style={styles.container} showsVerticalScrollIndicator={false} >
           <Formik

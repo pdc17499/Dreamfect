@@ -1,4 +1,4 @@
-import { avatar_default, background_home, DisableNotification, EnableNotification, IconArrowRight, IconProfile } from '@assets';
+import { avatar_default, background_home, background_profile, DisableNotification, EnableNotification, IconArrowRight, IconProfile } from '@assets';
 import { AppText, Footer, Header } from '@component';
 import React from 'react';
 import { View, ImageBackground, Pressable, Image } from 'react-native';
@@ -9,7 +9,6 @@ interface ProfileSettingProp { }
 
 const ProfileSetting = (props: ProfileSettingProp) => {
   const {
-
     onEdit,
     moveToChangePass,
     isEnable,
@@ -20,16 +19,14 @@ const ProfileSetting = (props: ProfileSettingProp) => {
 
   return (
     <>
-      <ImageBackground source={background_home} resizeMode='cover' style={styles.image} >
+      <ImageBackground source={background_profile} resizeMode='cover' style={styles.image} >
         <Header title={'Account'} iconRight={'edit'} iconLeft={'back'} onPressRight={onEdit} />
         <View style={styles.container} >
           <Pressable style={styles.upPhoto} onPress={onEdit}>
-
             {profile?.avatar
               ? <Image source={{ uri: 'https://dreamfect-api.adamo.tech/storage/avatars/' + profile?.avatar }} style={styles.avatar} />
               : <Image source={avatar_default} style={styles.avatar} />
             }
-
           </Pressable>
           <AppText style={styles.nameTxt}>{profile?.uname || ''}</AppText>
           <AppText style={styles.emailTxt}>{profile?.email || ''}</AppText>
