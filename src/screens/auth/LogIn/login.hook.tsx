@@ -1,27 +1,30 @@
-import { useNavigation } from '@react-navigation/native';
-import { useEffect, useState } from 'react';
+import {useNavigation} from '@react-navigation/native';
+import {useEffect, useState} from 'react';
 import * as yup from 'yup';
-import { FORGOT_PASSWORD, PROFILE, SIGNUP } from '@routeName';
-import { validateForm } from '@util';
-import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin';
-import { Alert } from 'react-native';
-import { useDispatch } from 'react-redux';
-import { loginApp, signInFacebook, signInGoogle } from '@redux';
-import { LoginManager, AccessToken } from 'react-native-fbsdk-next';
-import { Settings } from 'react-native-fbsdk-next';
+import {FORGOT_PASSWORD, PROFILE, SIGNUP} from '@routeName';
+import {validateForm} from '@util';
+import {
+  GoogleSignin,
+  statusCodes,
+} from '@react-native-google-signin/google-signin';
+import {Alert} from 'react-native';
+import {useDispatch} from 'react-redux';
+import {loginApp, signInApple, signInFacebook, signInGoogle} from '@redux';
+import {LoginManager, AccessToken} from 'react-native-fbsdk-next';
+import {onAppleButtonPress} from '@HOC';
 
 interface screenNavigationProp {
   navigate: any;
 }
 export function useModel(props: any) {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const navigation = useNavigation<screenNavigationProp>();
   const [loggedIn, setloggedIn] = useState(false);
   const [userInfo, setUserInfo] = useState([]);
-  const [isChecked, setIsChecked] = useState(false)
+  const [isChecked, setIsChecked] = useState(false);
   const moveToForgot = () => {
-    navigation.navigate(FORGOT_PASSWORD)
-  }
+    navigation.navigate(FORGOT_PASSWORD);
+  };
   const formInitialValues = {
     email: '',
     password: '',
@@ -34,54 +37,53 @@ export function useModel(props: any) {
   });
 
   const onSubmit = (email: string, password: string) => {
-    dispatch(loginApp({ email: email, password: password }))
+    dispatch(loginApp({email: email, password: password}));
   };
 
   const moveToSignup = () => {
-    navigation.navigate(SIGNUP)
-  }
+    navigation.navigate(SIGNUP);
+  };
 
   const signInWithFacebook = () => {
     // Settings.setAppID('1028173587761172');
-    LoginManager.logInWithPermissions(["public_profile", "email"]).then(
+    LoginManager.logInWithPermissions(['public_profile', 'email']).then(
       function (result: any) {
         if (result.isCancelled) {
-          console.log("==> Login cancelled");
+          console.log('==> Login cancelled');
         } else {
-          AccessToken.getCurrentAccessToken().then((accessToken) => {
-            console.log('afacebook', accessToken?.accessToken)
-            dispatch(signInFacebook(accessToken?.accessToken))
-          })
+          AccessToken.getCurrentAccessToken().then(accessToken => {
+            console.log('afacebook', accessToken?.accessToken);
+            dispatch(signInFacebook(accessToken?.accessToken));
+          });
         }
       },
       function (error) {
-        console.log("==> Login fail with error: " + error);
-      }
+        console.log('==> Login fail with error: ' + error);
+      },
     );
-  }
+  };
 
   const signInWithGoogle = async () => {
     GoogleSignin.configure({
-      scopes: [], // what API you want to access on behalf of the user, default is email and profile
+      scopes: ['email', 'profile'], // what API you want to access on behalf of the user, default is email and profile
       webClientId:
         '523059104460-lmipqm9d9pg6nt9aa29mrhqfpu3ns4t4.apps.googleusercontent.com',
       // client ID of type WEB for your server (needed to verify user ID and offline access)
       offlineAccess: true,
+      iosClientId:
+        '523059104460-b80sohasae2dq236ashu67afhkrd7hs9.apps.googleusercontent.com',
     });
 
     try {
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
       console.log('googk', userInfo.idToken);
-      dispatch(signInGoogle(userInfo.idToken))
-
+      dispatch(signInGoogle(userInfo.idToken));
     } catch (error: any) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-
         Alert.alert('Cancel');
       } else if (error.code === statusCodes.IN_PROGRESS) {
         Alert.alert('Signin in progress');
-
       } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
         Alert.alert('PLAY_SERVICES_NOT_AVAILABLE');
       } else {
@@ -91,6 +93,14 @@ export function useModel(props: any) {
     }
   };
 
+  const signInWithApple = () => {
+    // Settings.setAppID('1028173587761172');
+    onAppleButtonPress().then(data => {
+      if (data.uuid) {
+        dispatch(signInApple(data.uuid));
+      }
+    });
+  };
 
   return {
     moveToForgot,
@@ -99,6 +109,7 @@ export function useModel(props: any) {
     onSubmit,
     moveToSignup,
     signInWithGoogle,
-    signInWithFacebook
-  }
+    signInWithFacebook,
+    signInWithApple,
+  };
 }

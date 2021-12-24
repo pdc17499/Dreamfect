@@ -1,14 +1,15 @@
-import { AppButton, AppInput, AppText, Footer } from '@component';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { scaleWidth, SIZE } from '@util';
+import {AppButton, AppInput, AppText, Footer} from '@component';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
+import {scaleWidth, SIZE} from '@util';
 import React from 'react';
-import { ImageBackground, Pressable, View } from 'react-native';
-import { styles } from './style';
-import { Formik } from 'formik';
-import { background_signup } from '@assets';
-import { useModel } from './signup.hook';
+import {ImageBackground, Platform, Pressable, View} from 'react-native';
+import {styles} from './style';
+import {Formik} from 'formik';
+import {background_signup} from '@assets';
+import {useModel} from './signup.hook';
+import {appleAuthAndroid} from '@invertase/react-native-apple-authentication';
 
-interface SignUpProp { }
+interface SignUpProp {}
 
 const SignUp = (props: SignUpProp) => {
   const {
@@ -18,24 +19,35 @@ const SignUp = (props: SignUpProp) => {
     validationSign,
     onSubmit,
     signUpWithFacebook,
-    signUpWithGoogle } = useModel(props)
+    signUpWithGoogle,
+    signUpWithApple,
+  } = useModel(props);
 
   return (
     <>
-      <ImageBackground source={background_signup} resizeMode='cover' style={styles.image} >
-        <KeyboardAwareScrollView style={styles.container} showsVerticalScrollIndicator={false} >
+      <ImageBackground
+        source={background_signup}
+        resizeMode="cover"
+        style={styles.image}>
+        <KeyboardAwareScrollView
+          style={styles.container}
+          showsVerticalScrollIndicator={false}>
           <Formik
             // enableReinitialize
             initialValues={formInitialValues}
             validationSchema={validationSign}
             validateOnChange={false}
             onSubmit={values => {
-              onSubmit(values.email, values.password)
+              onSubmit(values.email, values.password);
             }}>
             {props => (
-              <View style={{ flex: 1 }}>
-                <AppText numberOfLines={2} style={styles.title}>{'Sign Up'}</AppText>
-                <AppText style={styles.miniTxt}>{'Join now and start follow your dream'}</AppText>
+              <View style={{flex: 1}}>
+                <AppText numberOfLines={2} style={styles.title}>
+                  {'Sign Up'}
+                </AppText>
+                <AppText style={styles.miniTxt}>
+                  {'Join now and start follow your dream'}
+                </AppText>
                 <AppInput
                   label={'Email'}
                   placeholder={'Enter your email'}
@@ -56,21 +68,32 @@ const SignUp = (props: SignUpProp) => {
                 <AppButton
                   title={'Sign up with email'}
                   onPress={props.handleSubmit}
-                  customStyleButton={{ marginTop: SIZE.medium_space }}
+                  customStyleButton={{marginTop: SIZE.medium_space}}
                 />
-                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'center', marginTop: SIZE.medium_space, marginBottom: SIZE.base_space }}>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginTop: SIZE.medium_space,
+                    marginBottom: SIZE.base_space,
+                  }}>
                   <View style={styles.hr}></View>
                   <AppText style={styles.OrTxt}>{'or'}</AppText>
                   <View style={styles.hr}></View>
                 </View>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'space-between',
+                  }}>
                   <AppButton
                     containerStyle={styles.block}
                     typeButton={'rose'}
                     title={'Facebook'}
                     onPress={signUpWithFacebook}
                   />
-                  <View style={{ flex: 1, marginHorizontal: scaleWidth(10) }}>
+                  <View style={{flex: 1, marginHorizontal: scaleWidth(10)}}>
                     <AppButton
                       typeButton={'orange'}
                       title={'Google'}
@@ -78,25 +101,35 @@ const SignUp = (props: SignUpProp) => {
                     />
                   </View>
                   <AppButton
-                    containerStyle={styles.block}
+                    containerStyle={[
+                      styles.block,
+                      Platform.OS === 'android' &&
+                        !appleAuthAndroid.isSupported && {opacity: 0.5},
+                    ]}
                     typeButton={'green'}
                     title={'Apple'}
+                    disabled={
+                      Platform.OS === 'android' && !appleAuthAndroid.isSupported
+                    }
+                    onPress={signUpWithApple}
                   />
                 </View>
-                <View style={styles.bottom} >
-                  <AppText style={styles.bottomTxt2}>{"Already have an account?"}</AppText>
+                <View style={styles.bottom}>
+                  <AppText style={styles.bottomTxt2}>
+                    {'Already have an account?'}
+                  </AppText>
                   <Pressable onPress={moveToSignIn}>
                     <AppText style={styles.bottomTxt}>{'Sign in'}</AppText>
                   </Pressable>
                 </View>
               </View>
             )}
-          </Formik >
-        </KeyboardAwareScrollView >
+          </Formik>
+        </KeyboardAwareScrollView>
         <Footer />
       </ImageBackground>
     </>
   );
 };
 
-export { SignUp };
+export {SignUp};

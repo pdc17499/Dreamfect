@@ -1,19 +1,19 @@
-import { DEVICE } from '@util';
-import { StyleSheet } from 'react-native';
+import {Platform, StyleSheet} from 'react-native';
 
 const fontFamily = StyleSheet.create({
   Prompt600: {
     fontFamily: 'Prompt-Bold',
   },
   Prompt700: {
-    fontFamily: 'Prompt-ExtraBold'
+    fontFamily: 'Prompt-ExtraBold',
   },
   Proxima400: {
-    fontFamily: DEVICE?.isIos ? 'ProximaNova-Regular' : 'ProximaNovaRegular',
+    fontFamily:
+      Platform.OS === 'ios' ? 'ProximaNova-Regular' : 'ProximaNovaRegular',
   },
   Proxima600: {
-    fontFamily: DEVICE?.isIos ? 'ProximaNova-Bold' : 'ProximaNovaBold',
+    fontFamily: Platform.OS === 'ios' ? 'ProximaNova-Bold' : 'ProximaNovaBold',
   },
 });
 
-export { fontFamily };
+export {fontFamily};

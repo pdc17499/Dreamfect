@@ -1,7 +1,5 @@
-
-
 import api from '../api';
-import * as qs from 'qs'
+import * as qs from 'qs';
 import {
   SIGNUP_EMAIL,
   SIGNUP_GOOGLE,
@@ -16,8 +14,8 @@ import {
   GET_PROFILE_USER,
   GET_MY_LIST_DREAM,
   GET_LIST_USER,
-  GET_DREAM_HOMEPAGE
-
+  GET_DREAM_HOMEPAGE,
+  SIGNIN_APPLE,
 } from './types';
 
 export const loginApi: any = async (data: any) => {
@@ -31,12 +29,17 @@ export const signUpEmailApi: any = async (data: any) => {
 };
 
 export const signInGoogleApi: any = async (data: any) => {
-  const response = await api.post(SIGNUP_GOOGLE, { token: data });
+  const response = await api.post(SIGNUP_GOOGLE, {token: data});
   return response;
 };
 
 export const signInFacebookApi: any = async (data: any) => {
-  const response = await api.post(SIGNIN_FACEBOOK, { token: data });
+  const response = await api.post(SIGNIN_FACEBOOK, {token: data});
+  return response;
+};
+
+export const signInAppleApi: any = async (data: any) => {
+  const response = await api.post(SIGNIN_APPLE, {token: data});
   return response;
 };
 
@@ -50,7 +53,7 @@ export const updateSignUpdApi: any = async (data: any, id: string) => {
     size: data?.avatar?.size,
     type: data?.avatar?.mime,
     height: data?.avatar?.height,
-  }
+  };
   const bodyFormData = new FormData();
   bodyFormData.append('fname', data?.first_name);
   bodyFormData.append('lname', data?.last_name);
@@ -72,7 +75,10 @@ export const forgotPasswordApi: any = async (data: any) => {
 };
 
 export const changeNotificationApi: any = async (data: any, id: string) => {
-  const response = await api.post(CHANGE_NOTIFICATION + id + '/enable-notify', data);
+  const response = await api.post(
+    CHANGE_NOTIFICATION + id + '/enable-notify',
+    data,
+  );
   return response;
 };
 
@@ -129,7 +135,7 @@ export const getListUserApi: any = async () => {
 };
 
 export const getListSearchUserApi: any = async (data: string) => {
-  const response = await api.get(GET_LIST_USER, { params: { search: data } });
+  const response = await api.get(GET_LIST_USER, {params: {search: data}});
   return response;
 };
 
@@ -138,23 +144,16 @@ export const getDreamHomePageApi: any = async () => {
   return response;
 };
 
-
 export const findUserApi: any = async (data: any) => {
   console.log('data', data);
-  let array = data.map((e: string) => 'users/' + e)
+  let array = data.map((e: string) => 'users/' + e);
   console.log('param2', array);
 
-  const response = await api.get(GET_DREAM_HOMEPAGE,
-    {
-      params: { 'arr': array },
-      paramsSerializer: params => {
-        return qs.stringify(params)
-      }
-    });
+  const response = await api.get(GET_DREAM_HOMEPAGE, {
+    params: {arr: array},
+    paramsSerializer: params => {
+      return qs.stringify(params);
+    },
+  });
   return response;
 };
-
-
-
-
-

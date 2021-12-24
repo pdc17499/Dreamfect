@@ -25,15 +25,15 @@ import {
   GET_PROFILE_USER,
   GET_DREAM_HOMEPAGE,
   SET_LIST_DREAM,
-
-  FIND_USER
+  FIND_USER,
+  SIGNIN_APPLE,
+  SIGNUP_APPLE,
 } from '@redux';
 
 export const setUserId = (payload: string) => ({
   type: SET_USER_ID,
   payload,
 });
-
 
 export const loginApp = (payload: any) => ({
   type: LOGIN,
@@ -69,6 +69,16 @@ export const signUpGoogle = (payload: any) => ({
   payload,
 });
 
+export const signInApple = (payload: any) => ({
+  type: SIGNIN_APPLE,
+  payload,
+});
+
+export const signUpApple = (payload: any) => ({
+  type: SIGNUP_APPLE,
+  payload,
+});
+
 export const resetDataSignup = () => ({
   type: RESET_DATA_SIGNUP,
 });
@@ -78,11 +88,9 @@ export const forgotPassword = (payload: any) => ({
   payload,
 });
 
-
 export const removeToken = () => ({
   type: REMOVE_TOKEN,
 });
-
 
 export const setDataSignup = (payload: any) => ({
   type: SET_DATA_SIGNUP,
@@ -99,7 +107,6 @@ export const updateSignUpInfo = (payload: any) => ({
   payload,
 });
 
-
 export const changePassword = (payload: any) => ({
   type: CHANGE_PASSWORD,
   payload,
@@ -111,15 +118,14 @@ export const getProfileUser = () => ({
 
 export const setProfileUser = (payload: any) => ({
   type: SET_PROFILE_USER,
-  payload
+  payload,
 });
 
 export const changeProfileUser = (payload: any, id: string) => ({
   type: CHANGE_PROFILE_USER,
   payload,
-  id
+  id,
 });
-
 
 export const saveDataUser = (payload: any) => ({
   type: SAVE_DATA_USER,
@@ -134,7 +140,7 @@ export const saveTokenRedux = (payload: any) => ({
 export const changeNotification = (payload: any, id: string) => ({
   type: CHANGE_NOTIFICATION,
   payload,
-  id
+  id,
 });
 
 export const getDreamHomePage = () => ({

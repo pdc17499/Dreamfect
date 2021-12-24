@@ -1,1 +1,2 @@
-export * from './withInteractionsManaged'
+export * from './LoginSocial';
+export * from './withInteractionsManaged';
