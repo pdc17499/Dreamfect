@@ -1,4 +1,4 @@
-import { avatar_default, background_home, EnableNotification, IconArrowRight, IconProfile } from '@assets';
+import { avatar_default, background_home, background_profile, EnableNotification, IconArrowRight, IconProfile } from '@assets';
 import { AppButton, AppInput, AppText, Footer, Header } from '@component';
 import React from 'react';
 import { View, ImageBackground, Pressable, Image } from 'react-native';
@@ -6,7 +6,7 @@ import { useModel } from './editprofile.hook';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { styles } from './style';
 import { Formik } from 'formik';
-import { scaleHeight, SIZE } from '@util';
+import { LINK_AVATAR, scaleHeight, SIZE } from '@util';
 
 interface EditProfileProp { }
 
@@ -24,7 +24,7 @@ const EditProfile = (props: EditProfileProp) => {
 
   return (
     <>
-      <ImageBackground source={background_home} resizeMode='cover' style={styles.image} >
+      <ImageBackground source={background_profile} style={styles.image} >
         <Header title={'Edit Account'} iconRight={'logout'} iconLeft={'back'} onPressRight={onLogOut} />
         <KeyboardAwareScrollView style={styles.container} showsVerticalScrollIndicator={false} >
           <Formik
@@ -79,7 +79,7 @@ const EditProfile = (props: EditProfileProp) => {
         <Pressable style={styles.upPhoto} onPress={onChangeAvatar}>
 
           {avatar
-            ? <Image source={{ uri: 'https://dreamfect-api.adamo.tech/storage/avatars/' + avatar }} style={styles.avatar} />
+            ? <Image source={{ uri: LINK_AVATAR + avatar }} style={styles.avatar} />
             : <Image source={avatar_default} style={styles.avatar} />
           }
         </Pressable>

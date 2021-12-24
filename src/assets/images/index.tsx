@@ -13,7 +13,6 @@ const iconProfile = require('./iconProfile.png');
 const iconSearch = require('./iconSearch.png');
 const iconExplorer = require('./iconExplorer.png');
 
-
 export {
     background_signup,
     background_welcome,

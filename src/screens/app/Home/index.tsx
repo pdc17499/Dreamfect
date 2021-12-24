@@ -16,10 +16,8 @@ const HomeScreen = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-
     dispatch(getDreamHomePage())
     console.log(dreamList);
-
   }, []);
 
 
@@ -35,7 +33,6 @@ const HomeScreen = () => {
         <Image source={{ uri: LINK_DREAM + item.image }} style={styles.dream} />
         {/* <Image source={{ uri: 'https://i.pinimg.com/236x/a2/69/a8/a269a85e0460683980ae82bef70d820d.jpg' }} style={styles.dream} /> */}
         <AppText numberOfLines={1} style={styles.dreamTitle}>{item.title}</AppText>
-
         <AppText numberOfLines={2} style={styles.dreamDes}>{item.description}</AppText>
       </View>
     )

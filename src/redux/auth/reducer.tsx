@@ -17,7 +17,6 @@ export default function dataSave(state = INITIAL_STATE_AUTH, action: any) {
       return {
         ...state,
         user: action?.payload || state?.user,
-        // token: action?.payload?.idToken || state?.token,
       };
     case SAVE_TOKEN_REDUX:
       return {
@@ -47,7 +46,6 @@ export default function dataSave(state = INITIAL_STATE_AUTH, action: any) {
       const nState = { ...state };
       nState.dataSignup = {};
       return nState;
-
     case SET_PROFILE_USER:
       return {
         ...state,
