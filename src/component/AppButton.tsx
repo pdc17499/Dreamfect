@@ -1,9 +1,9 @@
-import React, { useCallback } from 'react';
-import { TouchableOpacity, StyleSheet, View, Image } from 'react-native';
-import { AppText } from './AppText';
-import { colors, fontFamily, scaleSize, scaleWidth, SIZE } from '@util';
-import { debounce } from 'lodash';
-import { ButtonProps } from '@interfaces';
+import React, {useCallback} from 'react';
+import {TouchableOpacity, StyleSheet, View, Image} from 'react-native';
+import {AppText} from './AppText';
+import {colors, fontFamily, scaleSize, scaleWidth, SIZE} from '@util';
+import {debounce} from 'lodash';
+import {ButtonProps} from '@interfaces';
 
 const AppButton = React.memo((props: ButtonProps) => {
   const {
@@ -43,26 +43,22 @@ const AppButton = React.memo((props: ButtonProps) => {
   const titleRose = {
     color: colors.rose,
     ...fontFamily.Proxima600,
-
   };
 
   const bgOrange = {
     backgroundColor: 'transparent',
     borderWidth: 1,
     borderColor: colors.orange,
-
   };
 
   const titleOrange = {
     color: colors.orange,
     ...fontFamily.Proxima600,
-
   };
   const bgGreen = {
     backgroundColor: 'transparent',
     borderWidth: 1,
     borderColor: colors.green,
-
   };
 
   const titleGreen = {
@@ -74,19 +70,18 @@ const AppButton = React.memo((props: ButtonProps) => {
     backgroundColor: colors.secondButton,
     borderWidth: 1,
     borderColor: colors.secondButton,
-  }
+  };
 
   const titleNotFocus = {
     color: colors.violet,
     ...fontFamily.Proxima600,
-  }
-
+  };
 
   const buttonStyle = [
     styles.container,
     isNotFocus ? bgNotFocus : {},
     typeButton === 'rose' ? bgRose : {},
-    { minHeight: size === 'small' ? SIZE.btn_height_small : SIZE.btn_height },
+    {minHeight: size === 'small' ? SIZE.btn_height_small : SIZE.btn_height},
     typeButton === 'orange' ? bgOrange : {},
     typeButton === 'green' ? bgGreen : {},
     customStyleButton,
@@ -98,7 +93,7 @@ const AppButton = React.memo((props: ButtonProps) => {
     typeButton === 'rose' && titleRose,
     typeButton === 'orange' ? titleOrange : {},
     typeButton === 'green' ? titleGreen : {},
-    size === 'small' && { ...fontFamily.Proxima600 },
+    size === 'small' && {...fontFamily.Proxima600},
     customStyleTitle,
   ];
 
@@ -115,7 +110,6 @@ const AppButton = React.memo((props: ButtonProps) => {
         {iconLeft && <>{iconLeft}</>}
         {image && <Image source={image} style={imageStyle} />}
         {title && <AppText style={titleStyle}>{title}</AppText>}
-
       </TouchableOpacity>
     </View>
   );
@@ -148,8 +142,6 @@ const styles = StyleSheet.create({
     marginLeft: SIZE.base_space / 2,
     marginRight: -SIZE.base_space / 2,
   },
-
-
 });
 
-export { AppButton };
+export {AppButton};

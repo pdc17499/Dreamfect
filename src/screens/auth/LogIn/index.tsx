@@ -2,11 +2,12 @@ import {AppButton, AppInput, AppText, Footer, Header} from '@component';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {scaleWidth, SIZE} from '@util';
 import React from 'react';
-import {ImageBackground, Pressable, View} from 'react-native';
+import {ImageBackground, Platform, Pressable, View} from 'react-native';
 import {styles} from './style';
 import {Formik} from 'formik';
 import {background_signup} from '@assets';
 import {useModel} from './login.hook';
+import {appleAuthAndroid} from '@invertase/react-native-apple-authentication';
 interface LogInProp {}
 
 const LogIn = (props: LogInProp) => {
@@ -102,9 +103,16 @@ const LogIn = (props: LogInProp) => {
                   />
                 </View>
                 <AppButton
-                  containerStyle={styles.block}
+                  containerStyle={[
+                    styles.block,
+                    Platform.OS === 'android' &&
+                      !appleAuthAndroid.isSupported && {opacity: 0.5},
+                  ]}
                   typeButton={'green'}
                   title={'Apple'}
+                  disabled={
+                    Platform.OS === 'android' && !appleAuthAndroid.isSupported
+                  }
                   onPress={signInWithApple}
                 />
               </View>
