@@ -12,6 +12,7 @@ import {
 } from '@react-native-google-signin/google-signin';
 import {validateForm} from '@util';
 import {onAppleButtonPress} from '@HOC';
+import auth from '@react-native-firebase/auth';
 
 interface screenNavigationProp {
   navigate: any;
@@ -96,8 +97,8 @@ export function useModel(props: any) {
     // Settings.setAppID('1028173587761172');
     onAppleButtonPress().then(data => {
       console.log({data});
-      if (data.token) {
-        dispatch(signUpApple(data.token));
+      if (data.uuid) {
+        dispatch(signUpApple(data.uuid));
       }
     });
   };

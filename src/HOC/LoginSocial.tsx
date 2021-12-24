@@ -4,15 +4,16 @@ import {
 } from '@invertase/react-native-apple-authentication';
 import auth from '@react-native-firebase/auth';
 import {Alert, Platform} from 'react-native';
+import appleSigninAuth from 'apple-signin-auth';
 
-async function onAppleButtonPress(): Promise<{token: any}> {
+async function onAppleButtonPress(): Promise<{uuid: any}> {
   if (Platform.OS == 'ios') {
     if (!appleAuth.isSupported) {
       Alert.alert(
         'Notification',
         'Your version apple not support this function. Please update you version apple',
       );
-      return {token: ''};
+      return {uuid: ''};
     }
     const appleAuthRequestResponse = await appleAuth.performRequest({
       requestedOperation: appleAuth.Operation.LOGIN,
@@ -26,16 +27,17 @@ async function onAppleButtonPress(): Promise<{token: any}> {
 
     // Create a Firebase credential from the response
     const {identityToken, nonce} = appleAuthRequestResponse;
+
     const appleCredential = auth.AppleAuthProvider.credential(
       identityToken,
       nonce,
     );
+    // // // Sign the user in with the credential
+    let loginApp = await auth().signInWithCredential(appleCredential);
 
-    // Sign the user in with the credential
-    await auth().signInWithCredential(appleCredential);
-    let idTokenResult = await auth().currentUser?.getIdTokenResult();
     return {
-      token: idTokenResult?.token,
+      uuid: loginApp.user.uid,
+      // nonce: app,
     };
   } else {
     const rawNonce = new Date().getMilliseconds();
@@ -64,9 +66,6 @@ async function onAppleButtonPress(): Promise<{token: any}> {
 
     // Open the browser window for user sign in
     const response = await appleAuthAndroid.signIn();
-    // return {
-    //   token: response.id_token,
-    // };
     // Ensure Apple returned a user identityToken
     if (!response.id_token) {
       throw 'Android Apple Sign-In failed - no identify token returned';
@@ -76,11 +75,10 @@ async function onAppleButtonPress(): Promise<{token: any}> {
       response.nonce,
     );
 
-    // Sign the user in with the credential
-    await auth().signInWithCredential(appleCredential);
-    let idTokenResult = await auth().currentUser?.getIdTokenResult();
+    // // Sign the user in with the credential
+    let loginApp = await auth().signInWithCredential(appleCredential);
     return {
-      token: idTokenResult?.token,
+      uuid: loginApp.user.uid,
     };
   }
 }

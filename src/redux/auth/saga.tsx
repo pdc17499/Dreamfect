@@ -336,7 +336,6 @@ export function* signUpAppleSaga(action: any) {
     if (result) {
       const id = result?.data?.data?.localId;
       yield put(setUserId(id));
-      console.log('7');
       NavigationUtils.navigate(SIGNUP_INFO);
     }
   } catch (error) {

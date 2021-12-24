@@ -71,7 +71,7 @@ export function useModel(props: any) {
       // client ID of type WEB for your server (needed to verify user ID and offline access)
       offlineAccess: true,
       iosClientId:
-        '523059104460-b80sohasae2dq236ashu67afhkrd7hs9.com.googleusercontent.apps',
+        '523059104460-b80sohasae2dq236ashu67afhkrd7hs9.apps.googleusercontent.com',
     });
 
     try {
@@ -96,8 +96,8 @@ export function useModel(props: any) {
   const signInWithApple = () => {
     // Settings.setAppID('1028173587761172');
     onAppleButtonPress().then(data => {
-      if (data.token) {
-        dispatch(signInApple(data.token));
+      if (data.uuid) {
+        dispatch(signInApple(data.uuid));
       }
     });
   };
