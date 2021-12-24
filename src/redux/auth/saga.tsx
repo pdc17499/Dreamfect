@@ -164,6 +164,7 @@ export function* upDateSignUpInfoSaga(action: any) {
       console.log('too', token);
       yield setToken(token);
       yield put(saveDataUser(result?.data?.data));
+      yield put(saveTokenRedux(token));
     }
   } catch (error) {
     GlobalService.hideLoading();
@@ -181,7 +182,9 @@ export function* forgotPasswordSaga(action: any) {
     if (result) {
       const url = result?.data?.data
       Linking.openURL(url);
-      NavigationUtils.navigate(SUCCESS_SCREEN);
+      setTimeout(() => {
+        NavigationUtils.navigate(SUCCESS_SCREEN);
+      }, 2000);
     }
   } catch (error) {
     GlobalService.hideLoading();
@@ -195,7 +198,6 @@ export function* changeNotificationSaga(action: any) {
     GlobalService.showLoading();
     const result: ResponseGenerator = yield changeNotificationApi(action.payload, action.id);
     if (result) {
-
     }
   } catch (error) {
     GlobalService.hideLoading();
@@ -246,7 +248,7 @@ export function* changeProfileUserSaga(action: any) {
         message: 'Update Successfully!',
       });
       yield put(setProfileUser(result?.data))
-      NavigationUtils.navigate(PROFILE_SETTING);
+      NavigationUtils.navigate(PROFILE);
     }
   } catch (error) {
     GlobalService.hideLoading();

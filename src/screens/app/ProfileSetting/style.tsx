@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: colors.primary,
-    ...fontFamily.Proxima600,
+    ...fontFamily.Proxima400,
     fontSize: SIZE.base_size
   },
   line: {

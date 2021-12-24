@@ -38,7 +38,6 @@ export function useModel(props: any) {
 
   const onSubmit = (email: any, password: any) => {
     dispatch(signUpEmail({ email, password }))
-    // navigation.navigate(VERIFICATION, { params: 'SignUp' })
   };
 
   const signUpWithFacebook = () => {
@@ -61,7 +60,7 @@ export function useModel(props: any) {
 
   const signUpWithGoogle = async () => {
     GoogleSignin.configure({
-      scopes: [], // what API you want to access on behalf of the user, default is email and profile
+      scopes: [],
       webClientId:
         '523059104460-lmipqm9d9pg6nt9aa29mrhqfpu3ns4t4.apps.googleusercontent.com', // client ID of type WEB for your server (needed to verify user ID and offline access)
       offlineAccess: true,
@@ -86,7 +85,6 @@ export function useModel(props: any) {
       }
     }
   };
-
 
   return {
     changeRemember,

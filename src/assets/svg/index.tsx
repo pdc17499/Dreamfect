@@ -414,12 +414,12 @@ export const IconReply = (props: iconProps) => (
 
 export const IconPickDream = (props: iconProps) => (
   <Svg
-    width={345}
+    width={335}
     height={172}
     fill="none"
     {...props}
   >
-    <Rect width={345} height={172} rx={16} fill="#42E2AA" />
+    <Rect width={335} height={172} rx={16} fill="#42E2AA" />
     <Path
       d="M178 93a2 2 0 0 1-2 2h-18a2 2 0 0 1-2-2V82a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2v11Z"
       stroke="#fff"

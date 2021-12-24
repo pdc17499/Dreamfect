@@ -1,7 +1,7 @@
 import { AppDream } from '@component';
 import { useNavigation } from '@react-navigation/native';
 import { EXPLORER, PROFILE_SETTING } from '@routeName';
-import { getFollowDreamApi, getMyListDreamApi } from '@services';
+import { getFollowDreamApi, getMyListDreamApi, GlobalService } from '@services';
 import { scaleWidth, SIZE } from '@util';
 import React, { useEffect, useState } from 'react';
 import { FlatList, View } from 'react-native';
@@ -19,11 +19,14 @@ export function useModel(props: any) {
   const [followDream, setFollowDream] = useState()
   const [info, setInfo] = useState<any>()
   const user: any = useSelector((state: any) => state?.auth?.user);
+
   useEffect(() => {
     (async function () {
       try {
+        GlobalService.showLoading();
         const response = await getMyListDreamApi(userID)
         const response2 = await getFollowDreamApi(userID)
+        GlobalService.hideLoading();
         setMyList(response?.data?.data?.list?.data)
         setFollowDream(response2?.data?.data?.list?.data)
         setInfo(response?.data?.data)
@@ -74,7 +77,6 @@ export function useModel(props: any) {
     navigation.navigate(EXPLORER)
   }
 
-
   return {
     onEdit,
     onMyDream,
@@ -85,7 +87,5 @@ export function useModel(props: any) {
     info,
     user,
     moveToCreateDream
-
   }
-
 }

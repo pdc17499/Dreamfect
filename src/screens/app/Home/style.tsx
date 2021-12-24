@@ -10,7 +10,6 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: SIZE.padding,
     backgroundColor: 'white',
-
   },
   image: {
     flex: 1,
@@ -52,8 +51,6 @@ const styles = StyleSheet.create({
     marginTop: scaleWidth(62),
     marginBottom: scaleWidth(32)
   }
-
-
 });
 
 export { styles };

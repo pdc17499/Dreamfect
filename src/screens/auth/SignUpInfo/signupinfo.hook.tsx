@@ -6,7 +6,6 @@ import { useDispatch } from 'react-redux';
 import { setDataSignup } from '@redux';
 
 interface SignUpInfoProp { }
-
 interface screenNavigationProp {
   navigate: any;
 }
@@ -36,7 +35,6 @@ export function useModel(props: any) {
       .string()
       .min(9, 'Phone number at least 9 numbers')
       .max(15, 'Phone number must not greater than 15 numbers')
-
       .required('This field is required'),
 
   });
