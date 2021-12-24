@@ -62,6 +62,10 @@
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
+	<key>Privacy - Camera Usage Description </key>
+	<string>$(PRODUCT_NAME) camera use</string>
+	<key>Privacy - Photo Library Usage Description </key>
+	<string>$(PRODUCT_NAME) camera use</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Prompt-Bold.ttf</string>

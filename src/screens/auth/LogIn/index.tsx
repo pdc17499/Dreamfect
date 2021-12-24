@@ -1,14 +1,12 @@
 import {AppButton, AppInput, AppText, Footer, Header} from '@component';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {scaleWidth, SIZE} from '@util';
-import React, {useEffect} from 'react';
+import React from 'react';
 import {ImageBackground, Pressable, View} from 'react-native';
 import {styles} from './style';
 import {Formik} from 'formik';
 import {background_signup} from '@assets';
 import {useModel} from './login.hook';
-import {LoginButton, AccessToken} from 'react-native-fbsdk-next';
-import {GoogleSignin} from '@react-native-google-signin/google-signin';
 interface LogInProp {}
 
 const LogIn = (props: LogInProp) => {

@@ -43,7 +43,6 @@ export function useModel(props: any) {
 
   const onSubmit = (email: any, password: any) => {
     dispatch(signUpEmail({email, password}));
-    // navigation.navigate(VERIFICATION, { params: 'SignUp' })
   };
 
   const signUpWithFacebook = () => {

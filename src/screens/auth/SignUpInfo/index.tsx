@@ -69,7 +69,7 @@ const SignUpInfo = (props: SignUpInfoProp) => {
           </Formik >
         </KeyboardAwareScrollView >
         <AppButton
-          title={'Countinue'}
+          title={'Continue'}
           onPress={handleSubmit}
           customStyleButton={styles.button}
         />

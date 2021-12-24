@@ -25,12 +25,7 @@ export default function dataSave(state = INITIAL_STATE_AUTH, action: any) {
       };
     case LOGOUT:
       return {
-        ...state,
-        user: null,
-        token: null,
-        role: null,
-        dataSignup: {},
-        listDream: []
+        INITIAL_STATE_AUTH
       };
     case SET_DATA_SIGNUP:
       return {

@@ -26,56 +26,58 @@ const EditProfile = (props: EditProfileProp) => {
     <>
       <ImageBackground source={background_profile} style={styles.image} >
         <Header title={'Edit Account'} iconRight={'logout'} iconLeft={'back'} onPressRight={onLogOut} />
-        <KeyboardAwareScrollView style={styles.container} showsVerticalScrollIndicator={false} >
-          <Formik
-            enableReinitialize
-            initialValues={formInitialValues}
-            validationSchema={validationSign}
-            validateOnChange={false}
-            onSubmit={values => onSubmit(values.first_name, values.last_name, values.phone, values.user_name, values.description)}>
-            {props => (
-              <View style={{ flex: 1, paddingTop: scaleHeight(76) }}>
-                <AppInput
-                  label={'First name'}
-                  value={props.values.first_name}
-                  onValueChange={props.handleChange('first_name')}
-                  error={props.errors.first_name}
-                />
-                <AppInput
-                  label={'Last name'}
-                  value={props.values.last_name}
-                  onValueChange={props.handleChange('last_name')}
-                  error={props.errors.last_name}
-                />
-                <AppInput
-                  keyboardType={'numeric'}
-                  label={'Phone'}
-                  value={props.values.phone}
-                  onValueChange={props.handleChange('phone')}
-                  error={props.errors.phone}
-                />
-                <AppInput
-                  label={'User name'}
-                  value={props.values.user_name}
-                  onValueChange={props.handleChange('user_name')}
-                  error={props.errors.user_name}
-                />
-                <AppInput
-                  label={'Description'}
-                  value={props.values.description}
-                  onValueChange={props.handleChange('description')}
-                  error={props.errors.description}
-                />
-                <AppButton
-                  title={'Save'}
-                  onPress={props.handleSubmit}
-                  customStyleButton={{ marginVertical: SIZE.medium_space }}
-                />
-              </View>
-            )}
-          </Formik >
+        <View style={styles.container}>
+          <KeyboardAwareScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false} >
+            <Formik
+              enableReinitialize
+              initialValues={formInitialValues}
+              validationSchema={validationSign}
+              validateOnChange={false}
+              onSubmit={values => onSubmit(values.first_name, values.last_name, values.phone, values.user_name, values.description)}>
+              {props => (
+                <View style={{ flex: 1 }}>
+                  <AppInput
+                    label={'First name'}
+                    value={props.values.first_name}
+                    onValueChange={props.handleChange('first_name')}
+                    error={props.errors.first_name}
+                  />
+                  <AppInput
+                    label={'Last name'}
+                    value={props.values.last_name}
+                    onValueChange={props.handleChange('last_name')}
+                    error={props.errors.last_name}
+                  />
+                  <AppInput
+                    keyboardType={'numeric'}
+                    label={'Phone'}
+                    value={props.values.phone}
+                    onValueChange={props.handleChange('phone')}
+                    error={props.errors.phone}
+                  />
+                  <AppInput
+                    label={'User name'}
+                    value={props.values.user_name}
+                    onValueChange={props.handleChange('user_name')}
+                    error={props.errors.user_name}
+                  />
+                  <AppInput
+                    label={'Description'}
+                    value={props.values.description}
+                    onValueChange={props.handleChange('description')}
+                    error={props.errors.description}
+                  />
+                  <AppButton
+                    title={'Save'}
+                    onPress={props.handleSubmit}
+                    customStyleButton={{ marginVertical: SIZE.medium_space }}
+                  />
+                </View>
+              )}
+            </Formik >
 
-        </KeyboardAwareScrollView>
+          </KeyboardAwareScrollView>
+        </View>
         <Pressable style={styles.upPhoto} onPress={onChangeAvatar}>
 
           {avatar

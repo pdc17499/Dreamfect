@@ -23,7 +23,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     textAlign: 'center',
     marginTop: 10,
-    marginBottom: SIZE.medium_space
+    marginBottom: SIZE.medium_space,
+
   },
   search: {
     borderWidth: 2,
@@ -34,7 +35,18 @@ const styles = StyleSheet.create({
     marginTop: scaleWidth(27),
     flexDirection: 'row',
     alignItems: 'center',
+    backgroundColor: 'white',
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+    elevation: 3,
   },
+
+
   button: {
     position: 'absolute', bottom: SIZE.medium_space, width: '100%'
   },

@@ -33,7 +33,8 @@ const styles = StyleSheet.create({
   imageVideo: {
     width: scaleWidth(335),
     height: scaleWidth(172),
-    borderRadius: scaleWidth(16)
+    borderRadius: scaleWidth(16),
+    alignSelf: 'center'
   },
   button: {
     marginTop: SIZE.medium_space, marginBottom: scaleWidth(130)
