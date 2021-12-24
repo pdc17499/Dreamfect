@@ -1,10 +1,10 @@
 import { IconSearch } from '@assets'
 import { AppButton, AppProfile, Footer, Header } from '@component'
 import { findUser } from '@redux'
-import { getMyListDreamApi, getFollowDreamApi, getListUserApi, getListSearchUserApi } from '@services'
-import { scaleWidth, SIZE } from '@util'
+import { getListUserApi, getListSearchUserApi } from '@services'
+import { scaleWidth } from '@util'
 import React, { useEffect, useState } from 'react'
-import { View, Text, ScrollView, FlatList, TextInput, Pressable } from 'react-native'
+import { View, FlatList, TextInput, Pressable } from 'react-native'
 import { useDispatch } from 'react-redux'
 import { styles } from './style'
 
@@ -39,7 +39,6 @@ const FindUser = () => {
   }
 
   const renderItem = ({ item }: any) => {
-
     return (
       <View style={{ marginTop: scaleWidth(20) }}>
         <AppProfile
@@ -76,7 +75,6 @@ const FindUser = () => {
       <View style={{ flex: 1, backgroundColor: 'white' }}>
         <Header iconLeft='back' title='New users' customTitleStyle={{ marginLeft: -10 }} />
         <View style={styles.container}>
-
           <View style={styles.search}>
             <Pressable onPress={searchUser}>
               <IconSearch />
@@ -86,9 +84,8 @@ const FindUser = () => {
               onChangeText={setText}
               placeholder='Search'
               style={styles.input}
-            ></TextInput>
+            />
           </View>
-
 
           <FlatList
             showsVerticalScrollIndicator={false}

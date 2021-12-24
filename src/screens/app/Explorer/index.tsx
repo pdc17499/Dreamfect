@@ -47,7 +47,6 @@ const ExplorerScreen = () => {
       height: 400,
       cropping: true
     }).then((image: any) => {
-      console.log(image);
       setImage(image?.path)
       setFile(image)
     });
@@ -58,7 +57,6 @@ const ExplorerScreen = () => {
     ImagePicker.openPicker({
       mediaType: "video",
     }).then((video: any) => {
-      console.log(video);
       setFile(video)
     });
     toggleModal()
@@ -79,8 +77,8 @@ const ExplorerScreen = () => {
           onLoad={(load) => console.log(load)}
           repeat={true}
         />
-        <Pressable onPress={toggleModal}>
-          <IconEditPhoto style={styles.editPhoto} />
+        <Pressable onPress={toggleModal} style={styles.editPhoto}>
+          <IconEditPhoto />
         </Pressable>
       </View>
     )
@@ -94,8 +92,8 @@ const ExplorerScreen = () => {
           style={styles.imageVideo}
           source={{ uri: image.path }}
         />
-        <Pressable onPress={toggleModal}>
-          <IconEditPhoto style={styles.editPhoto} />
+        <Pressable onPress={toggleModal} style={styles.editPhoto} >
+          <IconEditPhoto />
         </Pressable>
       </View>
     );
@@ -111,63 +109,65 @@ const ExplorerScreen = () => {
   return (
     <ImageBackground source={background_profile} resizeMode='cover' style={styles.image} >
       <Header title='New dream' iconLeft={'delete'} />
-      <KeyboardAwareScrollView style={styles.container} showsVerticalScrollIndicator={false}  >
-        {file ? renderAsset(file)
-          : <Pressable onPress={() => setModalVisible(!isModalVisible)}>
-            <IconPickDream style={{ alignSelf: 'center' }} />
-          </Pressable>}
-        <Formik
-          enableReinitialize
-          initialValues={formInitialValues}
-          validationSchema={validationSign}
-          validateOnChange={false}
-          onSubmit={() => { }}>
-          {props => (
-            <View style={{ flex: 1, paddingTop: scaleWidth(32) }}>
-              <AppInput
-                placeholder='Enter your dream title'
-                label={'Dream title'}
-                value={props.values.title}
-                onValueChange={props.handleChange('title')}
-                error={props.errors.title}
-              />
-              <AppInput
-                placeholder='Enter a dream description'
-                numberOfLines={3}
-                multiline={true}
-                label={'Description'}
-                value={props.values.description}
-                onValueChange={props.handleChange('description')}
-                error={props.errors.description}
-              />
-              <AppText style={styles.botTxt}>{'Select who will see your dream'}</AppText>
+      <View style={styles.container}>
+        <KeyboardAwareScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}   >
+          {file ? renderAsset(file)
+            : <Pressable onPress={() => setModalVisible(!isModalVisible)}>
+              <IconPickDream style={styles.imageVideo} />
+            </Pressable>}
+          <Formik
+            enableReinitialize
+            initialValues={formInitialValues}
+            validationSchema={validationSign}
+            validateOnChange={false}
+            onSubmit={() => { }}>
+            {props => (
+              <View style={{ flex: 1, paddingTop: scaleWidth(32) }}>
+                <AppInput
+                  placeholder='Enter your dream title'
+                  label={'Dream title'}
+                  value={props.values.title}
+                  onValueChange={props.handleChange('title')}
+                  error={props.errors.title}
+                />
+                <AppInput
+                  placeholder='Enter a dream description'
+                  numberOfLines={3}
+                  multiline={true}
+                  label={'Description'}
+                  value={props.values.description}
+                  onValueChange={props.handleChange('description')}
+                  error={props.errors.description}
+                />
+                <AppText style={styles.botTxt}>{'Select who will see your dream'}</AppText>
 
-              <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: scaleWidth(10) }}>
-                <AppFriend type='default' />
-                <AppFriend type='close' />
-                <AppFriend type='public' />
+                <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginTop: scaleWidth(10) }}>
+                  <AppFriend type='default' />
+                  <AppFriend type='close' />
+                  <AppFriend type='public' />
 
+                </View>
+                <AppButton
+                  title={'Save'}
+                  onPress={props.handleSubmit}
+                  customStyleButton={styles.button}
+                />
               </View>
-              <AppButton
-                title={'Save'}
-                onPress={props.handleSubmit}
-                customStyleButton={styles.button}
-              />
-            </View>
-          )}
-        </Formik >
+            )}
+          </Formik >
 
-        <Modal isVisible={isModalVisible} backdropOpacity={0.3}  >
-          <Pressable style={styles.modal} onPress={toggleModal} />
-          <View style={{
-            justifyContent: 'center',
-            borderRadius: scaleWidth(16),
-          }}>
-            <AppButton title="Open Image Gallery" onPress={pickImage} />
-            <AppButton title="Open Video Gallery" onPress={pickVideo} />
-          </View>
-        </Modal>
-      </KeyboardAwareScrollView>
+          <Modal isVisible={isModalVisible} backdropOpacity={0.3}  >
+            <Pressable style={styles.modal} onPress={toggleModal} />
+            <View style={{
+              justifyContent: 'center',
+              borderRadius: scaleWidth(16),
+            }}>
+              <AppButton title="Open Image Gallery" onPress={pickImage} />
+              <AppButton title="Open Video Gallery" onPress={pickVideo} />
+            </View>
+          </Modal>
+        </KeyboardAwareScrollView>
+      </View>
     </ImageBackground >
 
   )

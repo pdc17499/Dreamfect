@@ -30,8 +30,7 @@ const HomeScreen = () => {
           name={item.uname}
           type='profile'
         />
-        <Image source={{ uri: LINK_DREAM + item.image }} style={styles.dream} />
-        {/* <Image source={{ uri: 'https://i.pinimg.com/236x/a2/69/a8/a269a85e0460683980ae82bef70d820d.jpg' }} style={styles.dream} /> */}
+        <Image source={{ uri: LINK_DREAM + item.image }} resizeMode='cover' style={styles.dream} />
         <AppText numberOfLines={1} style={styles.dreamTitle}>{item.title}</AppText>
         <AppText numberOfLines={2} style={styles.dreamDes}>{item.description}</AppText>
       </View>
@@ -58,16 +57,13 @@ const HomeScreen = () => {
         <IconLogo />
         <IconEmail />
       </View>
-
       <FlatList
         showsVerticalScrollIndicator={false}
         renderItem={renderItem}
         data={dreamList}
         keyExtractor={item => item.id}
-        style={{ marginBottom: scaleWidth(50) }}
-
+        ListFooterComponent={<View style={{ height: scaleWidth(85) }}></View>}
       />
-
     </View>
   )
 

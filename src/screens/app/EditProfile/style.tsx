@@ -17,7 +17,8 @@ const styles = StyleSheet.create({
     marginTop: scaleWidth(100),
     backgroundColor: colors.white,
     borderTopRightRadius: scaleWidth(48),
-    borderTopLeftRadius: scaleWidth(48)
+    borderTopLeftRadius: scaleWidth(48),
+    paddingTop: scaleWidth(65)
   },
 
   image: {
@@ -29,7 +30,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     position: 'absolute',
     top: scaleWidth(124),
-
   },
   avatar: {
     height: scaleWidth(104), width: scaleWidth(104), borderRadius: scaleWidth(52)
@@ -45,7 +45,6 @@ const styles = StyleSheet.create({
   emailTxt: {
     marginBottom: scaleWidth(36),
     alignSelf: 'center',
-
   },
   text: {
     color: colors.primary,

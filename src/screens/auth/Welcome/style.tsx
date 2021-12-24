@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   bottom: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: scaleWidth(42),
+    marginTop: scaleWidth(36),
     justifyContent: 'center',
     marginBottom: SIZE.base_space
   },
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: scaleWidth(25),
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: scaleWidth(20),
+    marginBottom: scaleWidth(10),
   }
 });
 
